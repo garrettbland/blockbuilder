@@ -1,12 +1,7 @@
-import Head from 'next/head'
+import BuilderWrapper from '@/components/builder/BuilderWrapper'
 
-const Home = () => (
-    <>
-        <Head>
-            <title>Block Builder</title>
-        </Head>
-        <div className="text-red-500">Block Builder</div>
-    </>
-)
+const Home = () => {
+    return <BuilderWrapper />
+}
 
 export default Home
