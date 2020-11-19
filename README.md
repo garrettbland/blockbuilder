@@ -1,30 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blockbuilder.app
 
-## Getting Started
+> 🛠 Visual website builder for people who build sites for others
 
-First, run the development server:
+## About
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Block Builder is a React based application to visually build websites. It uses tailwindcss as the styling framework for the UI as well as output.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## To Do
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Move options over to use tailwind config
+- Migrate all blocks to their own div for hover styling/spacing (example -> how margin & padding look on blocks on hover)
 
-## Learn More
+### Development
 
-To learn more about Next.js, take a look at the following resources:
+This project is using next js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### How does it work
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The visual preview is made up of react components, that are rendered from state maintained in redux. The site is described as an object. When a user wants to edit a certain 'block' or 'piece' of the website, a popup will appear and allow the user to make edits to a clone of the particular piece in the site object tree. When changes are made, it is injected back into the main site object and the preview is updated.
