@@ -9,11 +9,13 @@ import MarginTop from '../shared/MarginTop'
 import MarginBottom from '../shared/MarginBottom'
 import RemoveBlockButton from '../RemoveBlockButton'
 
+/**TESTING */
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 const TextEdit = () => {
     /**
      * Exploring using theme
+     * TESTING
      */
     useEffect(() => {
         console.log('happening...')
