@@ -8,12 +8,16 @@ Block Builder is a React based application to visually build websites. It uses t
 
 ## To Do
 
-- Move options over to use tailwind config
-- Migrate all blocks to their own div for hover styling/spacing (example -> how margin & padding look on blocks on hover)
+-   Move options over to use tailwind config
+-   Migrate all blocks to their own div for hover styling/spacing (example -> how margin & padding look on blocks on hover)
 
 ### Development
 
 This project is using next js.
+
+### Netlify
+
+Testing out next-on-netlify package. To run locally, `npm run builder` and then `netlify dev`
 
 ### How does it work
 

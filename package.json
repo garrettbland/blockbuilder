@@ -5,11 +5,13 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start"
+        "start": "next start",
+        "postbuild": "next-on-netlify"
     },
     "dependencies": {
         "find-and": "^1.3.0",
         "next": "10.0.2",
+        "next-on-netlify": "^2.6.3",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "react-redux": "^7.2.2",
