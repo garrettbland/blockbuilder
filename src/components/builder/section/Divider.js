@@ -21,7 +21,7 @@ const Divider = () => {
             setCurrentlyEditingChild(currentlyEditing.data[currentlyEditingChildIndex])
             const currentTextColor = extractClass(
                 currentlyEditing.data[currentlyEditingChildIndex].classList,
-                generateColors('text')
+                generateColors('text-')
             )
             if (currentTextColor) {
                 setDividerColor(currentTextColor)

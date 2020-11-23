@@ -1,5 +1,3 @@
-import { Warning } from 'postcss'
-
 const tailwind_colors = require('tailwindcss/colors')
 
 export const generateColors = (prefix = '') => {
@@ -17,9 +15,10 @@ export const generateColors = (prefix = '') => {
     }
 
     /**
-     * Define color palette array to return
+     * Define color palette array to return.
+     * Add transparent class as its not included in 'tailwindcss/colors'
      */
-    let color_palette = []
+    let color_palette = ['transparent']
 
     Object.entries(tailwind_colors).map(([key, value]) => {
         const baseColor = key
