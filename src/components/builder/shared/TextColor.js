@@ -11,7 +11,7 @@ const TextColor = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentTextColor = extractClass(currentlyEditing.classList, generateColors('text'))
+        const currentTextColor = extractClass(currentlyEditing.classList, generateColors('text-'))
         if (currentTextColor) {
             setTextColor(currentTextColor)
         }

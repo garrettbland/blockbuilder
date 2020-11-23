@@ -1,5 +1,5 @@
 import React from 'react'
-import { colors } from '../../../utils/colors'
+import { generateColors } from '../../../utils/colors'
 
 const ColorPicker = ({ currentColor, onClick }) => {
     /**
@@ -8,13 +8,27 @@ const ColorPicker = ({ currentColor, onClick }) => {
      * desired prefix (aka "bg-" or "text-")
      */
     return (
-        <div className="flex flex-wrap">
-            {colors().map((color) => {
+        <div className="grid grid-cols-10 gap-2">
+            {generateColors().map((color) => {
+                if (color.includes('white') || color.includes('black')) {
+                    return (
+                        <div key={color} className="col-span-5">
+                            <div
+                                onClick={() => onClick(color)}
+                                className={`h-12 w-full ${
+                                    color ? `bg-${color}` : 'border-2'
+                                } border cursor-pointer`}
+                            >
+                                {color === currentColor ? 'Selected' : null}
+                            </div>
+                        </div>
+                    )
+                }
                 return (
                     <div
                         key={color}
                         onClick={() => onClick(color)}
-                        className={`w-8 h-8 ${
+                        className={`h-12 ${
                             color ? `bg-${color}` : 'border-2'
                         } border cursor-pointer`}
                     >

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import TextContent from './TextContent'
 import TextColor from '../shared/TextColor'
 import TextAlignment from './TextAlignment'
@@ -10,18 +10,22 @@ import MarginBottom from '../shared/MarginBottom'
 import RemoveBlockButton from '../RemoveBlockButton'
 
 /**TESTING */
-const defaultTheme = require('tailwindcss/defaultTheme')
+// const defaultTheme = require('tailwindcss/defaultTheme')
+// const colors_test = require('tailwindcss/colors')
+// import { generatedColors_v2 } from '@/utils/colors'
 
 const TextEdit = () => {
     /**
      * Exploring using theme
      * TESTING
      */
-    useEffect(() => {
-        console.log('happening...')
-        console.log(defaultTheme.colors)
-        console.log(defaultTheme.spacing)
-    }, [])
+    // useEffect(() => {
+    //     console.log('happening...')
+    //     console.log(generatedColors_v2('bg'))
+    //     // console.log(colors_test)
+    //     // console.log(defaultTheme.colors)
+    //     // console.log(defaultTheme.spacing)
+    // }, [])
 
     return (
         <div>

@@ -1,38 +1,49 @@
-export const generateColors = (prefix) => {
-    if (!prefix) {
-        throw new Error('Prefix (string) must be defined')
-    }
-    return [
-        `${prefix}-red-500`,
-        `${prefix}-orange-500`,
-        `${prefix}-pink-500`,
-        `${prefix}-indigo-500`,
-        `${prefix}-green-500`,
-        `${prefix}-blue-500`,
-        `${prefix}-black`,
-        `${prefix}-white`,
-        `${prefix}-transparent`,
-    ]
-}
+import { Warning } from 'postcss'
 
-export const colors = () => {
-    return [
-        'red-500',
-        'orange-500',
-        'pink-500',
-        'indigo-500',
-        'green-500',
-        'blue-500',
-        'black',
-        'white',
-        'transparent',
-    ]
+const tailwind_colors = require('tailwindcss/colors')
+
+export const generateColors = (prefix = '') => {
+    /**
+     * Will generate base tailwind colors.
+     * For example, without a prefix such as 'bg-' or 'text-'.
+     * ['black','white','blue-500','blue-600']
+     */
+
+    /**
+     * If prefix is passed, verify that the dash is there
+     */
+    if (prefix && !prefix.includes('-')) {
+        throw new Error(`Your prefix (${prefix}) must include a trailing dash (-)`)
+    }
+
+    /**
+     * Define color palette array to return
+     */
+    let color_palette = []
+
+    Object.entries(tailwind_colors).map(([key, value]) => {
+        const baseColor = key
+
+        if (typeof value === 'string') {
+            color_palette = [...color_palette, `${prefix}${baseColor}`]
+        } else {
+            const sub_colors = Object.entries(value).map(([sub_key]) => {
+                return `${prefix}${baseColor}-${sub_key}`
+            })
+
+            sub_colors.forEach((className) => {
+                color_palette = [...color_palette, className]
+            })
+        }
+    })
+
+    return color_palette
 }
 
 export const removeBackgroundColors = (classList) => {
-    return classList.filter((className) => !generateColors('bg').includes(className))
+    return classList.filter((className) => !generateColors('bg-').includes(className))
 }
 
 export const removeTextColors = (classList) => {
-    return classList.filter((className) => !generateColors('text').includes(className))
+    return classList.filter((className) => !generateColors('text-').includes(className))
 }
