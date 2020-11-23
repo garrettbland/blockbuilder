@@ -9,24 +9,7 @@ import MarginTop from '../shared/MarginTop'
 import MarginBottom from '../shared/MarginBottom'
 import RemoveBlockButton from '../RemoveBlockButton'
 
-/**TESTING */
-// const defaultTheme = require('tailwindcss/defaultTheme')
-// const colors_test = require('tailwindcss/colors')
-// import { generatedColors_v2 } from '@/utils/colors'
-
 const TextEdit = () => {
-    /**
-     * Exploring using theme
-     * TESTING
-     */
-    // useEffect(() => {
-    //     console.log('happening...')
-    //     console.log(generatedColors_v2('bg'))
-    //     // console.log(colors_test)
-    //     // console.log(defaultTheme.colors)
-    //     // console.log(defaultTheme.spacing)
-    // }, [])
-
     return (
         <div>
             <TextContent />
