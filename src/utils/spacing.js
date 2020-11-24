@@ -36,18 +36,6 @@ export const removeAutoMargins = (classList) => {
     return classList.filter((className) => !autoMargins().includes(className))
 }
 
-export const removeTopMargins = (classList) => {
-    return classList.filter((className) => !generateSpacing('mt-').includes(className))
-}
-
-export const removeBottomMargins = (classList) => {
-    return classList.filter((className) => !generateSpacing('mb-').includes(className))
-}
-
-export const removeTopPadding = (classList) => {
-    return classList.filter((className) => !generateSpacing('pt-').includes(className))
-}
-
-export const removeBottomPadding = (classList) => {
-    return classList.filter((className) => !generateSpacing('pb-').includes(className))
+export const removeSpacing = (classList, prefix = '') => {
+    return classList.filter((className) => !generateSpacing(prefix).includes(className))
 }

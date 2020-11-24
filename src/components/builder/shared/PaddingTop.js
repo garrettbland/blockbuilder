@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
-import { generateSpacing, removeTopPadding } from '@/utils/spacing'
+import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
 
 const PaddingTop = () => {
@@ -22,7 +22,7 @@ const PaddingTop = () => {
         /**
          * Filter out current max width classes
          */
-        const updatedClassList = removeTopPadding(currentlyEditing.classList)
+        const updatedClassList = removeSpacing(currentlyEditing.classList, 'pt-')
 
         dispatch({
             type: UPDATE_EDITING,
