@@ -1,5 +1,5 @@
 import React from 'react'
-import { generateColors } from '../../../utils/colors'
+import { generateColors } from '@/utils/colors'
 
 const ColorPicker = ({ currentColor, onClick }) => {
     /**

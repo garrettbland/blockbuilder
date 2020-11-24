@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { removeBackgroundColors } from '../../../utils/colors'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { removeColors } from '@/utils/colors'
+import { extractClass } from '@/utils/tools'
 import ColorPicker from './ColorPicker'
 
 const BackgroundColor = () => {
@@ -19,7 +19,7 @@ const BackgroundColor = () => {
 
     const handleBackgroundColorUpdate = (value) => {
         setBgColor(value)
-        const updatedClassList = removeBackgroundColors(currentlyEditing.classList)
+        const updatedClassList = removeColors(currentlyEditing.classList, 'bg-')
         dispatch({
             type: UPDATE_EDITING,
             payload: {

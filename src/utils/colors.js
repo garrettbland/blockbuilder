@@ -39,10 +39,6 @@ export const generateColors = (prefix = '') => {
     return color_palette
 }
 
-export const removeBackgroundColors = (classList) => {
-    return classList.filter((className) => !generateColors('bg-').includes(className))
-}
-
-export const removeTextColors = (classList) => {
-    return classList.filter((className) => !generateColors('text-').includes(className))
+export const removeColors = (classList, prefix = '') => {
+    return classList.filter((className) => !generateColors(prefix).includes(className))
 }

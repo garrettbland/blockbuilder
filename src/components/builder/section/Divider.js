@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
+import { UPDATE_EDITING } from '@/redux/constants'
 const findAnd = require('find-and')
-import { defaultBlocks } from '../../../utils/blocks'
-import { extractClass } from '../../../utils/tools'
-import { generateColors, removeTextColors } from '../../../utils/colors'
+import { defaultBlocks } from '@/utils/blocks'
+import { extractClass } from '@/utils/tools'
+import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
 
 const Divider = () => {
@@ -56,7 +56,7 @@ const Divider = () => {
 
     const handleDividerColorUpdate = (value) => {
         setDividerColor(value)
-        const updatedClassList = removeTextColors(currentlyEditingChild.classList)
+        const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
         dispatch({
             type: UPDATE_EDITING,
             payload: {

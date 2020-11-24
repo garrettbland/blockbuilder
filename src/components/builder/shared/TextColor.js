@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { extractClass } from '../../../utils/tools'
-import { generateColors, removeTextColors } from '../../../utils/colors'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { extractClass } from '@/utils/tools'
+import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
 
 const TextColor = () => {
@@ -19,7 +19,7 @@ const TextColor = () => {
 
     const handleTextColorUpdate = (value) => {
         setTextColor(value)
-        const updatedClassList = removeTextColors(currentlyEditing.classList)
+        const updatedClassList = removeColors(currentlyEditing.classList, 'text-')
         dispatch({
             type: UPDATE_EDITING,
             payload: {
