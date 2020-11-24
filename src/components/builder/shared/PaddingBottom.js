@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { generatePadding, removeBottomPadding } from '../../../utils/padding'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { generateSpacing, removeBottomPadding } from '@/utils/spacing'
+import { extractClass } from '@/utils/tools'
 
 const PaddingBottom = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,14 +10,17 @@ const PaddingBottom = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentPaddingBottom = extractClass(currentlyEditing.classList, generatePadding('b'))
+        const currentPaddingBottom = extractClass(
+            currentlyEditing.classList,
+            generateSpacing('pb-')
+        )
         if (currentPaddingBottom) {
             setPaddingBottom(currentPaddingBottom)
         }
     }, [])
 
     const handlePaddingBottomUpdate = (index) => {
-        setPaddingBottom(generatePadding('b')[index])
+        setPaddingBottom(generateSpacing('pb-')[index])
 
         /**
          * Filter out current max width classes
@@ -28,7 +31,7 @@ const PaddingBottom = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generatePadding('b')[index]],
+                classList: [...updatedClassList, generateSpacing('pb-')[index]],
             },
         })
     }
@@ -39,8 +42,8 @@ const PaddingBottom = () => {
             <input
                 type="range"
                 min="0"
-                max={generatePadding('b').length - 1}
-                value={generatePadding('b').findIndex((item) => item === paddingBottom)}
+                max={generateSpacing('pb-').length - 1}
+                value={generateSpacing('pb-').findIndex((item) => item === paddingBottom)}
                 onChange={(event) => handlePaddingBottomUpdate(event.target.value)}
             />
         </div>

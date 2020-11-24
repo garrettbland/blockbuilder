@@ -28,18 +28,26 @@ export const generateSpacing = (prefix = '') => {
     return spacing
 }
 
+export const autoMargins = () => {
+    return ['mx-auto', 'ml-auto', 'mr-auto']
+}
+
+export const removeAutoMargins = (classList) => {
+    return classList.filter((className) => !autoMargins().includes(className))
+}
+
 export const removeTopMargins = (classList) => {
-    return classList.filter((className) => !generateMargins('mt-').includes(className))
+    return classList.filter((className) => !generateSpacing('mt-').includes(className))
 }
 
 export const removeBottomMargins = (classList) => {
-    return classList.filter((className) => !generateMargins('mb-').includes(className))
+    return classList.filter((className) => !generateSpacing('mb-').includes(className))
 }
 
 export const removeTopPadding = (classList) => {
-    return classList.filter((className) => !generatePadding('pt-').includes(className))
+    return classList.filter((className) => !generateSpacing('pt-').includes(className))
 }
 
 export const removeBottomPadding = (classList) => {
-    return classList.filter((className) => !generatePadding('pb-').includes(className))
+    return classList.filter((className) => !generateSpacing('pb-').includes(className))
 }

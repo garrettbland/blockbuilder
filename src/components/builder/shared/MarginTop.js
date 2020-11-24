@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { generateMargins, removeTopMargins } from '../../../utils/margin'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { generateSpacing, removeTopMargins } from '@/utils/spacing'
+import { extractClass } from '@/utils/tools'
 
 const MarginTop = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,14 +10,14 @@ const MarginTop = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentMarginTop = extractClass(currentlyEditing.classList, generateMargins('t'))
+        const currentMarginTop = extractClass(currentlyEditing.classList, generateSpacing('mt-'))
         if (currentMarginTop) {
             setMarginTop(currentMarginTop)
         }
     }, [])
 
     const handleMarginTopUpdate = (index) => {
-        setMarginTop(generateMargins('t')[index])
+        setMarginTop(generateSpacing('mt-')[index])
 
         /**
          * Filter out current max width classes
@@ -28,7 +28,7 @@ const MarginTop = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateMargins('t')[index]],
+                classList: [...updatedClassList, generateSpacing('mt-')[index]],
             },
         })
     }
@@ -39,8 +39,8 @@ const MarginTop = () => {
             <input
                 type="range"
                 min="0"
-                max={generateMargins('t').length - 1}
-                value={generateMargins('t').findIndex((item) => item === marginTop)}
+                max={generateSpacing('mt-').length - 1}
+                value={generateSpacing('mt-').findIndex((item) => item === marginTop)}
                 onChange={(event) => handleMarginTopUpdate(event.target.value)}
             />
         </div>

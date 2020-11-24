@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { generateMargins, removeBottomMargins } from '../../../utils/margin'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { generateSpacing, removeBottomMargins } from '@/utils/spacing'
+import { extractClass } from '@/utils/tools'
 
 const MarginBottom = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,14 +10,14 @@ const MarginBottom = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentMarginBottom = extractClass(currentlyEditing.classList, generateMargins('b'))
+        const currentMarginBottom = extractClass(currentlyEditing.classList, generateSpacing('mb-'))
         if (currentMarginBottom) {
             setMarginBottom(currentMarginBottom)
         }
     }, [])
 
     const handleMarginBottomUpdate = (index) => {
-        setMarginBottom(generateMargins('b')[index])
+        setMarginBottom(generateSpacing('mb-')[index])
 
         /**
          * Filter out current max width classes
@@ -28,7 +28,7 @@ const MarginBottom = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateMargins('b')[index]],
+                classList: [...updatedClassList, generateSpacing('mb-')[index]],
             },
         })
     }
@@ -39,8 +39,8 @@ const MarginBottom = () => {
             <input
                 type="range"
                 min="0"
-                max={generateMargins('b').length - 1}
-                value={generateMargins('b').findIndex((item) => item === marginBottom)}
+                max={generateSpacing('mb-').length - 1}
+                value={generateSpacing('mb-').findIndex((item) => item === marginBottom)}
                 onChange={(event) => handleMarginBottomUpdate(event.target.value)}
             />
         </div>

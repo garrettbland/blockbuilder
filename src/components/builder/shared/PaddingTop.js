@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { generatePadding, removeTopPadding } from '../../../utils/padding'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { generateSpacing, removeTopPadding } from '@/utils/spacing'
+import { extractClass } from '@/utils/tools'
 
 const PaddingTop = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,14 +10,14 @@ const PaddingTop = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentPaddingTop = extractClass(currentlyEditing.classList, generatePadding('t'))
+        const currentPaddingTop = extractClass(currentlyEditing.classList, generateSpacing('pt-'))
         if (currentPaddingTop) {
             setPaddingTop(currentPaddingTop)
         }
     }, [])
 
     const handlePaddingTopUpdate = (index) => {
-        setPaddingTop(generatePadding('t')[index])
+        setPaddingTop(generateSpacing('pt-')[index])
 
         /**
          * Filter out current max width classes
@@ -28,7 +28,7 @@ const PaddingTop = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generatePadding('t')[index]],
+                classList: [...updatedClassList, generateSpacing('pt-')[index]],
             },
         })
     }
@@ -39,8 +39,8 @@ const PaddingTop = () => {
             <input
                 type="range"
                 min="0"
-                max={generatePadding('t').length - 1}
-                value={generatePadding('t').findIndex((item) => item === paddingTop)}
+                max={generateSpacing('pt-').length - 1}
+                value={generateSpacing('pt-').findIndex((item) => item === paddingTop)}
                 onChange={(event) => handlePaddingTopUpdate(event.target.value)}
             />
         </div>
