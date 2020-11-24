@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '../../../redux/constants'
 import { extractClass } from '../../../utils/tools'
-import { backgroundOpacities, removeBackgroundOpacities } from '../../../utils/background'
+import { generateOpacities, removeOpacity } from '@/utils/opacity'
 
 const BackgroundOpacity = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -12,7 +12,7 @@ const BackgroundOpacity = () => {
     useEffect(() => {
         const currentBackgroundOpacity = extractClass(
             currentlyEditing.classList,
-            backgroundOpacities()
+            generateOpacities('bg-')
         )
         if (currentBackgroundOpacity) {
             setBackgroundOpacity(currentBackgroundOpacity)
@@ -20,18 +20,18 @@ const BackgroundOpacity = () => {
     }, [])
 
     const handleBackgroundOpacityUpdate = (index) => {
-        setBackgroundOpacity(backgroundOpacities()[index])
+        setBackgroundOpacity(generateOpacities('bg-')[index])
 
         /**
          * Filter out current max width classes
          */
-        const updatedClassList = removeBackgroundOpacities(currentlyEditing.classList)
+        const updatedClassList = removeOpacity(currentlyEditing.classList, 'bg-')
 
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, backgroundOpacities()[index]],
+                classList: [...updatedClassList, generateOpacities('bg-')[index]],
             },
         })
     }
@@ -42,8 +42,8 @@ const BackgroundOpacity = () => {
             <input
                 type="range"
                 min="0"
-                max={backgroundOpacities().length - 1}
-                value={backgroundOpacities().findIndex((item) => item === backgroundOpacity)}
+                max={generateOpacities('bg-').length - 1}
+                value={generateOpacities('bg-').findIndex((item) => item === backgroundOpacity)}
                 onChange={(event) => handleBackgroundOpacityUpdate(event.target.value)}
             />
         </div>
