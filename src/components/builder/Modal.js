@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_BLOCK, SET_EDITING } from '../../redux/constants'
+import { UPDATE_BLOCK, SET_EDITING } from '@/redux/constants'
 import SectionEdit from './section/SectionEdit'
 import TextEdit from './text/TextEdit'
 import ImageEdit from './image/ImageEdit'

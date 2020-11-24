@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { extractClass } from '../../../utils/tools'
-import { borderRadiuses, removeBorderRadiuses } from '../../../utils/border'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { extractClass } from '@/utils/tools'
+import { generateBorderRadiuses, removeBorderRadiuses } from '@/utils/border'
 
 const BorderRadius = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,20 +10,23 @@ const BorderRadius = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentBorderRadius = extractClass(currentlyEditing.classList, borderRadiuses())
+        const currentBorderRadius = extractClass(
+            currentlyEditing.classList,
+            generateBorderRadiuses()
+        )
         if (currentBorderRadius) {
             setBorderRadius(currentBorderRadius)
         }
     }, [currentlyEditing.id])
 
     const handleBorderRadiusUpdate = (index) => {
-        setBorderRadius(borderRadiuses()[index])
+        setBorderRadius(generateBorderRadiuses()[index])
         const updatedClassList = removeBorderRadiuses(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, borderRadiuses()[index]],
+                classList: [...updatedClassList, generateBorderRadiuses()[index]],
             },
         })
     }
@@ -35,8 +38,8 @@ const BorderRadius = () => {
                 <input
                     type="range"
                     min="0"
-                    max={borderRadiuses().length - 1}
-                    value={borderRadiuses().findIndex((item) => item === borderRadius)}
+                    max={generateBorderRadiuses().length - 1}
+                    value={generateBorderRadiuses().findIndex((item) => item === borderRadius)}
                     onChange={(event) => handleBorderRadiusUpdate(event.target.value)}
                 />
             </div>
