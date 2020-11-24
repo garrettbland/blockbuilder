@@ -43,11 +43,7 @@ const Section = ({ block, children }) => {
 
     return (
         <Draggable>
-            <div
-                data-type="section"
-                ref={sectionRef}
-                className={[...block.classList, 'relative'].join(' ')}
-            >
+            <div data-type="section" ref={sectionRef} className={[...block.classList].join(' ')}>
                 <div
                     className={`absolute top-0 left-0 flex flex-row z-50 ${
                         showTool ? 'block' : 'hidden'

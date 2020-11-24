@@ -30,7 +30,7 @@ let initialState = {
             id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['relative', 'pt-12', 'pb-12'],
+            classList: ['relative', 'py-12'],
             data: [
                 {
                     id: uuidv4(),
@@ -44,6 +44,8 @@ let initialState = {
                         'flex',
                         'flex-wrap',
                         'p-4',
+                        'relative',
+                        'z-40',
                     ],
                     data: [
                         {
@@ -144,7 +146,7 @@ let initialState = {
             id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['py-12', 'relative', 'bg-orange-500'],
+            classList: ['relative', 'py-12', 'bg-orange-500'],
             data: [
                 {
                     id: uuidv4(),
@@ -158,6 +160,8 @@ let initialState = {
                         'flex-wrap',
                         'p-4',
                         'mt-24',
+                        'relative',
+                        'z-40',
                     ],
                     data: [
                         {

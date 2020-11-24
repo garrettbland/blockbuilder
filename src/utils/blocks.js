@@ -6,7 +6,7 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['pt-12', 'pb-12', 'relative'],
+            classList: ['relative', 'py-12'],
             data: [],
         },
         sectionBackground: {
@@ -35,7 +35,17 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'row',
             tag: 'div',
-            classList: ['max-w-4xl', 'mx-auto', 'flex', 'flex-wrap', 'p-4'],
+            classList: [
+                'max-w-4xl',
+                'mx-auto',
+                'flex',
+                'flex-wrap',
+                'p-4',
+                'mt-12',
+                'mb-12',
+                'relative',
+                'z-40',
+            ],
             data: [...Array(columns)].map(() => {
                 return {
                     id: uuidv4(),

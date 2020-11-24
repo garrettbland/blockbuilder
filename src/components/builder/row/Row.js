@@ -48,11 +48,7 @@ const Row = ({ block, children }) => {
     }
 
     return (
-        <div
-            data-type="row"
-            ref={rowRef}
-            className={[...block.classList, 'relative', 'z-40'].join(' ')}
-        >
+        <div data-type="row" ref={rowRef} className={[...block.classList].join(' ')}>
             <div className={`absolute top-0 left-0 flex flex-row ${showTool ? 'block' : 'hidden'}`}>
                 <button
                     onClick={() =>
