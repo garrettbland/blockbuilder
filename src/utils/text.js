@@ -1,18 +1,23 @@
-export const fontSizes = () => {
-    return [
-        'text-xs',
-        'text-sm',
-        'text-base',
-        'text-lg',
-        'text-xl',
-        'text-2xl',
-        'text-3xl',
-        'text-4xl',
-        'text-5xl',
-        'text-6xl',
-        'text-7xl',
-        'text-8xl',
-    ]
+const defaultTheme = require('tailwindcss/defaultTheme')
+
+export const generateFontSizes = () => {
+    /**
+     * Will generate tailwind font sizes
+     */
+    const prefix = 'text'
+
+    /**
+     * Define font sizes array to return.
+     */
+    let fontSizes = []
+
+    Object.entries(defaultTheme.fontSize).map(([key, value]) => {
+        if (typeof value === 'string') {
+            fontSizes = [...fontSizes, `${prefix}-${key}`]
+        }
+    })
+
+    return fontSizes
 }
 
 export const textAlignments = () => {
@@ -45,7 +50,7 @@ export const fontWeights = () => {
 }
 
 export const removeFontSizes = (classList) => {
-    return classList.filter((className) => !fontSizes().includes(className))
+    return classList.filter((className) => !generateFontSizes().includes(className))
 }
 
 export const removeTextAlignments = (classList) => {
