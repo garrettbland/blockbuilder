@@ -11,10 +11,8 @@ export const generateFontSizes = () => {
      */
     let fontSizes = []
 
-    Object.entries(defaultTheme.fontSize).map(([key, value]) => {
-        if (typeof value === 'string') {
-            fontSizes = [...fontSizes, `${prefix}-${key}`]
-        }
+    Object.entries(defaultTheme.fontSize).map(([key]) => {
+        fontSizes = [...fontSizes, `${prefix}-${key}`]
     })
 
     return fontSizes
@@ -24,16 +22,34 @@ export const textAlignments = () => {
     return ['text-left', 'text-center', 'text-right', 'text-justify']
 }
 
-export const lineHeights = () => {
-    return [
-        'leading-none',
-        'leading-tight',
-        'leading-snug',
-        'leading-normal',
-        'leading-relaxed',
-        'leading-loose',
-    ]
+export const generateLineHeights = () => {
+    /**
+     * Will generate tailwind line heights
+     */
+    const prefix = 'leading'
+
+    /**
+     * Define font sizes array to return.
+     */
+    let lineHeights = []
+
+    Object.entries(defaultTheme.lineHeight).map(([key]) => {
+        lineHeights = [...lineHeights, `${prefix}-${key}`]
+    })
+
+    return lineHeights
 }
+
+// export const lineHeights = () => {
+//     return [
+//         'leading-none',
+//         'leading-tight',
+//         'leading-snug',
+//         'leading-normal',
+//         'leading-relaxed',
+//         'leading-loose',
+//     ]
+// }
 
 export const fontWeights = () => {
     return [
@@ -58,7 +74,7 @@ export const removeTextAlignments = (classList) => {
 }
 
 export const removeLineHeights = (classList) => {
-    return classList.filter((className) => !lineHeights().includes(className))
+    return classList.filter((className) => !generateLineHeights().includes(className))
 }
 
 export const removeFontWeights = (classList) => {

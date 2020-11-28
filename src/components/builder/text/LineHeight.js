@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '../../../redux/constants'
 import { extractClass } from '../../../utils/tools'
-import { lineHeights, removeLineHeights } from '../../../utils/text'
+import { generateLineHeights, removeLineHeights } from '@/utils/text'
 
 const LineHeight = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,14 +10,14 @@ const LineHeight = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const currentLineHeight = extractClass(currentlyEditing.classList, lineHeights())
+        const currentLineHeight = extractClass(currentlyEditing.classList, generateLineHeights())
         if (currentLineHeight) {
             setLineHeight(currentLineHeight)
         }
     }, [currentlyEditing.id])
 
     const handleLineHeightUpdate = (index) => {
-        const newLineHeight = lineHeights()[index]
+        const newLineHeight = generateLineHeights()[index]
         setLineHeight(newLineHeight)
         const updatedClassList = removeLineHeights(currentlyEditing.classList)
         dispatch({
@@ -35,8 +35,8 @@ const LineHeight = () => {
             <input
                 type="range"
                 min="0"
-                max={lineHeights().length - 1}
-                value={lineHeights().findIndex((item) => item === lineHeight)}
+                max={generateLineHeights().length - 1}
+                value={generateLineHeights().findIndex((item) => item === lineHeight)}
                 onChange={(event) => handleLineHeightUpdate(event.target.value)}
             />
         </div>
