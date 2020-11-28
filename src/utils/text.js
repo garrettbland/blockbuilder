@@ -19,6 +19,10 @@ export const generateFontSizes = () => {
 }
 
 export const textAlignments = () => {
+    /**
+     * Not referencing tailwind theme because this is a core
+     * plugin, and I can't figure out how
+     */
     return ['text-left', 'text-center', 'text-right', 'text-justify']
 }
 
@@ -29,7 +33,7 @@ export const generateLineHeights = () => {
     const prefix = 'leading'
 
     /**
-     * Define font sizes array to return.
+     * Define array to return.
      */
     let lineHeights = []
 
@@ -40,29 +44,22 @@ export const generateLineHeights = () => {
     return lineHeights
 }
 
-// export const lineHeights = () => {
-//     return [
-//         'leading-none',
-//         'leading-tight',
-//         'leading-snug',
-//         'leading-normal',
-//         'leading-relaxed',
-//         'leading-loose',
-//     ]
-// }
+export const generateFontWeights = () => {
+    /**
+     * Will generate tailwind font weights
+     */
+    const prefix = 'font'
 
-export const fontWeights = () => {
-    return [
-        'font-hairline',
-        'font-thin',
-        'font-light',
-        'font-normal',
-        'font-medium',
-        'font-semibold',
-        'font-bold',
-        'font-extrabold',
-        'font-black',
-    ]
+    /**
+     * Define array to return.
+     */
+    let fontWeights = []
+
+    Object.entries(defaultTheme.fontWeight).map(([key]) => {
+        fontWeights = [...fontWeights, `${prefix}-${key}`]
+    })
+
+    return fontWeights
 }
 
 export const removeFontSizes = (classList) => {
@@ -78,5 +75,5 @@ export const removeLineHeights = (classList) => {
 }
 
 export const removeFontWeights = (classList) => {
-    return classList.filter((className) => !fontWeights().includes(className))
+    return classList.filter((className) => !generateFontWeights().includes(className))
 }

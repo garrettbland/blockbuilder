@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateFontSizes, removeFontSizes } from '@/utils/text'
-const plugin = require('tailwindcss/plugin')
 
 const FontSize = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -11,10 +10,6 @@ const FontSize = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        plugin(function ({ addUtilities, addComponents, e, prefix, config, theme }) {
-            console.log('test')
-            // Add your custom styles here
-        })
         const currentFontSize = extractClass(currentlyEditing.classList, generateFontSizes())
         if (currentFontSize) {
             setFontSize(currentFontSize)
