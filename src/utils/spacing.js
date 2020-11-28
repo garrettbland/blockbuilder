@@ -29,6 +29,11 @@ export const generateSpacing = (prefix = '') => {
 }
 
 export const autoMargins = () => {
+    /**
+     * Not referencing tailwind theme because this isn't
+     * a set class. Also not sure if I want to handle button `floats`
+     * like this. Might want to use flex instead with justifying content
+     */
     return ['mx-auto', 'ml-auto', 'mr-auto']
 }
 

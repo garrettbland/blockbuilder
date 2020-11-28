@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container } from 'react-smooth-dnd'
-import { SWAP_BLOCKS } from '../../redux/constants'
+import { SWAP_BLOCKS } from '@/redux/constants'
 import Builder from './Builder'
 import NewSection from './section/NewSection'
 import Modal from './Modal'

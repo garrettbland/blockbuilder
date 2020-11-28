@@ -13,7 +13,7 @@ import {
 } from './constants'
 const findAnd = require('find-and')
 import { v4 as uuidv4 } from 'uuid'
-import { defaultBlocks } from '../utils/blocks'
+import { defaultBlocks } from '@/utils/blocks'
 
 /**
  * Define initial state for app

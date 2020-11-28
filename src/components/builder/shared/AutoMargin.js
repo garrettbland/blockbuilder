@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { extractClass } from '@/utils/tools'
 import { autoMargins, removeAutoMargins } from '@/utils/spacing'
 
 const AutoMargin = () => {

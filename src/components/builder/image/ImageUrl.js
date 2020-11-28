@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
+import { UPDATE_EDITING } from '@/redux/constants'
 
 const ImageUrl = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, DUPLICATE_BLOCK } from '../../../redux/constants'
+import { SET_EDITING, DUPLICATE_BLOCK } from '@/redux/constants'
 import AddContentButton from '../AddContentButton'
 
 const Text = ({ block }) => {
