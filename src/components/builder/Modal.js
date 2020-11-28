@@ -68,7 +68,7 @@ const Modal = () => {
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <>
-                        <div className="h-96">
+                        <div className="max-h-96">
                             {currentlyEditing.type === 'section' && <SectionEdit />}
                             {currentlyEditing.type === 'row' && <RowEdit />}
                             {currentlyEditing.type === 'text' && <TextEdit />}

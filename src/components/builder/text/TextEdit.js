@@ -63,11 +63,11 @@ const Tabs = ({ tabComponents }) => {
                     </button>
                 ))}
             </div>
-            <div className="relative z-20 h-full max-h-80 overflow-y-scroll">
+            <div className="relative h-80 overflow-y-scroll">
                 {tabComponents.map(({ component }, index) => (
                     <div
                         key={index}
-                        className={` ${currentTabIndex === index ? 'block w-full' : 'hidden'}`}
+                        className={` ${currentTabIndex === index ? 'w-full' : 'hidden'}`}
                     >
                         {component}
                     </div>
