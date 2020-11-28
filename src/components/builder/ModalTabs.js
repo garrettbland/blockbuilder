@@ -32,7 +32,11 @@ const Tabs = ({ tabComponents }) => {
                 {tabComponents.map(({ component }, index) => (
                     <div
                         key={index}
-                        className={` ${currentTabIndex === index ? 'w-full' : 'hidden'}`}
+                        className={`absolute top-0 left-0 w-full transition duration-150 ${
+                            currentTabIndex === index
+                                ? 'opacity-100 z-10'
+                                : 'h-0 opacity-0 overflow-hidden z-0'
+                        }`}
                     >
                         {component}
                     </div>
