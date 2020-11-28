@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '../../../redux/constants'
-import { maxWidths, removeMaxWidthClasses } from '../../../utils/width'
-import { extractClass } from '../../../utils/tools'
+import { UPDATE_EDITING } from '@/redux/constants'
+import { extractClass } from '@/utils/tools'
+import { generateMaxWidths, removeMaxWidthClasses } from '@/utils/width'
 
 const MaxWidth = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -10,6 +10,7 @@ const MaxWidth = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        console.log(generateMaxWidths())
         const currentMaxWidth = extractClass(currentlyEditing.classList, ['max-w-', 'container'])
         if (currentMaxWidth) {
             setMaxWidth(currentMaxWidth)
@@ -17,7 +18,7 @@ const MaxWidth = () => {
     }, [])
 
     const handleMaxWidthUpdate = (index) => {
-        setMaxWidth(maxWidths()[index])
+        setMaxWidth(generateMaxWidths()[index])
 
         /**
          * Filter out current max width classes
@@ -28,7 +29,7 @@ const MaxWidth = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, maxWidths()[index]],
+                classList: [...updatedClassList, generateMaxWidths()[index]],
             },
         })
     }
@@ -39,8 +40,8 @@ const MaxWidth = () => {
             <input
                 type="range"
                 min="0"
-                max={maxWidths().length - 1}
-                value={maxWidths().findIndex((item) => item === maxWidth)}
+                max={generateMaxWidths().length - 1}
+                value={generateMaxWidths().findIndex((item) => item === maxWidth)}
                 onChange={(event) => handleMaxWidthUpdate(event.target.value)}
             />
         </div>
