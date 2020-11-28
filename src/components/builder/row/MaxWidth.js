@@ -10,7 +10,6 @@ const MaxWidth = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(generateMaxWidths())
         const currentMaxWidth = extractClass(currentlyEditing.classList, ['max-w-', 'container'])
         if (currentMaxWidth) {
             setMaxWidth(currentMaxWidth)

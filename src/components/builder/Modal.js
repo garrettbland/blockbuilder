@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_BLOCK, SET_EDITING } from '@/redux/constants'
+import RemoveBlockButton from './RemoveBlockButton'
 import SectionEdit from './section/SectionEdit'
 import TextEdit from './text/TextEdit'
 import ImageEdit from './image/ImageEdit'
@@ -67,21 +68,21 @@ const Modal = () => {
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <>
-                        Currently editing: {JSON.stringify(currentlyEditing.id)}
-                        <div>
+                        <div className="h-96">
                             {currentlyEditing.type === 'section' && <SectionEdit />}
                             {currentlyEditing.type === 'row' && <RowEdit />}
                             {currentlyEditing.type === 'text' && <TextEdit />}
                             {currentlyEditing.type === 'image' && <ImageEdit />}
                             {currentlyEditing.type === 'link' && <LinkEdit />}
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between items-center">
                             <button
                                 className="bg-red-500 text-white px-4 py-2"
                                 onClick={() => dispatch({ type: SET_EDITING })}
                             >
                                 Close
                             </button>
+                            <RemoveBlockButton title="Remove Block" />
                             <button
                                 className="bg-green-500 text-white px-4 py-2"
                                 onClick={() => handleSubmit()}
