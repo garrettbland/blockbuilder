@@ -1,19 +1,18 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, REMOVE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { SET_EDITING, SET_MODAL_VISIBILITY, UPDATE_BLOCK } from '@/redux/constants'
 
-const RemoveBlockButton = ({ title = 'Remove Element' }) => {
+const SubmitButton = ({ title = 'Submit' }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
     const dispatch = useDispatch()
 
-    const RemoveBlock = () => {
+    const handleSubmit = () => {
         dispatch({
             type: SET_MODAL_VISIBILITY,
             payload: false,
         })
 
         dispatch({
-            type: REMOVE_BLOCK,
+            type: UPDATE_BLOCK,
             payload: currentlyEditing,
         })
 
@@ -32,9 +31,11 @@ const RemoveBlockButton = ({ title = 'Remove Element' }) => {
 
     return (
         <div>
-            <button onClick={() => RemoveBlock()}>{title}</button>
+            <button className="bg-green-500 text-white px-4 py-2" onClick={() => handleSubmit()}>
+                {title}
+            </button>
         </div>
     )
 }
 
-export default RemoveBlockButton
+export default SubmitButton

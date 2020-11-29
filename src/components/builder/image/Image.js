@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, DUPLICATE_BLOCK } from '@/redux/constants'
+import { SET_EDITING, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
 import AddContentButton from '../AddContentButton'
 
 const Image = ({ block }) => {
@@ -34,12 +34,16 @@ const Image = ({ block }) => {
     return (
         <div ref={imageRef} className="relative z-10">
             <div
-                onClick={() =>
+                onClick={() => {
+                    dispatch({
+                        type: SET_MODAL_VISIBILITY,
+                        payload: true,
+                    })
                     dispatch({
                         type: SET_EDITING,
                         payload: returnFound(blocks, { id: block.id }),
                     })
-                }
+                }}
                 className={`w-full h-full bg-blue-400 bg-opacity-50 absolute top-0 left-0 z-20 ${
                     showTool ? 'block' : 'hidden'
                 }`}

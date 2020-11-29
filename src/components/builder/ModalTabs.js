@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { SET_EDITING } from '@/redux/constants'
+import CloseButton from './CloseButton'
 
 const Tabs = ({ tabComponents }) => {
-    const dispatch = useDispatch()
     const [currentTabIndex, setCurrentTabIndex] = useState(0)
 
     return (
@@ -21,12 +19,7 @@ const Tabs = ({ tabComponents }) => {
                         </button>
                     ))}
                 </div>
-                <button
-                    className="bg-red-500 text-white px-4 py-2"
-                    onClick={() => dispatch({ type: SET_EDITING })}
-                >
-                    Close
-                </button>
+                <CloseButton />
             </div>
             <div className="relative h-80 overflow-y-scroll">
                 {tabComponents.map(({ component }, index) => (

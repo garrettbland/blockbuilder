@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, APPEND_ROW, DUPLICATE_BLOCK } from '@/redux/constants'
+import { SET_EDITING, APPEND_ROW, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
 
 const Row = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
@@ -51,13 +51,17 @@ const Row = ({ block, children }) => {
         <div data-type="row" ref={rowRef} className={[...block.classList].join(' ')}>
             <div className={`absolute top-0 left-0 flex flex-row ${showTool ? 'block' : 'hidden'}`}>
                 <button
-                    onClick={() =>
+                    onClick={() => {
+                        dispatch({
+                            type: SET_MODAL_VISIBILITY,
+                            payload: true,
+                        })
                         dispatch({
                             type: SET_EDITING,
                             payload: returnFound(blocks, { id: block.id }),
                         })
-                    }
-                    className={` bg-red-500 ${showTool ? 'block' : 'hidden'}`}
+                    }}
+                    className={`bg-red-500`}
                 >
                     Row Tools
                 </button>

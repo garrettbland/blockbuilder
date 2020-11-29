@@ -1,20 +1,13 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, REMOVE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { useDispatch } from 'react-redux'
+import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
 
-const RemoveBlockButton = ({ title = 'Remove Element' }) => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+const CloseButton = () => {
     const dispatch = useDispatch()
 
-    const RemoveBlock = () => {
+    const handleClose = () => {
         dispatch({
             type: SET_MODAL_VISIBILITY,
             payload: false,
-        })
-
-        dispatch({
-            type: REMOVE_BLOCK,
-            payload: currentlyEditing,
         })
 
         /**
@@ -32,9 +25,11 @@ const RemoveBlockButton = ({ title = 'Remove Element' }) => {
 
     return (
         <div>
-            <button onClick={() => RemoveBlock()}>{title}</button>
+            <button className="bg-red-500 text-white px-4 py-2" onClick={() => handleClose()}>
+                Close
+            </button>
         </div>
     )
 }
 
-export default RemoveBlockButton
+export default CloseButton

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, DUPLICATE_BLOCK } from '@/redux/constants'
+import { SET_EDITING, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
 import AddContentButton from '../AddContentButton'
 
 const Text = ({ block }) => {
@@ -39,12 +39,16 @@ const Text = ({ block }) => {
     return (
         <div data-type="text" ref={textRef} className={[...block.classList, 'relative'].join(' ')}>
             <div
-                onClick={() =>
+                onClick={() => {
+                    dispatch({
+                        type: SET_MODAL_VISIBILITY,
+                        payload: true,
+                    })
                     dispatch({
                         type: SET_EDITING,
                         payload: returnFound(blocks, { id: block.id }),
                     })
-                }
+                }}
                 className={`absolute top-0 left-0 text-black bg-white p-1 h-full bg-opacity-25 text-lg w-full ${
                     showTool ? 'block' : 'hidden'
                 }`}

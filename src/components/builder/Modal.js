@@ -2,13 +2,12 @@ import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_EDITING, SET_MODAL_VISIBILITY, UPDATE_BLOCK } from '@/redux/constants'
 import RemoveBlockButton from './RemoveBlockButton'
+import SubmitButton from './SubmitButton'
 import SectionEdit from './section/SectionEdit'
 import TextEdit from './text/TextEdit'
 import ImageEdit from './image/ImageEdit'
 import LinkEdit from './link/LinkEdit'
 import RowEdit from './row/RowEdit'
-
-let delayedModalRemove
 
 const Modal = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -61,17 +60,6 @@ const Modal = () => {
         }, 200)
     }
 
-    const handleSubmit = () => {
-        dispatch({
-            type: UPDATE_BLOCK,
-            payload: currentlyEditing,
-        })
-
-        dispatch({
-            type: 'SET_EDITING',
-        })
-    }
-
     return (
         <div
             ref={overlayNode}
@@ -95,12 +83,7 @@ const Modal = () => {
                         </div>
                         <div className="flex justify-between items-center">
                             <RemoveBlockButton title="Remove Block" />
-                            <button
-                                className="bg-green-500 text-white px-4 py-2"
-                                onClick={() => handleSubmit()}
-                            >
-                                Submit
-                            </button>
+                            <SubmitButton title="Submit" />
                         </div>
                     </>
                 )}
