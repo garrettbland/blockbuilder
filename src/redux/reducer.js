@@ -1,6 +1,7 @@
 import {
     UPDATE_BLOCK,
     SET_EDITING,
+    SET_MODAL_VISIBILITY,
     UPDATE_EDITING,
     ADD_SECTION,
     ADD_ROW,
@@ -25,6 +26,7 @@ import { defaultBlocks } from '@/utils/blocks'
  */
 let initialState = {
     currentlyEditing: null,
+    is_modal_visible: false,
     blocks: [
         {
             id: uuidv4(),
@@ -236,6 +238,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentlyEditing: action.payload ? action.payload : null,
+            }
+        }
+        case SET_MODAL_VISIBILITY: {
+            return {
+                ...state,
+                is_modal_visible: action.payload ? action.payload : false,
             }
         }
         case UPDATE_BLOCK: {
