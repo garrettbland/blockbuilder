@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_BLOCK } from '@/redux/constants'
+import { SET_EDITING, SET_MODAL_VISIBILITY, UPDATE_BLOCK } from '@/redux/constants'
 import RemoveBlockButton from './RemoveBlockButton'
 import SectionEdit from './section/SectionEdit'
 import TextEdit from './text/TextEdit'
@@ -8,9 +8,13 @@ import ImageEdit from './image/ImageEdit'
 import LinkEdit from './link/LinkEdit'
 import RowEdit from './row/RowEdit'
 
+let delayedModalRemove
+
 const Modal = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const is_modal_visible = useSelector((state) => state.is_modal_visible)
     const dispatch = useDispatch()
+    const overlayNode = useRef()
     const modalNode = useRef()
 
     useEffect(() => {
@@ -18,13 +22,13 @@ const Modal = () => {
          * Event listener when mounted to listen for mousedown
          * for overlay
          */
-        document.addEventListener('mousedown', handleClick)
+        overlayNode.current.addEventListener('mousedown', handleClick)
 
         /**
          * Return function to be called on component unmount
          */
         return () => {
-            document.removeEventListener('mousedown', handleClick)
+            overlayNode.current.removeEventListener('mousedown', handleClick)
         }
     }, [])
 
@@ -40,8 +44,21 @@ const Modal = () => {
          * Handle outside sideBar node click
          */
         dispatch({
-            type: 'SET_EDITING',
+            type: SET_MODAL_VISIBILITY,
+            payload: false,
         })
+
+        /**
+         * We set this timeout to match the transition
+         * duration in the modal. If we don't do this,
+         * then the z-index changes instantly when closing
+         * and flahes but will fade in.
+         */
+        setTimeout(() => {
+            dispatch({
+                type: SET_EDITING,
+            })
+        }, 200)
     }
 
     const handleSubmit = () => {
@@ -57,9 +74,10 @@ const Modal = () => {
 
     return (
         <div
-            className={`w-full h-full bg-opacity-50 bg-black transform transition duration-150 ease-in-out overflow-y-scroll ${
-                currentlyEditing ? 'show z-40 fixed' : 'hide absolute top-0 left-0 z-10'
-            }`}
+            ref={overlayNode}
+            className={`fixed h-screen w-screen bg-opacity-50 bg-black transition duration-200 overflow-y-scroll ${
+                is_modal_visible ? 'opacity-100' : 'opacity-0'
+            } ${currentlyEditing && currentlyEditing.id ? 'z-30' : 'z-0'}`}
             style={{ backdropFilter: `blur(10px)` }}
         >
             <div
