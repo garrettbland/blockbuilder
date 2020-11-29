@@ -31,7 +31,10 @@ const SubmitButton = ({ title = 'Submit' }) => {
 
     return (
         <div>
-            <button className="bg-green-500 text-white px-4 py-2" onClick={() => handleSubmit()}>
+            <button
+                className="rounded-lg text-base font-medium py-3 px-8 bg-gradient-to-b from-green-400 to-green-500 text-white"
+                onClick={() => handleSubmit()}
+            >
                 {title}
             </button>
         </div>

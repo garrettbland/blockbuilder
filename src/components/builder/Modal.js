@@ -27,7 +27,7 @@ const Modal = () => {
          * Return function to be called on component unmount
          */
         return () => {
-            overlayNode.current.removeEventListener('mousedown', handleClick)
+            overlayNode?.current?.removeEventListener('mousedown', handleClick)
         }
     }, [])
 
@@ -70,7 +70,7 @@ const Modal = () => {
         >
             <div
                 ref={modalNode}
-                className={`bg-white max-w-4xl mx-auto rounded my-12 transition duration-150 ease-in-out`}
+                className={`bg-white max-w-4xl mx-auto rounded-lg my-12 transition duration-150 ease-in-out`}
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <>
@@ -81,7 +81,7 @@ const Modal = () => {
                             {currentlyEditing.type === 'image' && <ImageEdit />}
                             {currentlyEditing.type === 'link' && <LinkEdit />}
                         </div>
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-end p-4">
                             <RemoveBlockButton title="Remove Block" />
                             <SubmitButton title="Submit" />
                         </div>

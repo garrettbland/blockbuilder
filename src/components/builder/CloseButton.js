@@ -25,8 +25,24 @@ const CloseButton = () => {
 
     return (
         <div>
-            <button className="bg-red-500 text-white px-4 py-2" onClick={() => handleClose()}>
-                Close
+            <button
+                onClick={() => handleClose()}
+                className="rounded-lg px-2 py-2 bg-gradient-to-b from-red-400 to-red-500 text-red-50 focus:outline-none"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    stroke="currentColor"
+                    strokeWidth="2.8"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-4 h-4"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </button>
         </div>
     )

@@ -61,7 +61,8 @@ let initialState = {
                                     type: 'text',
                                     tag: 'p',
                                     classList: ['text-black', 'text-4xl', 'pb-12', 'font-black'],
-                                    data: 'Campfire is a website editor made with react + tailwind',
+                                    data:
+                                        'Blockbuilder is a website editor made with react + tailwind',
                                 },
                                 {
                                     id: uuidv4(),
