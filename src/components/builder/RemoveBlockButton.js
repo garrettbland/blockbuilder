@@ -44,7 +44,7 @@ const RemoveBlockButton = ({ title = 'Remove Element' }) => {
                     strokeWidth="2.2"
                     fill="none"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                     className="w-5 h-5"
                 >
                     <polyline points="3 6 5 6 21 6"></polyline>
