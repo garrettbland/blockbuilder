@@ -64,7 +64,7 @@ const Modal = () => {
         <div
             ref={overlayNode}
             className={`fixed h-screen w-screen bg-opacity-50 bg-black transition duration-200 overflow-y-scroll ${
-                is_modal_visible ? 'opacity-100' : 'opacity-0'
+                is_modal_visible ? 'opacity-100' : 'opacity-0 transform -translate-y-2'
             } ${currentlyEditing && currentlyEditing.id ? 'z-30' : 'z-0'}`}
             style={{ backdropFilter: `blur(10px)` }}
         >
