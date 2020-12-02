@@ -35,7 +35,13 @@ const MarginBottom = () => {
 
     return (
         <div>
-            {marginBottom}
+            <div class="uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2">
+                Margin Bottom (
+                <span class="lowercase text-green-500 font-mono">
+                    {marginBottom ? `.${marginBottom}` : 'n/a'}
+                </span>
+                )
+            </div>
             <input
                 type="range"
                 min="0"

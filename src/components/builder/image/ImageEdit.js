@@ -31,10 +31,10 @@ const ImageEdit = () => {
         {
             title: 'Spacing',
             component: (
-                <>
+                <div className="space-y-6">
                     <MarginTop />
                     <MarginBottom />
-                </>
+                </div>
             ),
         },
     ]

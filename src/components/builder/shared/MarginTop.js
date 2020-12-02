@@ -35,7 +35,13 @@ const MarginTop = () => {
 
     return (
         <div>
-            {marginTop}
+            <div class="uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2">
+                Margin Top (
+                <span class="lowercase text-green-500 font-mono">
+                    {marginTop ? `.${marginTop}` : 'n/a'}
+                </span>
+                )
+            </div>
             <input
                 type="range"
                 min="0"
