@@ -30,7 +30,7 @@
 }
 
 input[type='range'] {
-    @apply appearance-none outline-none bg-gray-200 h-2 w-full rounded-full;
+    @apply appearance-none outline-none bg-gray-200 h-2 w-full rounded-full cursor-pointer;
 }
 
 /* input[type='range'] {

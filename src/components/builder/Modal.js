@@ -64,13 +64,15 @@ const Modal = () => {
         <div
             ref={overlayNode}
             className={`fixed h-screen w-screen bg-opacity-50 bg-black transition duration-200 overflow-y-scroll ${
-                is_modal_visible ? 'opacity-100' : 'opacity-0 transform -translate-y-2'
+                is_modal_visible ? 'opacity-100' : 'opacity-0'
             } ${currentlyEditing && currentlyEditing.id ? 'z-30' : 'z-0'}`}
             style={{ backdropFilter: `blur(10px)` }}
         >
             <div
                 ref={modalNode}
-                className={`bg-white max-w-4xl mx-auto rounded-lg my-12 transition duration-150 ease-in-out`}
+                className={`bg-white max-w-4xl mx-auto rounded-lg my-12 transition duration-150 ease-in-out transform ${
+                    is_modal_visible ? '' : '-translate-y-2'
+                }`}
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <>
