@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { textAlignments, removeTextAlignments } from '@/utils/text'
+import Label from '@/components/builder/Label'
 
 const TextAlignment = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -30,7 +31,7 @@ const TextAlignment = () => {
 
     return (
         <div>
-            {textAlignment ? textAlignment : 'Not set'}
+            <Label title="Alignment" showClass={false} />
             <div>
                 <button
                     className={`${textAlignment === 'text-left' ? 'text-blue-500' : null}`}

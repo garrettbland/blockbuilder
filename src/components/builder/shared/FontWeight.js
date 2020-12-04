@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateFontWeights, removeFontWeights } from '@/utils/text'
+import Label from '@/components/builder/Label'
 
 const FontWeight = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -30,7 +31,7 @@ const FontWeight = () => {
 
     return (
         <div>
-            {fontWeight}
+            <Label title="Font Weight" value={fontWeight} />
             <input
                 type="range"
                 min="0"

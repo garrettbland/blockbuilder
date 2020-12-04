@@ -27,7 +27,7 @@ const CloseButton = () => {
         <div>
             <button
                 onClick={() => handleClose()}
-                className="rounded-lg px-2 py-2 bg-gradient-to-b from-red-400 to-red-500 text-red-50 focus:outline-none"
+                className="rounded-lg px-2 py-2 bg-gradient-to-b from-red-400 to-red-500 text-red-50 focus:outline-none hover:from-red-500 hover:to-red-600"
             >
                 <svg
                     viewBox="0 0 24 24"

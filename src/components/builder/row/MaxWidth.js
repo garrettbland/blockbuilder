@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateMaxWidths, removeMaxWidthClasses } from '@/utils/width'
+import Label from '@/components/builder/Label'
 
 const MaxWidth = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -35,7 +36,7 @@ const MaxWidth = () => {
 
     return (
         <div>
-            {maxWidth}
+            <Label title="Max Width" value={maxWidth} />
             <input
                 type="range"
                 min="0"

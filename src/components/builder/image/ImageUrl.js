@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
+import Label from '@/components/builder/Label'
 
 const ImageUrl = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -21,7 +22,7 @@ const ImageUrl = () => {
 
     return (
         <div>
-            <div>Photo URL</div>
+            <Label title="Photo URL" showClass={false} />
             <input
                 value={currentlyEditing.data.src}
                 onChange={(event) => handleTextChange(event.target.value)}

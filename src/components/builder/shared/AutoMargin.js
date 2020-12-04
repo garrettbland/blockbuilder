@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { autoMargins, removeAutoMargins } from '@/utils/spacing'
+import Label from '@/components/builder/Label'
 
 const AutoMargin = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -30,7 +31,7 @@ const AutoMargin = () => {
 
     return (
         <div>
-            {autoMargin ? autoMargin : 'Default'}
+            <Label title="Alignment" showClass={false} />
             <div>
                 <button
                     className={`${autoMargin === 'mr-auto' ? 'text-blue-500' : null}`}

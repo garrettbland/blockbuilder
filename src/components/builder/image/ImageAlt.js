@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
+import Label from '@/components/builder/Label'
 
 const ImageAlt = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -21,7 +22,7 @@ const ImageAlt = () => {
 
     return (
         <div>
-            <div>Alt Text</div>
+            <Label title="Alt text" showClass={false} />
             <input
                 value={currentlyEditing.data.alt ? currentlyEditing.data.alt : ''}
                 onChange={(event) => handleTextChange(event.target.value)}

@@ -16,40 +16,40 @@ const LinkEdit = () => {
         {
             title: 'Link',
             component: (
-                <>
+                <div className="space-y-6">
                     <LinkTitle />
                     <LinkHref />
-                </>
+                </div>
             ),
         },
         {
             title: 'Text',
             component: (
-                <>
+                <div className="space-y-6">
                     <FontSize />
                     <FontWeight />
                     <TextColor />
-                </>
+                </div>
             ),
         },
         {
             title: 'Button',
             component: (
-                <>
+                <div className="space-y-6">
                     <BackgroundColor />
                     <BorderRadius />
                     <BoxShadow />
                     <AutoMargin />
-                </>
+                </div>
             ),
         },
         {
             title: 'Spacing',
             component: (
-                <>
+                <div className="space-y-6">
                     <MarginTop />
                     <MarginBottom />
-                </>
+                </div>
             ),
         },
     ]

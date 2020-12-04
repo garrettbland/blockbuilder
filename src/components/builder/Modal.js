@@ -70,24 +70,27 @@ const Modal = () => {
         >
             <div
                 ref={modalNode}
-                className={`bg-white max-w-4xl mx-auto rounded-lg my-12 transition duration-150 ease-in-out transform ${
+                className={`bg-white max-w-4xl mx-auto rounded-lg overflow-hidden my-12 transition duration-150 ease-in-out transform ${
                     is_modal_visible ? '' : '-translate-y-2'
                 }`}
             >
                 {currentlyEditing && currentlyEditing.id && (
-                    <>
-                        <div className="max-h-96">
+                    <div className="relative">
+                        <div className="h-full z-10">
                             {currentlyEditing.type === 'section' && <SectionEdit />}
                             {currentlyEditing.type === 'row' && <RowEdit />}
                             {currentlyEditing.type === 'text' && <TextEdit />}
                             {currentlyEditing.type === 'image' && <ImageEdit />}
                             {currentlyEditing.type === 'link' && <LinkEdit />}
                         </div>
-                        <div className="flex justify-between items-end p-4">
-                            <RemoveBlockButton title="Remove Block" />
-                            <SubmitButton title="Submit" />
+                        <div className="absolute bottom-0 left-0 w-full z-20 rounded-b-lg">
+                            <div className="h-8 bg-gradient-to-b from-transparent to-white w-full"></div>
+                            <div className="flex justify-between items-end px-4 pb-4 pt-2 bg-white ">
+                                <RemoveBlockButton title="Remove Block" />
+                                <SubmitButton title="Submit" />
+                            </div>
                         </div>
-                    </>
+                    </div>
                 )}
             </div>
         </div>

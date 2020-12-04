@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
+import Label from '@/components/builder/Label'
 
 const MarginTop = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -35,13 +36,7 @@ const MarginTop = () => {
 
     return (
         <div>
-            <div class="uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2">
-                Margin Top (
-                <span class="lowercase text-green-500 font-mono">
-                    {marginTop ? `.${marginTop}` : 'n/a'}
-                </span>
-                )
-            </div>
+            <Label title="Margin Top" value={marginTop} />
             <input
                 type="range"
                 min="0"

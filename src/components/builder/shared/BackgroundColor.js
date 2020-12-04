@@ -4,6 +4,7 @@ import { UPDATE_EDITING } from '@/redux/constants'
 import { removeColors } from '@/utils/colors'
 import { extractClass } from '@/utils/tools'
 import ColorPicker from './ColorPicker'
+import Label from '@/components/builder/Label'
 
 const BackgroundColor = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -31,7 +32,7 @@ const BackgroundColor = () => {
 
     return (
         <div>
-            <div>Background Color: {bgColor ? bgColor : 'Default'}</div>
+            <Label title="Background Color" value={bgColor} />
             <div className="flex flex-wrap">
                 <ColorPicker
                     currentColor={bgColor.replace('bg-', '')}

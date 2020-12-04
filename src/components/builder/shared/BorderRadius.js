@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateBorderRadiuses, removeBorderRadiuses } from '@/utils/border'
+import Label from '@/components/builder/Label'
 
 const BorderRadius = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -34,7 +35,7 @@ const BorderRadius = () => {
     return (
         <div>
             <div>
-                {borderRadius ? borderRadius : 'Default'}
+                <Label title="Border Radius" value={borderRadius} />
                 <input
                     type="range"
                     min="0"

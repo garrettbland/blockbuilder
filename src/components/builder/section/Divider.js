@@ -6,6 +6,7 @@ import { defaultBlocks } from '@/utils/blocks'
 import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
+import Label from '@/components/builder/Label'
 
 const Divider = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -79,7 +80,7 @@ const Divider = () => {
     if (currentlyEditingChild && currentlyEditingChild.data) {
         return (
             <div>
-                <div>Divider Color: {dividerColor ? dividerColor : 'N/A'}</div>
+                <Label title="Background Color" value={dividerColor} />
                 <ColorPicker
                     currentColor={dividerColor.replace('text-', '')}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}

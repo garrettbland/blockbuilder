@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
+import Label from '@/components/builder/Label'
 
 const MarginBottom = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -35,13 +36,7 @@ const MarginBottom = () => {
 
     return (
         <div>
-            <div class="uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2">
-                Margin Bottom (
-                <span class="lowercase text-green-500 font-mono">
-                    {marginBottom ? `.${marginBottom}` : 'n/a'}
-                </span>
-                )
-            </div>
+            <Label title="Margin Bottom" value={marginBottom} />
             <input
                 type="range"
                 min="0"

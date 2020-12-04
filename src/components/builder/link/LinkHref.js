@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
+import Label from '@/components/builder/Label'
 
 const LinkHref = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -20,7 +21,7 @@ const LinkHref = () => {
 
     return (
         <div className="flex flex-col">
-            <label>Url</label>
+            <Label title="Destination URL" showClass={false} />
             <input
                 value={currentlyEditing.data.href}
                 onChange={(event) => handleTextChange(event.target.value)}

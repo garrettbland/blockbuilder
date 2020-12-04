@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateBoxShadows, removeBoxShadows } from '@/utils/shadow'
+import Label from '@/components/builder/Label'
 
 const BoxShadow = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -31,7 +32,7 @@ const BoxShadow = () => {
     return (
         <div>
             <div>
-                {boxShadow ? boxShadow : 'Default'}
+                <Label title="Box Shadow" value={boxShadow} />
                 <input
                     type="range"
                     min="0"

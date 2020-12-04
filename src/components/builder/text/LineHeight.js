@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateLineHeights, removeLineHeights } from '@/utils/text'
+import Label from '@/components/builder/Label'
 
 const LineHeight = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -31,7 +32,7 @@ const LineHeight = () => {
 
     return (
         <div>
-            {lineHeight ? lineHeight : 'Not set'}
+            <Label title="Line Height" value={lineHeight} />
             <input
                 type="range"
                 min="0"

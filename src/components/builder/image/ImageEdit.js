@@ -12,20 +12,20 @@ const ImageEdit = () => {
         {
             title: 'Image',
             component: (
-                <>
+                <div className="space-y-6">
                     <ImagePreview />
                     <ImageUrl />
                     <ImageAlt />
-                </>
+                </div>
             ),
         },
         {
             title: 'Style',
             component: (
-                <>
+                <div className="space-y-6">
                     <BorderRadius />
                     <BoxShadow />
-                </>
+                </div>
             ),
         },
         {

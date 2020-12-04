@@ -12,10 +12,10 @@ const RowEdit = () => {
         {
             title: 'Color',
             component: (
-                <>
+                <div className="space-y-6">
                     <BackgroundColor />
                     <BackgroundOpacity />
-                </>
+                </div>
             ),
         },
         {
@@ -33,10 +33,10 @@ const RowEdit = () => {
         {
             title: 'Spacing',
             component: (
-                <>
+                <div className="space-y-6">
                     <MarginTop />
                     <MarginBottom />
-                </>
+                </div>
             ),
         },
     ]

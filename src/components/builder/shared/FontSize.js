@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateFontSizes, removeFontSizes } from '@/utils/text'
+import Label from '@/components/builder/Label'
 
 const FontSize = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -30,7 +31,7 @@ const FontSize = () => {
 
     return (
         <div>
-            {fontSize}
+            <Label title="Font Size" value={fontSize} />
             <input
                 type="range"
                 min="0"

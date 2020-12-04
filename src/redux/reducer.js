@@ -40,7 +40,7 @@ let initialState = {
                     tag: 'div',
                     classList: [
                         'relative',
-                        'container',
+                        'max-w-4xl',
                         'mx-auto',
                         'bg-blue-500',
                         'flex',

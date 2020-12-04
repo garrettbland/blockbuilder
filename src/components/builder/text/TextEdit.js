@@ -13,10 +13,10 @@ const TextEdit = () => {
         {
             title: 'Content',
             component: (
-                <>
+                <div className="space-y-6">
                     <TextContent />
                     <TextAlignment />
-                </>
+                </div>
             ),
         },
         {
@@ -26,11 +26,11 @@ const TextEdit = () => {
         {
             title: 'Font',
             component: (
-                <>
+                <div className="space-y-6">
                     <FontWeight />
                     <FontSize />
                     <LineHeight />
-                </>
+                </div>
             ),
         },
         {
