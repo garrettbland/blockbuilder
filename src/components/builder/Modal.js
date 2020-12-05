@@ -84,7 +84,7 @@ const Modal = () => {
                             {currentlyEditing.type === 'link' && <LinkEdit />}
                         </div>
                         <div className="absolute bottom-0 left-0 w-full z-20 rounded-b-lg">
-                            <div className="h-8 bg-gradient-to-b from-transparent to-white w-full"></div>
+                            <div className="absolute top-0 left-0 -mt-8 pointer-events-none h-8 bg-gradient-to-b from-transparent to-white w-full"></div>
                             <div className="flex justify-between items-end px-4 pb-4 pt-2 bg-white ">
                                 <RemoveBlockButton title="Remove Block" />
                                 <SubmitButton title="Submit" />
