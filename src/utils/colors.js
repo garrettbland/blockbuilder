@@ -16,9 +16,8 @@ export const generateColors = (prefix = '') => {
 
     /**
      * Define color palette array to return.
-     * Add transparent class as its not included in 'tailwindcss/colors'
      */
-    let color_palette = ['transparent']
+    let color_palette = []
 
     Object.entries(tailwind_colors).map(([key, value]) => {
         const baseColor = key

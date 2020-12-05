@@ -33,12 +33,11 @@ const BackgroundColor = () => {
     return (
         <div>
             <Label title="Background Color" value={bgColor} />
-            <div className="flex flex-wrap">
-                <ColorPicker
-                    currentColor={bgColor.replace('bg-', '')}
-                    onClick={(color) => handleBackgroundColorUpdate(`bg-${color}`)}
-                />
-            </div>
+            <ColorPicker
+                currentColor={bgColor.replace('bg-', '')}
+                onClick={(color) => handleBackgroundColorUpdate(`bg-${color}`)}
+                type="background"
+            />
         </div>
     )
 }

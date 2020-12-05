@@ -36,6 +36,7 @@ const TextColor = () => {
             <ColorPicker
                 currentColor={textColor.replace('text-', '')}
                 onClick={(color) => handleTextColorUpdate(`text-${color}`)}
+                showTransparent={false}
             />
         </div>
     )
