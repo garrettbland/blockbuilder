@@ -76,7 +76,7 @@ const Modal = () => {
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <div className="relative">
-                        <div className="h-full z-10">
+                        <div className="h-full z-10 pb-16">
                             {currentlyEditing.type === 'section' && <SectionEdit />}
                             {currentlyEditing.type === 'row' && <RowEdit />}
                             {currentlyEditing.type === 'text' && <TextEdit />}
@@ -84,8 +84,8 @@ const Modal = () => {
                             {currentlyEditing.type === 'link' && <LinkEdit />}
                         </div>
                         <div className="absolute bottom-0 left-0 w-full z-20 rounded-b-lg">
-                            <div className="absolute top-0 left-0 -mt-8 pointer-events-none h-8 bg-gradient-to-b from-transparent to-white w-full"></div>
-                            <div className="flex justify-between items-end px-4 pb-4 pt-2 bg-white ">
+                            <div className="absolute top-0 left-0 -mt-12 pointer-events-none h-12 bg-gradient-to-t from-white via-transparent w-full"></div>
+                            <div className="flex justify-between items-end px-4 pb-4 pt-2 bg-white">
                                 <RemoveBlockButton title="Remove Block" />
                                 <SubmitButton title="Submit" />
                             </div>

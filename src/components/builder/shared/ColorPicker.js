@@ -12,22 +12,78 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
         <div className="grid grid-cols-10 gap-2">
             <div
                 onClick={() => onClick(`white`)}
-                className={`h-12 w-full col-span-1 bg-white border cursor-pointer`}
+                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-white flex items-center justify-center ${
+                    'white' === currentColor ? 'ring-2 ring-green-500 ring-offset-2' : 'shadow'
+                }`}
             >
-                {'white' === currentColor ? 'Selected' : null}
+                {'white' === currentColor ? (
+                    <div className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center">
+                        <svg
+                            className="text-green-500"
+                            viewBox="0 0 24 24"
+                            width="20"
+                            height="20"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                ) : null}
             </div>
             <div
                 onClick={() => onClick(`black`)}
-                className={`h-12 w-full col-span-1 bg-black border cursor-pointer`}
+                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-black flex items-center justify-center ${
+                    'black' === currentColor ? 'ring-2 ring-green-500 ring-offset-2' : 'shadow'
+                }`}
             >
-                {'black' === currentColor ? 'Selected' : null}
+                {'black' === currentColor ? (
+                    <div className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center">
+                        <svg
+                            className="text-green-500"
+                            viewBox="0 0 24 24"
+                            width="20"
+                            height="20"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                ) : null}
             </div>
             {showTransparent && (
                 <div
                     onClick={() => onClick(`transparent`)}
-                    className={`h-12 w-full col-span-1 bg-transparent border cursor-pointer`}
+                    className={`h-12 w-full col-span-1 cursor-pointer rounded-lg checkered-background flex items-center justify-center ${
+                        'transparent' === currentColor
+                            ? 'ring-2 ring-green-500 ring-offset-2'
+                            : 'shadow'
+                    }`}
                 >
-                    {'transparent' === currentColor ? 'Selected' : null}
+                    {'transparent' === currentColor ? (
+                        <div className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center">
+                            <svg
+                                className="text-green-500"
+                                viewBox="0 0 24 24"
+                                width="20"
+                                height="20"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                    ) : null}
                 </div>
             )}
             <div className={showTransparent ? 'col-span-7' : 'col-span-8'}></div>
@@ -39,9 +95,29 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
                     <div
                         key={color}
                         onClick={() => onClick(color)}
-                        className={`h-12 ${`bg-${color}`} border cursor-pointer`}
+                        className={`h-12 ${`bg-${color}`} cursor-pointer rounded-lg flex items-center justify-center ${
+                            color === currentColor
+                                ? 'ring-2 ring-green-500 ring-offset-2'
+                                : 'shadow'
+                        }`}
                     >
-                        {color === currentColor ? 'Selected' : null}
+                        {color === currentColor ? (
+                            <div className="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center">
+                                <svg
+                                    className="text-green-500"
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                    height="20"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        ) : null}
                     </div>
                 )
             })}
