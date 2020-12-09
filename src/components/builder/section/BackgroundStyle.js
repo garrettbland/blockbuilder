@@ -5,6 +5,7 @@ const findAnd = require('find-and')
 import { defaultBlocks } from '@/utils/blocks'
 import { backgroundAttachments, removeBackgroundAttachments } from '@/utils/background'
 import { extractClass } from '@/utils/tools'
+import Label from '@/components/builder/Label'
 
 const BackgroundStyle = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -113,35 +114,121 @@ const BackgroundStyle = () => {
 
     if (currentlyEditingChild && currentlyEditingChild.data) {
         return (
-            <div>
+            <div className="space-y-6">
                 <div>
-                    <div>Blur</div>
-                    <input
-                        value={currentlyEditingChild.data.blur}
-                        onChange={(event) => handleBackgroundUpdate('blur', event.target.value)}
-                        className={`border-2 px-4 py-2 rounded ${blurDisabled ? 'opacity-25' : ''}`}
+                    <Label
+                        title="Blur Radius"
+                        showClass={false}
+                        customValue={`${currentlyEditingChild.data.blur}px`}
+                        disabled={backgroundAttachment === 'bg-fixed' ? true : false}
                     />
-                </div>
-                <div>
-                    <div>Background Positioning?</div>
-                    <div className="flex flex-row">
-                        Normal
+                    <div className={blurDisabled ? `opacity-40 cursor-not-allowed` : ''}>
                         <input
-                            type="radio"
-                            value="n/a"
-                            onChange={() => handleBackgroundAttachmentUpdate('bg-local')}
-                            checked={backgroundAttachment === 'bg-fixed' ? false : true}
-                        />
-                        Fixed
-                        <input
-                            type="radio"
-                            value="fixed"
-                            onChange={() => handleBackgroundAttachmentUpdate('bg-fixed')}
-                            checked={backgroundAttachment === 'bg-fixed' ? true : false}
+                            type="range"
+                            min="0"
+                            max={blurDisabled ? 0 : 20}
+                            value={currentlyEditingChild.data.blur}
+                            onChange={(event) => handleBackgroundUpdate('blur', event.target.value)}
+                            className={blurDisabled ? `pointer-events-none` : ''}
                         />
                     </div>
                 </div>
                 <div>
+                    <Label title="Background Positioning" value={backgroundAttachment} />
+                    <div className="w-1/2 grid gap-4 grid-cols-2">
+                        <div
+                            onClick={() => handleBackgroundAttachmentUpdate('bg-local')}
+                            className={`col-span-1 flex flex-row items-center p-3 rounded-lg border-2 ${
+                                backgroundAttachment === 'bg-local'
+                                    ? 'border-green-500'
+                                    : 'border-gray-300'
+                            } hover:border-green-500 cursor-pointer`}
+                        >
+                            <div className="w-10">
+                                <div
+                                    className={`w-8 h-8 rounded-full ${
+                                        backgroundAttachment === 'bg-local'
+                                            ? 'bg-green-500 shadow'
+                                            : 'bg-gray-300 shadow-inner'
+                                    } shadow flex items-center justify-center`}
+                                >
+                                    {backgroundAttachment === 'bg-local' && (
+                                        <svg
+                                            className="text-white"
+                                            viewBox="0 0 24 24"
+                                            width="20"
+                                            height="20"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div
+                                    className={`uppercase text-sm ${
+                                        backgroundAttachment === 'bg-local'
+                                            ? 'text-gray-800'
+                                            : 'text-gray-600'
+                                    } tracking-wide font-medium`}
+                                >
+                                    Regular
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            onClick={() => handleBackgroundAttachmentUpdate('bg-fixed')}
+                            className={`col-span-1 flex flex-row items-center p-3 rounded-lg border-2 ${
+                                backgroundAttachment === 'bg-fixed'
+                                    ? 'border-green-500'
+                                    : 'border-gray-300'
+                            } hover:border-green-500 cursor-pointer`}
+                        >
+                            <div className="w-10">
+                                <div
+                                    className={`w-8 h-8 rounded-full ${
+                                        backgroundAttachment === 'bg-fixed'
+                                            ? 'bg-green-500 shadow'
+                                            : 'bg-gray-300 shadow-inner'
+                                    } shadow flex items-center justify-center`}
+                                >
+                                    {backgroundAttachment === 'bg-fixed' && (
+                                        <svg
+                                            className="text-white"
+                                            viewBox="0 0 24 24"
+                                            width="20"
+                                            height="20"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div
+                                    className={`uppercase text-sm ${
+                                        backgroundAttachment === 'bg-fixed'
+                                            ? 'text-gray-800'
+                                            : 'text-gray-600'
+                                    } tracking-wide font-medium`}
+                                >
+                                    Fixed
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="py-48">
                     <div>Degree</div>
                     <input
                         value={currentlyEditingChild.data.degree}

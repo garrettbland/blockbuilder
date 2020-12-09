@@ -10,6 +10,7 @@ Block Builder is a React based application to visually build websites. It uses t
 
 -   Move options over to use tailwind config
 -   Migrate all blocks to their own div for hover styling/spacing (example -> how margin & padding look on blocks on hover)
+-   Update label to use custom value rather than using period in front
 
 ### Development
 

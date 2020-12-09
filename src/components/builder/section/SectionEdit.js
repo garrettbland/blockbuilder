@@ -11,7 +11,11 @@ const SectionEdit = () => {
         },
         {
             title: 'Background',
-            component: <BackgroundStyle />,
+            component: (
+                <div className="space-y-6">
+                    <BackgroundStyle />
+                </div>
+            ),
         },
         {
             title: 'Divider',

@@ -12,8 +12,8 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
         <div className="grid grid-cols-10 gap-2">
             <div
                 onClick={() => onClick(`white`)}
-                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-white flex items-center justify-center ${
-                    'white' === currentColor ? 'ring-2 ring-green-500 ring-offset-2' : 'shadow'
+                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-white flex items-center justify-center hover:ring-2 hover:ring-green-500 hover:ring-offset-1 ${
+                    'white' === currentColor ? 'ring-2 ring-green-500 ring-offset-1' : 'shadow'
                 }`}
             >
                 {'white' === currentColor ? (
@@ -36,8 +36,8 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
             </div>
             <div
                 onClick={() => onClick(`black`)}
-                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-black flex items-center justify-center ${
-                    'black' === currentColor ? 'ring-2 ring-green-500 ring-offset-2' : 'shadow'
+                className={`h-12 w-full col-span-1 cursor-pointer rounded-lg bg-black flex items-center justify-center hover:ring-2 hover:ring-green-500 hover:ring-offset-1 ${
+                    'black' === currentColor ? 'ring-2 ring-green-500 ring-offset-1' : 'shadow'
                 }`}
             >
                 {'black' === currentColor ? (
@@ -61,9 +61,9 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
             {showTransparent && (
                 <div
                     onClick={() => onClick(`transparent`)}
-                    className={`h-12 w-full col-span-1 cursor-pointer rounded-lg checkered-background flex items-center justify-center ${
+                    className={`h-12 w-full col-span-1 cursor-pointer rounded-lg checkered-background flex items-center justify-center hover:ring-2 hover:ring-green-500 hover:ring-offset-1 ${
                         'transparent' === currentColor
-                            ? 'ring-2 ring-green-500 ring-offset-2'
+                            ? 'ring-2 ring-green-500 ring-offset-1'
                             : 'shadow'
                     }`}
                 >
@@ -95,9 +95,9 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
                     <div
                         key={color}
                         onClick={() => onClick(color)}
-                        className={`h-12 ${`bg-${color}`} cursor-pointer rounded-lg flex items-center justify-center ${
+                        className={`h-12 ${`bg-${color}`} cursor-pointer rounded-lg flex items-center justify-center hover:ring-2 hover:ring-green-500 hover:ring-offset-1 ${
                             color === currentColor
-                                ? 'ring-2 ring-green-500 ring-offset-2'
+                                ? 'ring-2 ring-green-500 ring-offset-1'
                                 : 'shadow'
                         }`}
                     >

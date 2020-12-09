@@ -11,7 +11,11 @@ module.exports = {
         extend: {},
     },
     variants: {
-        extend: {},
+        extend: {
+            ringWidth: ['hover'],
+            ringColor: ['hover'],
+            ringOffsetWidth: ['hover'],
+        },
     },
     plugins: [],
 }
