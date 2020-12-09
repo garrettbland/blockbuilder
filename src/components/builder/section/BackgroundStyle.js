@@ -228,7 +228,7 @@ const BackgroundStyle = () => {
                         </div>
                     </div>
                 </div>
-                <div className="py-48">
+                <div>
                     <div>Degree</div>
                     <input
                         value={currentlyEditingChild.data.degree}
