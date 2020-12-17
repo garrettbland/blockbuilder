@@ -76,19 +76,17 @@ const Modal = () => {
             >
                 {currentlyEditing && currentlyEditing.id && (
                     <div className="relative">
-                        <div className="h-full z-10">
+                        <div className="z-10">
                             {currentlyEditing.type === 'section' && <SectionEdit />}
                             {currentlyEditing.type === 'row' && <RowEdit />}
                             {currentlyEditing.type === 'text' && <TextEdit />}
                             {currentlyEditing.type === 'image' && <ImageEdit />}
                             {currentlyEditing.type === 'link' && <LinkEdit />}
-                            <div className="h-16 w-full"></div>
                         </div>
                         <div
                             className="absolute bottom-0 left-0 w-full z-20 rounded-b-lg bg-white"
                             style={{ boxShadow: '0 1px 15px 4px rgba(0,0,0,0.09)' }}
                         >
-                            {/* <div className="absolute top-0 left-0 -mt-1 pointer-events-none h-2 bg-gradient-to-b from-transparent to-gray-300 w-full z-10"></div> */}
                             <div className="flex justify-between items-end px-4 py-4">
                                 <RemoveBlockButton title="Remove Block" />
                                 <SubmitButton title="Submit" />

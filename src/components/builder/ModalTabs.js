@@ -67,11 +67,14 @@ const Tabs = ({ tabComponents }) => {
                 </div>
                 <CloseButton />
             </div>
-            <div className="relative h-96 overflow-y-scroll shadow-inner">
+            <div
+                className="relative min-h-96 max-h-124 overflow-y-scroll shadow-inner"
+                style={{ height: '40vh' }}
+            >
                 {tabComponents.map(({ component }, index) => (
                     <div
                         key={index}
-                        className={`absolute top-0 left-0 w-full transition duration-150 p-4 mb-20 ${
+                        className={`absolute top-0 left-0 w-full transition duration-150 px-4 pt-4 pb-24 ${
                             currentTabIndex === index
                                 ? 'opacity-100 z-10'
                                 : `opacity-0 overflow-hidden z-0`

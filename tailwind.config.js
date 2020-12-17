@@ -8,7 +8,14 @@ module.exports = {
             transparent: 'transparent',
             ...colors,
         },
-        extend: {},
+        extend: {
+            maxHeight: {
+                124: '28rem',
+            },
+            minHeight: {
+                96: '24rem',
+            },
+        },
     },
     variants: {
         extend: {

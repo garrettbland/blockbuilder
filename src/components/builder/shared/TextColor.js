@@ -31,7 +31,7 @@ const TextColor = () => {
     }
 
     return (
-        <div className="pb-12">
+        <div>
             <Label title="Text Color" value={textColor} />
             <ColorPicker
                 currentColor={textColor.replace('text-', '')}
