@@ -83,9 +83,9 @@ let initialState = {
                         'p-4',
                         'relative',
                         'z-40',
-                        'mt-8',
+                        'pt-8',
+                        'pb-48',
                         'max-w-4xl',
-                        'mb-48',
                     ],
                     data: [
                         {

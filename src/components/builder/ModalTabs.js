@@ -51,7 +51,7 @@ const Tabs = ({ tabComponents }) => {
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-between p-4">
+            <div className="flex flex-row items-center justify-between p-4 modal-tab-shadow-top">
                 <div className="flex flex-row items-center transition duration-300 ease-in-out text-gray-700">
                     {tabComponents.map(({ title }, index) => (
                         <button
@@ -68,7 +68,7 @@ const Tabs = ({ tabComponents }) => {
                 <CloseButton />
             </div>
             <div
-                className="relative min-h-96 max-h-124 overflow-y-scroll shadow-inner"
+                className="relative min-h-96 max-h-124 overflow-y-scroll"
                 style={{ height: '40vh' }}
             >
                 {tabComponents.map(({ component }, index) => (

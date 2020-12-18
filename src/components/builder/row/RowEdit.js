@@ -4,8 +4,8 @@ import BoxShadow from '../shared/BoxShadow'
 import BackgroundColor from '../shared/BackgroundColor'
 import MaxWidth from './MaxWidth'
 import BackgroundOpacity from './BackgroundOpacity'
-import MarginTop from '../shared/MarginTop'
-import MarginBottom from '../shared/MarginBottom'
+import PaddingTop from '../shared/PaddingTop'
+import PaddingBottom from '../shared/PaddingBottom'
 
 const RowEdit = () => {
     const tabComponents = [
@@ -34,8 +34,8 @@ const RowEdit = () => {
             title: 'Spacing',
             component: (
                 <div className="space-y-6">
-                    <MarginTop />
-                    <MarginBottom />
+                    <PaddingTop />
+                    <PaddingBottom />
                 </div>
             ),
         },

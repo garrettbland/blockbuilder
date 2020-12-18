@@ -6,7 +6,7 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['relative', 'py-12'],
+            classList: ['relative', 'pt-12', 'pb-12'],
             data: [],
         },
         sectionBackground: {
@@ -38,24 +38,22 @@ export const defaultBlocks = (type, columns) => {
             classList: [
                 'max-w-4xl',
                 'mx-auto',
-                'flex',
-                'flex-wrap',
-                'p-4',
-                'mt-12',
-                'mb-12',
+                'grid',
+                `grid-cols-1`,
+                `md:grid-cols-${columns}`,
+                'gap-8',
                 'relative',
                 'z-40',
+                'px-8',
+                'pt-8',
+                'pb-8',
             ],
             data: [...Array(columns)].map(() => {
                 return {
                     id: uuidv4(),
                     type: `column`,
                     tag: `div`,
-                    classList: [
-                        `w-full`,
-                        `${columns === 1 ? 'md:w-full' : `md:w-1/${columns}`}`,
-                        `p-4`,
-                    ],
+                    classList: [`col-span-1`],
                     data: [],
                 }
             }),

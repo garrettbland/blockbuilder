@@ -5,8 +5,8 @@ import TextAlignment from './TextAlignment'
 import FontWeight from '../shared/FontWeight'
 import FontSize from '../shared/FontSize'
 import LineHeight from './LineHeight'
-import MarginTop from '../shared/MarginTop'
-import MarginBottom from '../shared/MarginBottom'
+import PaddingTop from '../shared/PaddingTop'
+import PaddingBottom from '../shared/PaddingBottom'
 
 const TextEdit = () => {
     const tabComponents = [
@@ -37,8 +37,8 @@ const TextEdit = () => {
             title: 'Spacing',
             component: (
                 <div className="space-y-6">
-                    <MarginTop />
-                    <MarginBottom />
+                    <PaddingTop />
+                    <PaddingBottom />
                 </div>
             ),
         },

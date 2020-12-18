@@ -44,7 +44,7 @@ const Image = ({ block }) => {
                         payload: returnFound(blocks, { id: block.id }),
                     })
                 }}
-                className={`w-full h-full bg-blue-400 bg-opacity-50 absolute top-0 left-0 z-20 ${
+                className={`w-full h-full absolute top-0 left-0 z-20 ${
                     showTool ? 'block' : 'hidden'
                 }`}
             >
@@ -53,6 +53,14 @@ const Image = ({ block }) => {
                     <button onClick={(event) => DuplicateBlock(event)}>Duplicate</button>
                 </div>
             </div>
+            {showTool && (
+                <>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
+                    <div className="absolute right-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-full h-1 z-50"></div>
+                    <div className="absolute left-0 bottom-0 bg-orange-500 w-full h-1 z-50"></div>
+                </>
+            )}
             <img
                 src={block.data.src}
                 alt={block.data.alt}

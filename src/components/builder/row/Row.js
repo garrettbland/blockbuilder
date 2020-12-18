@@ -72,9 +72,17 @@ const Row = ({ block, children }) => {
                     Duplicate
                 </button>
             </div>
+            {showTool && (
+                <>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-1 h-full z-20"></div>
+                    <div className="absolute right-0 top-0 bg-orange-500 w-1 h-full z-20"></div>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-full h-1 z-20"></div>
+                    <div className="absolute left-0 bottom-0 bg-orange-500 w-full h-1 z-20"></div>
+                </>
+            )}
             {children}
             <div
-                className={`absolute bottom-0 left-0 w-full h-0 bg-orange-500 flex items-center justify-center ${
+                className={`absolute bottom-0 left-0 w-full h-0 bg-orange-500 flex items-center justify-center z-30 ${
                     showTool ? 'block' : 'hidden'
                 }`}
             >

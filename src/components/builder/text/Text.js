@@ -49,7 +49,7 @@ const Text = ({ block }) => {
                         payload: returnFound(blocks, { id: block.id }),
                     })
                 }}
-                className={`absolute top-0 left-0 text-black bg-white p-1 h-full bg-opacity-25 text-lg w-full ${
+                className={`absolute top-0 left-0 text-black p-1 h-full text-lg w-full ${
                     showTool ? 'block' : 'hidden'
                 }`}
             >
@@ -58,6 +58,14 @@ const Text = ({ block }) => {
                     <button onClick={(event) => DuplicateBlock(event)}>Duplicate</button>
                 </div>
             </div>
+            {showTool && (
+                <>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
+                    <div className="absolute right-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
+                    <div className="absolute left-0 top-0 bg-orange-500 w-full h-1 z-50"></div>
+                    <div className="absolute left-0 bottom-0 bg-orange-500 w-full h-1 z-50"></div>
+                </>
+            )}
             <p dangerouslySetInnerHTML={{ __html: block.data }}></p>
         </div>
     )

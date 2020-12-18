@@ -14,9 +14,17 @@
     outline-offset: -2px;
 } */
 
-[data-type='row']:hover {
+/* [data-type='row']:hover {
     outline: 2px solid pink;
     outline-offset: 0px;
+} */
+
+.modal-tab-shadow-top {
+    box-shadow: 0 1px 5px 4px rgba(0, 0, 0, 0.06);
+}
+
+.modal-tab-shadow-bottom {
+    box-shadow: 0 1px 15px 4px rgba(0, 0, 0, 0.09);
 }
 
 .show {
