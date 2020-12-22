@@ -28,20 +28,18 @@ export const textAlignments = () => {
 
 export const generateLineHeights = () => {
     /**
-     * Will generate tailwind line heights
+     * Not referencing tailwind theme because the fixed line
+     * heights (leading-4, leading-5, etc) I feel will cause a crazy
+     * amount of headaches
      */
-    const prefix = 'leading'
-
-    /**
-     * Define array to return.
-     */
-    let lineHeights = []
-
-    Object.entries(defaultTheme.lineHeight).map(([key]) => {
-        lineHeights = [...lineHeights, `${prefix}-${key}`]
-    })
-
-    return lineHeights
+    return [
+        'leading-none',
+        'leading-tight',
+        'leading-snug',
+        'leading-normal',
+        'leading-relaxed',
+        'leading-loose',
+    ]
 }
 
 export const generateFontWeights = () => {
