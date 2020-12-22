@@ -7,7 +7,7 @@ const Label = ({
     disabled = false,
 }) => (
     <div
-        class={`uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2 ${
+        className={`uppercase text-sm text-gray-800 tracking-wide font-semibold mb-2 ${
             disabled ? 'line-through' : ''
         }`}
     >
@@ -15,7 +15,7 @@ const Label = ({
         {showClass && (
             <>
                 ({' '}
-                <span class="lowercase text-green-500 font-mono">
+                <span className="lowercase text-green-500 font-mono">
                     {value ? `.${value}` : defaultValue}
                 </span>
                 )
@@ -23,7 +23,7 @@ const Label = ({
         )}
         {!showClass && customValue && (
             <>
-                ( <span class="lowercase text-green-500 font-mono">{customValue}</span>)
+                ( <span className="lowercase text-green-500 font-mono">{customValue}</span>)
             </>
         )}
     </div>

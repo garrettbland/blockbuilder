@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
+import Label from '@/components/builder/Label'
 
 const PaddingBottom = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -38,7 +39,7 @@ const PaddingBottom = () => {
 
     return (
         <div>
-            {paddingBottom}
+            <Label title="Padding Bottom" value={paddingBottom} />
             <input
                 type="range"
                 min="0"
