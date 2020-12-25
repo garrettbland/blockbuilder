@@ -8,7 +8,7 @@ import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
 import Label from '@/components/builder/Label'
 
-const Divider = () => {
+const DividerTop = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [dividerColor, setDividerColor] = useState('')
@@ -16,7 +16,7 @@ const Divider = () => {
 
     useEffect(() => {
         const currentlyEditingChildIndex = currentlyEditing.data.findIndex(
-            (block) => block.type === 'section-divider'
+            (block) => block.type === 'section-divider-top'
         )
         if (currentlyEditingChildIndex !== -1) {
             setCurrentlyEditingChild(currentlyEditing.data[currentlyEditingChildIndex])
@@ -40,7 +40,7 @@ const Divider = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                data: [defaultBlocks('sectionDivider'), ...currentlyEditing.data],
+                data: [defaultBlocks('sectionDividerTop'), ...currentlyEditing.data],
             },
         })
     }
@@ -98,4 +98,4 @@ const Divider = () => {
     )
 }
 
-export default Divider
+export default DividerTop

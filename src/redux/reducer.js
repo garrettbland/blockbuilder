@@ -36,7 +36,7 @@ let initialState = {
             data: [
                 {
                     id: 'b322b4f7-3ed3-4032-a0a5-cf1825972df2',
-                    type: 'section-divider',
+                    type: 'section-divider-bottom',
                     tag: 'div',
                     classList: [
                         'absolute',

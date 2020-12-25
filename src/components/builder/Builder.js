@@ -31,7 +31,10 @@ const Builder = ({ data }) => {
             case 'section-background': {
                 return <SectionBackground block={block} key={block.id} />
             }
-            case 'section-divider': {
+            case 'section-divider-top': {
+                return <SectionDivider block={block} key={block.id} />
+            }
+            case 'section-divider-bottom': {
                 return <SectionDivider block={block} key={block.id} />
             }
             case 'row': {
