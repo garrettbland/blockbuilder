@@ -3,6 +3,7 @@ import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_EDITING, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
 import AddContentButton from '../AddContentButton'
+import BlockActionsButton from '../BlockActionsButton'
 
 const Image = ({ block }) => {
     const [showTool, setShowTool] = useState(false)
@@ -21,16 +22,6 @@ const Image = ({ block }) => {
         })
     })
 
-    const DuplicateBlock = (event) => {
-        // will stop any synthetic events from happening after this one
-        // example, will not fire edit block
-        event.stopPropagation()
-        dispatch({
-            type: DUPLICATE_BLOCK,
-            payload: block,
-        })
-    }
-
     return (
         <div ref={imageRef} className="relative z-10">
             <div
@@ -44,23 +35,14 @@ const Image = ({ block }) => {
                         payload: returnFound(blocks, { id: block.id }),
                     })
                 }}
-                className={`w-full h-full absolute top-0 left-0 z-20 ${
-                    showTool ? 'block' : 'hidden'
+                className={`absolute top-0 left-0 h-full w-full cursor-pointer ${
+                    showTool ? 'block ring-4 rounded' : 'hidden'
                 }`}
             >
-                <div className="flex items-center justify-center h-full w-full">
-                    Edit | <AddContentButton block={block} /> |{' '}
-                    <button onClick={(event) => DuplicateBlock(event)}>Duplicate</button>
+                <div className="flex items-center justify-center h-full w-full relative z-50">
+                    <BlockActionsButton block={block} />
                 </div>
             </div>
-            {showTool && (
-                <>
-                    <div className="absolute left-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
-                    <div className="absolute right-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
-                    <div className="absolute left-0 top-0 bg-orange-500 w-full h-1 z-50"></div>
-                    <div className="absolute left-0 bottom-0 bg-orange-500 w-full h-1 z-50"></div>
-                </>
-            )}
             <img
                 src={block.data.src}
                 alt={block.data.alt}
