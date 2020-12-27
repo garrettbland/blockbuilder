@@ -37,6 +37,7 @@ const BackgroundColor = () => {
                 currentColor={bgColor.replace('bg-', '')}
                 onClick={(color) => handleBackgroundColorUpdate(`bg-${color}`)}
                 type="background"
+                showTransparent={false}
             />
         </div>
     )

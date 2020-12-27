@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 const findAnd = require('find-and')
-import { extractClass } from '@/utils/tools'
-import { generateColors, removeColors } from '@/utils/colors'
-import ColorPicker from '../shared/ColorPicker'
+import { generateShapes } from '@/utils/shapes'
 import Label from '@/components/builder/Label'
 
 const DividerShape = ({ position }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [dividerColor, setDividerColor] = useState('')
+    const [shape, setShape] = useState('')
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -18,13 +17,14 @@ const DividerShape = ({ position }) => {
             (block) => block.type === `section-divider-${position}`
         )
         if (currentlyEditingChildIndex !== -1) {
-            setCurrentlyEditingChild(currentlyEditing.data[currentlyEditingChildIndex])
-            const currentTextColor = extractClass(
-                currentlyEditing.data[currentlyEditingChildIndex].classList,
-                generateColors('text-')
-            )
-            if (currentTextColor) {
-                setDividerColor(currentTextColor)
+            const editingChild = currentlyEditing.data[currentlyEditingChildIndex]
+            setCurrentlyEditingChild(editingChild)
+
+            if (editingChild.data.shape) {
+                /**
+                 * Shape is set
+                 */
+                setShape(editingChild.data.shape)
             }
         } else {
             /**
@@ -34,9 +34,8 @@ const DividerShape = ({ position }) => {
         }
     }, [currentlyEditing])
 
-    const handleDividerColorUpdate = (value) => {
-        setDividerColor(value)
-        const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
+    const handleShapeDividerUpdate = (value) => {
+        setShape(value)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
@@ -47,9 +46,8 @@ const DividerShape = ({ position }) => {
                     {
                         ...currentlyEditingChild,
                         data: {
-                            ...currentlyEditingChild.data,
+                            shape: value,
                         },
-                        classList: [...updatedClassList, value],
                     }
                 ),
             },
@@ -60,7 +58,15 @@ const DividerShape = ({ position }) => {
         return (
             <div>
                 <Label title="Divider Shape" showClass={false} />
-                Current shape: {currentlyEditingChild.data.shape}
+                Current shape: {shape}
+                <select
+                    value={shape}
+                    onChange={(event) => handleShapeDividerUpdate(event.target.value)}
+                >
+                    {Object.entries(generateShapes()).map(([key]) => (
+                        <option value={key}>{key}</option>
+                    ))}
+                </select>
             </div>
         )
     } else {

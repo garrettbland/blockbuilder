@@ -63,6 +63,7 @@ const DividerColor = ({ position }) => {
                 <ColorPicker
                     currentColor={dividerColor.replace('text-', '')}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}
+                    showTransparent={false}
                 />
             </div>
         )
