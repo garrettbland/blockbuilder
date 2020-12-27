@@ -59,7 +59,7 @@ const DividerColor = ({ position }) => {
     if (currentlyEditingChild && currentlyEditingChild.data) {
         return (
             <div>
-                <Label title="Divider Color" value={dividerColor} />
+                <Label title="Divider Color" value={dividerColor} showClass={false} />
                 <ColorPicker
                     currentColor={dividerColor.replace('text-', '')}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}
