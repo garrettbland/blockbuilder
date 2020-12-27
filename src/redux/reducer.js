@@ -47,7 +47,9 @@ let initialState = {
                         'text-transparent',
                         'text-white',
                     ],
-                    data: {},
+                    data: {
+                        wave: 'default',
+                    },
                 },
                 {
                     id: '2d14809a-503d-47f7-9b3a-58fa8ce12332',

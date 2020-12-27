@@ -30,7 +30,7 @@ export const defaultBlocks = (type, columns) => {
             tag: 'div',
             classList: ['absolute', 'top-0', 'left-0', 'w-full', 'h-64', 'text-red-500'],
             data: {
-                shape: 'wave_top',
+                wave: 'default',
             },
         },
         sectionDividerBottom: {
@@ -39,7 +39,7 @@ export const defaultBlocks = (type, columns) => {
             tag: 'div',
             classList: ['absolute', 'bottom-0', 'left-0', 'w-full', 'h-64', 'text-red-500'],
             data: {
-                shape: 'wave_bottom',
+                wave: 'default',
             },
         },
         row: {

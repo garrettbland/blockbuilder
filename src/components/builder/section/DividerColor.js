@@ -8,7 +8,7 @@ import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
 import Label from '@/components/builder/Label'
 
-const DividerTop = () => {
+const DividerColor = ({ position }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [dividerColor, setDividerColor] = useState('')
@@ -16,7 +16,7 @@ const DividerTop = () => {
 
     useEffect(() => {
         const currentlyEditingChildIndex = currentlyEditing.data.findIndex(
-            (block) => block.type === 'section-divider-top'
+            (block) => block.type === `section-divider-${position}`
         )
         if (currentlyEditingChildIndex !== -1) {
             setCurrentlyEditingChild(currentlyEditing.data[currentlyEditingChildIndex])
@@ -40,7 +40,12 @@ const DividerTop = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                data: [defaultBlocks('sectionDividerTop'), ...currentlyEditing.data],
+                data: [
+                    defaultBlocks(
+                        position === 'top' ? 'sectionDividerTop' : 'sectionDividerBottom'
+                    ),
+                    ...currentlyEditing.data,
+                ],
             },
         })
     }
@@ -80,7 +85,7 @@ const DividerTop = () => {
     if (currentlyEditingChild && currentlyEditingChild.data) {
         return (
             <div>
-                <Label title="Background Color" value={dividerColor} />
+                <Label title="Divider Color" value={dividerColor} />
                 <ColorPicker
                     currentColor={dividerColor.replace('text-', '')}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}
@@ -98,4 +103,4 @@ const DividerTop = () => {
     )
 }
 
-export default DividerTop
+export default DividerColor

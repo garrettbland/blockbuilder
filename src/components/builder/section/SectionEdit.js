@@ -1,8 +1,7 @@
 import Tabs from '@/components/builder/ModalTabs'
 import BackgroundColor from '../shared/BackgroundColor'
 import BackgroundStyle from './BackgroundStyle'
-import DividerTop from './DividerTop'
-import DividerBottom from './DividerBottom'
+import DividerColor from './DividerColor'
 import PaddingTop from '../shared/PaddingTop'
 import PaddingBottom from '../shared/PaddingBottom'
 
@@ -22,11 +21,19 @@ const SectionEdit = () => {
         },
         {
             title: 'Top Divider',
-            component: <DividerTop />,
+            component: (
+                <div className="space-y-6">
+                    <DividerColor position="top" />
+                </div>
+            ),
         },
         {
             title: 'Bottom Divider',
-            component: <DividerBottom />,
+            component: (
+                <div className="space-y-6">
+                    <DividerColor position="bottom" />
+                </div>
+            ),
         },
         {
             title: 'Spacing',
