@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 const findAnd = require('find-and')
-import { defaultBlocks } from '@/utils/blocks'
 import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
@@ -35,31 +34,6 @@ const DividerColor = ({ position }) => {
         }
     }, [currentlyEditing])
 
-    const handleSectionDividerAdd = () => {
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: [
-                    defaultBlocks(
-                        position === 'top' ? 'sectionDividerTop' : 'sectionDividerBottom'
-                    ),
-                    ...currentlyEditing.data,
-                ],
-            },
-        })
-    }
-
-    const handleSectionDividerRemove = () => {
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: findAnd.removeObject(currentlyEditing.data, { id: currentlyEditingChild.id }),
-            },
-        })
-    }
-
     const handleDividerColorUpdate = (value) => {
         setDividerColor(value)
         const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
@@ -90,17 +64,11 @@ const DividerColor = ({ position }) => {
                     currentColor={dividerColor.replace('text-', '')}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}
                 />
-                <button onClick={() => handleSectionDividerRemove()}>Remove Section Divider</button>
             </div>
         )
+    } else {
+        return null
     }
-
-    return (
-        <div>
-            No divider set...
-            <button onClick={() => handleSectionDividerAdd()}>Click here to add Divider</button>
-        </div>
-    )
 }
 
 export default DividerColor
