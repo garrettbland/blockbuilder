@@ -48,7 +48,7 @@ let initialState = {
                         'text-white',
                     ],
                     data: {
-                        wave: 'default',
+                        shape: 'default',
                     },
                 },
                 {
