@@ -32,7 +32,7 @@ const TextAlignment = () => {
 
     return (
         <div>
-            <Label title="Alignment" showClass={false} />
+            <Label title="Alignment" value={textAlignment} />
             <div className="bg-gray-100 rounded-lg overflow-hidden inline-block">
                 <div className="flex flex-row items-center cursor-pointer">
                     <AlignLeft

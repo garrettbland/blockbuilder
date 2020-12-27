@@ -48,7 +48,7 @@ let initialState = {
                         'text-white',
                     ],
                     data: {
-                        shape: 'default',
+                        shape: 'basic_slant',
                     },
                 },
                 {
