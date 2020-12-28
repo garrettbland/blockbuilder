@@ -4,6 +4,7 @@ import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { autoMargins, removeAutoMargins } from '@/utils/spacing'
 import Label from '@/components/builder/Label'
+import { AlignLeft, AlignCenter, AlignRight } from 'react-feather'
 
 const AutoMargin = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -32,25 +33,36 @@ const AutoMargin = () => {
     return (
         <div>
             <Label title="Alignment" showClass={false} />
-            <div>
-                <button
-                    className={`${autoMargin === 'mr-auto' ? 'text-blue-500' : null}`}
-                    onClick={() => handleAutoMarginUpdate('mr-auto')}
-                >
-                    Left
-                </button>
-                <button
-                    className={`${autoMargin === 'mx-auto' ? 'text-blue-500' : null}`}
-                    onClick={() => handleAutoMarginUpdate('mx-auto')}
-                >
-                    Center
-                </button>
-                <button
-                    className={`${autoMargin === 'ml-auto' ? 'text-blue-500' : null}`}
-                    onClick={() => handleAutoMarginUpdate('ml-auto')}
-                >
-                    Right
-                </button>
+            <div className="bg-gray-100 rounded-lg overflow-hidden inline-block">
+                <div className="flex flex-row items-center cursor-pointer">
+                    <AlignLeft
+                        className={`w-11 h-11 p-2 ${
+                            autoMargin === 'mr-auto'
+                                ? 'text-blue-900 bg-blue-100'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200'
+                        }`}
+                        onClick={() => handleAutoMarginUpdate('mr-auto')}
+                        strokeWidth={1.3}
+                    />
+                    <AlignCenter
+                        className={`w-11 h-11 p-2 ${
+                            autoMargin === 'mx-auto'
+                                ? 'text-blue-900 bg-blue-100'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200'
+                        }`}
+                        onClick={() => handleAutoMarginUpdate('mx-auto')}
+                        strokeWidth={1.3}
+                    />
+                    <AlignRight
+                        className={`w-11 h-11 p-2 ${
+                            autoMargin === 'ml-auto'
+                                ? 'text-blue-900 bg-blue-100'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-200'
+                        }`}
+                        onClick={() => handleAutoMarginUpdate('ml-auto')}
+                        strokeWidth={1.3}
+                    />
+                </div>
             </div>
         </div>
     )
