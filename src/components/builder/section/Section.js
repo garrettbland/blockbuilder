@@ -3,6 +3,7 @@ import { Draggable } from 'react-smooth-dnd'
 import { returnFound } from 'find-and'
 import { useSelector, useDispatch } from 'react-redux'
 import { SET_EDITING, ADD_SECTION, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { Settings, Copy, Move, PlusCircle } from 'react-feather'
 
 const Section = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
@@ -25,6 +26,17 @@ const Section = ({ block, children }) => {
         }
     }, [])
 
+    const handleSettingsClick = () => {
+        dispatch({
+            type: SET_MODAL_VISIBILITY,
+            payload: true,
+        })
+        dispatch({
+            type: SET_EDITING,
+            payload: returnFound(blocks, { id: block.id }),
+        })
+    }
+
     const AddSection = () => {
         dispatch({
             type: ADD_SECTION,
@@ -45,56 +57,42 @@ const Section = ({ block, children }) => {
         <Draggable>
             <div data-type="section" ref={sectionRef} className={[...block.classList].join(' ')}>
                 <div
-                    className={`absolute top-0 left-0 flex flex-row z-50 ${
+                    className={`absolute top-0 left-0 flex flex-row w-full h-full z-50 pointer-events-none ${
                         showTool ? 'block' : 'hidden'
                     }`}
                 >
-                    <button
-                        onClick={() => {
-                            dispatch({
-                                type: SET_MODAL_VISIBILITY,
-                                payload: true,
-                            })
-                            dispatch({
-                                type: SET_EDITING,
-                                payload: returnFound(blocks, { id: block.id }),
-                            })
-                        }}
-                        className={`bg-red-500`}
-                    >
-                        Section Tools
-                    </button>
-                    <div className="bg-gray-600 text-white cursor-pointer" id="section-drag-handle">
-                        Drag
+                    <div className="absolute top-0 left-0 flex flex-row items-center rounded-br-lg bg-orange-300 pointer-events-auto">
+                        <Settings
+                            onClick={() => handleSettingsClick()}
+                            strokeWidth={1.3}
+                            className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
+                        />
+                        <Move
+                            strokeWidth={1.3}
+                            id="section-drag-handle"
+                            className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-move"
+                        />
+                        <Copy
+                            strokeWidth={1.3}
+                            className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
+                            onClick={() => DuplicateBlock()}
+                        />
+                        <PlusCircle
+                            strokeWidth={1.3}
+                            className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
+                            onClick={() => AddSection()}
+                        />
                     </div>
-                    <button
-                        onClick={() => DuplicateBlock()}
-                        className="bg-pink-500 text-white cursor-pointer"
-                    >
-                        Duplicate
-                    </button>
                 </div>
                 {showTool && (
                     <>
-                        <div className="absolute left-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
-                        <div className="absolute right-0 top-0 bg-orange-500 w-1 h-full z-50"></div>
-                        <div className="absolute left-0 top-0 bg-orange-500 w-full h-1 z-50"></div>
-                        <div className="absolute left-0 bottom-0 bg-orange-500 w-full h-1 z-50"></div>
+                        <div className="absolute left-0 top-0 bg-orange-300  w-1 h-full pb-5 z-40"></div>
+                        <div className="absolute right-0 top-0 bg-orange-300  w-1 h-full z-40"></div>
+                        <div className="absolute left-0 top-0 bg-orange-300  w-full h-1 z-40"></div>
+                        <div className="absolute left-0 bottom-0 bg-orange-300  w-full h-1 z-40"></div>
                     </>
                 )}
                 {children}
-                <div
-                    className={`absolute bottom-0 left-0 w-full flex items-center justify-center z-50 ${
-                        showTool ? 'block' : 'hidden'
-                    }`}
-                >
-                    <button
-                        onClick={() => AddSection()}
-                        className="bg-red-500 opacity-50 hover:opacity-100 rounded-t px-6 py-1"
-                    >
-                        Add Section
-                    </button>
-                </div>
             </div>
         </Draggable>
     )

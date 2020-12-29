@@ -61,6 +61,7 @@ const DividerShape = ({ position }) => {
                 <div className="grid grid-cols-4 gap-4">
                     {Object.entries(shapes).map(([key]) => (
                         <div
+                            key={key}
                             onClick={() => handleShapeDividerUpdate(key)}
                             className={`col-span-1 h-20 bg-white text-gray-600 rounded-lg border-2 hover:border-green-500 relative cursor-pointer overflow-hidden ${
                                 shape === key ? 'border-green-500' : 'border-gray-300'

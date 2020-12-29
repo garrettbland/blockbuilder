@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_EDITING, APPEND_ROW, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
-import { Settings, Copy } from 'react-feather'
+import { Settings, Copy, PlusCircle } from 'react-feather'
 
 const Row = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
@@ -62,38 +62,31 @@ const Row = ({ block, children }) => {
     return (
         <div data-type="row" ref={rowRef} className={[...block.classList].join(' ')}>
             <div
-                className={`absolute top-0 left-0 flex flex-row w-full h-full ${
+                className={`absolute top-0 left-0 flex flex-row w-full h-full pointer-events-none ${
                     showTool
-                        ? 'block ring-4 ring-orange-600 ring-opacity-70 rounded-lg overflow-hidden'
+                        ? 'block ring-4 ring-green-600 ring-opacity-50 rounded overflow-hidden'
                         : 'hidden'
                 }`}
             >
-                <div className="absolute top-0 left-0 flex flex-row items-center bg-orange-600 bg-opacity-70 rounded-br-lg">
+                <div className="absolute top-0 left-0 flex flex-row items-center bg-green-600 bg-opacity-50 rounded-br-lg pointer-events-auto">
                     <Settings
                         onClick={() => handleSettingsClick()}
                         strokeWidth={1.3}
-                        className="w-10 h-10 text-orange-900 hover:text-black p-2 cursor-pointer"
+                        className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
                     />
                     <Copy
                         strokeWidth={1.3}
-                        className="w-10 h-10 text-orange-900 hover:text-black p-2 cursor-pointer"
+                        className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
                         onClick={() => DuplicateBlock()}
+                    />
+                    <PlusCircle
+                        strokeWidth={1.3}
+                        className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
+                        onClick={() => AddRow()}
                     />
                 </div>
             </div>
             {children}
-            <div
-                className={`absolute bottom-0 left-0 w-full h-0 bg-orange-500 flex items-center justify-center z-30 ${
-                    showTool ? 'block' : 'hidden'
-                }`}
-            >
-                <button
-                    onClick={() => AddRow()}
-                    className="w-10 h-10 bg-red-500 opacity-50 hover:opacity-100 rounded-full"
-                >
-                    +
-                </button>
-            </div>
         </div>
     )
 }

@@ -8,7 +8,8 @@ Block Builder is a React based application to visually build websites. It uses t
 
 ## To Do
 
--   Remove transparent all together I think
+-   Add Duplicate to editor window instead of hover tool thing
+-   Remove transparent color from palette all together
 -   Add multiple options for shape dividers
 -   add in option for left and right padding
 -   add in option to customize gap width
