@@ -229,13 +229,46 @@ const BackgroundStyle = () => {
                     </div>
                 </div>
                 <div>
+                    <Label
+                        title="Degree"
+                        value={currentlyEditingChild.data.degree}
+                        showClass={false}
+                        customValue={currentlyEditingChild.data.degree}
+                        disabled={
+                            currentlyEditingChild.data.gradient_type === 'radial' ? true : false
+                        }
+                    />
+                    <div
+                        className={
+                            currentlyEditingChild.data.gradient_type === 'radial'
+                                ? `opacity-40 cursor-not-allowed`
+                                : ''
+                        }
+                    >
+                        <input
+                            type="range"
+                            min="0"
+                            max="360"
+                            value={currentlyEditingChild.data.degree}
+                            onChange={(event) =>
+                                handleBackgroundUpdate('degree', event.target.value)
+                            }
+                            className={
+                                currentlyEditingChild.data.gradient_type === 'radial'
+                                    ? `pointer-events-none`
+                                    : ''
+                            }
+                        />
+                    </div>
+                </div>
+                {/* <div>
                     <div>Degree</div>
                     <input
                         value={currentlyEditingChild.data.degree}
                         onChange={(event) => handleBackgroundUpdate('degree', event.target.value)}
                         className="border-2 px-4 py-2 rounded"
                     />
-                </div>
+                </div> */}
                 <div>
                     <Label
                         title="Gradient Type"
