@@ -237,14 +237,103 @@ const BackgroundStyle = () => {
                     />
                 </div>
                 <div>
-                    <div>Gradient Type (linear or radial)</div>
-                    <input
+                    <Label
+                        title="Gradient Type"
                         value={currentlyEditingChild.data.gradient_type}
-                        onChange={(event) =>
-                            handleBackgroundUpdate('gradient_type', event.target.value)
-                        }
-                        className="border-2 px-4 py-2 rounded"
+                        showClass={false}
                     />
+                    <div className="w-1/2 grid gap-4 grid-cols-2">
+                        <div
+                            onClick={() => handleBackgroundUpdate('gradient_type', 'linear')}
+                            className={`col-span-1 flex flex-row items-center p-3 rounded-lg border-2 ${
+                                currentlyEditingChild.data.gradient_type === 'linear'
+                                    ? 'border-green-500'
+                                    : 'border-gray-300'
+                            } hover:border-green-500 cursor-pointer`}
+                        >
+                            <div className="w-10">
+                                <div
+                                    className={`w-8 h-8 rounded-full ${
+                                        currentlyEditingChild.data.gradient_type === 'linear'
+                                            ? 'bg-green-500 shadow'
+                                            : 'bg-gray-300 shadow-inner'
+                                    } shadow flex items-center justify-center`}
+                                >
+                                    {currentlyEditingChild.data.gradient_type === 'linear' && (
+                                        <svg
+                                            className="text-white"
+                                            viewBox="0 0 24 24"
+                                            width="20"
+                                            height="20"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div
+                                    className={`uppercase text-sm ${
+                                        currentlyEditingChild.data.gradient_type === 'linear'
+                                            ? 'text-gray-800'
+                                            : 'text-gray-600'
+                                    } tracking-wide font-medium`}
+                                >
+                                    Linear
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            onClick={() => handleBackgroundUpdate('gradient_type', 'radial')}
+                            className={`col-span-1 flex flex-row items-center p-3 rounded-lg border-2 ${
+                                currentlyEditingChild.data.gradient_type === 'radial'
+                                    ? 'border-green-500'
+                                    : 'border-gray-300'
+                            } hover:border-green-500 cursor-pointer`}
+                        >
+                            <div className="w-10">
+                                <div
+                                    className={`w-8 h-8 rounded-full ${
+                                        currentlyEditingChild.data.gradient_type === 'radial'
+                                            ? 'bg-green-500 shadow'
+                                            : 'bg-gray-300 shadow-inner'
+                                    } shadow flex items-center justify-center`}
+                                >
+                                    {currentlyEditingChild.data.gradient_type === 'radial' && (
+                                        <svg
+                                            className="text-white"
+                                            viewBox="0 0 24 24"
+                                            width="20"
+                                            height="20"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div
+                                    className={`uppercase text-sm ${
+                                        currentlyEditingChild.data.gradient_type === 'radial'
+                                            ? 'text-gray-800'
+                                            : 'text-gray-600'
+                                    } tracking-wide font-medium`}
+                                >
+                                    Radial
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div>Background Photo URL</div>
@@ -274,17 +363,28 @@ const BackgroundStyle = () => {
                         className="border-2 px-4 py-2 rounded"
                     />
                 </div>
-                <button onClick={() => handleBackgroundStyleRemove()}>
-                    Remove Background Styling
-                </button>
+                <div>
+                    <Label title="Remove Background Styling" showClass={false} />
+                    <button
+                        className="rounded-lg text-base font-medium py-2 px-8 bg-gradient-to-b from-red-400 to-red-500 hover:from-red-500 hover:to-red-600 text-white focus:outline-none"
+                        onClick={() => handleBackgroundStyleRemove()}
+                    >
+                        Remove Background Styling
+                    </button>
+                </div>
             </div>
         )
     }
 
     return (
         <div>
-            No background image set...
-            <button onClick={() => handleBackgroundStyleAdd()}>Click here to set</button>
+            <Label title="Add Background Styling" showClass={false} />
+            <button
+                className="rounded-lg text-base font-medium py-2 px-8 bg-gradient-to-b from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white focus:outline-none"
+                onClick={() => handleBackgroundStyleAdd()}
+            >
+                Add Background Styling
+            </button>
         </div>
     )
 }
