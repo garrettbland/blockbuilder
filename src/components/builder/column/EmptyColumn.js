@@ -1,30 +1,25 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { ADD_CONTENT } from '@/redux/constants'
+import { ADD_CONTENT, SET_CUSTOM_MODAL } from '@/redux/constants'
 import { PlusCircle } from 'react-feather'
+import AddContent from '@/components/builder/AddContent'
 
 const EmptyColumn = ({ data: block }) => {
     const dispatch = useDispatch()
 
-    const AddContent = () => {
-        const content_type = window.prompt('What type of content? Text or Image')
-        const availableTypes = ['img', 'text', 'link']
-        if (availableTypes.includes(content_type)) {
-            dispatch({
-                type: ADD_CONTENT,
-                payload: {
-                    id: block.id,
-                    type: content_type,
-                },
-            })
-        } else {
-            alert('content type not allowed')
-        }
+    const handleAddContent = () => {
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: true,
+                component: <AddContent block={block} type={ADD_CONTENT} />,
+            },
+        })
     }
 
     return (
         <div
-            onClick={() => AddContent()}
+            onClick={() => handleAddContent()}
             className="flex justify-center items-center bg-white rounded-lg shadow-xl border-4 border-gray-300 py-2 hover:border-blue-400 cursor-pointer"
         >
             <div className="flex flex-row items-center text-base text-gray-700 pr-2 hover:border-gray-300">
