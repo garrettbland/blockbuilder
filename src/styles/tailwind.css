@@ -19,6 +19,11 @@
     outline-offset: 0px;
 } */
 
+/* get rid of min height for totally empty blocks */
+.smooth-dnd-container {
+    min-height: 0px !important;
+}
+
 .modal-tab-shadow-top {
     box-shadow: 0 1px 5px 4px rgba(0, 0, 0, 0.06);
 }
