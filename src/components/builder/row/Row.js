@@ -1,8 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, APPEND_ROW, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import {
+    SET_EDITING,
+    APPEND_ROW,
+    DUPLICATE_BLOCK,
+    SET_MODAL_VISIBILITY,
+    SET_CUSTOM_MODAL,
+} from '@/redux/constants'
 import { Settings, Copy, PlusCircle } from 'react-feather'
+import AddRow from './AddRow'
+import CustomModal from '@/components/builder/CustomModal'
 
 const Row = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
@@ -25,20 +33,31 @@ const Row = ({ block, children }) => {
         }
     })
 
-    const AddRow = () => {
-        const columns = window.prompt('How many columns?')
-        const availableColumns = [1, 2, 3, 4, 5, 6]
-        if (availableColumns.includes(parseInt(columns))) {
-            dispatch({
-                type: APPEND_ROW,
-                payload: {
-                    id: block.id,
-                    columns: parseInt(columns),
-                },
-            })
-        } else {
-            alert('Number not allowed')
-        }
+    const handleAddRow = () => {
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: true,
+                component: (
+                    <div>
+                        <AddRow block={block} />
+                    </div>
+                ),
+            },
+        })
+        // const columns = window.prompt('How many columns?')
+        // const availableColumns = [1, 2, 3, 4, 5, 6]
+        // if (availableColumns.includes(parseInt(columns))) {
+        //     dispatch({
+        //         type: APPEND_ROW,
+        //         payload: {
+        //             id: block.id,
+        //             columns: parseInt(columns),
+        //         },
+        //     })
+        // } else {
+        //     alert('Number not allowed')
+        // }
     }
 
     const DuplicateBlock = () => {
@@ -82,7 +101,7 @@ const Row = ({ block, children }) => {
                     <PlusCircle
                         strokeWidth={1.3}
                         className="w-10 h-10 text-black transform transition duration-150 ease-in-out hover:scale-110 p-2 cursor-pointer"
-                        onClick={() => AddRow()}
+                        onClick={() => handleAddRow()}
                     />
                 </div>
             </div>

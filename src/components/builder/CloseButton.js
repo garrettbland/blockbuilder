@@ -1,26 +1,30 @@
 import { useDispatch } from 'react-redux'
 import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
 
-const CloseButton = () => {
+const CloseButton = ({ onClick }) => {
     const dispatch = useDispatch()
 
     const handleClose = () => {
-        dispatch({
-            type: SET_MODAL_VISIBILITY,
-            payload: false,
-        })
-
-        /**
-         * We set this timeout to match the transition
-         * duration in the modal. If we don't do this,
-         * then the z-index changes instantly when closing
-         * and flahes but will fade in.
-         */
-        setTimeout(() => {
+        if (onClick) {
+            onClick()
+        } else {
             dispatch({
-                type: SET_EDITING,
+                type: SET_MODAL_VISIBILITY,
+                payload: false,
             })
-        }, 200)
+
+            /**
+             * We set this timeout to match the transition
+             * duration in the modal. If we don't do this,
+             * then the z-index changes instantly when closing
+             * and flahes but will fade in.
+             */
+            setTimeout(() => {
+                dispatch({
+                    type: SET_EDITING,
+                })
+            }, 200)
+        }
     }
 
     return (

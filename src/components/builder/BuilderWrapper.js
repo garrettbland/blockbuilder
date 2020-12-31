@@ -5,6 +5,7 @@ import { SWAP_BLOCKS } from '@/redux/constants'
 import Builder from './Builder'
 import NewSection from './section/NewSection'
 import Modal from './Modal'
+import CustomModal from './CustomModal'
 
 const BuilderWrapper = () => {
     const blocks = useSelector((state) => state.blocks)
@@ -23,6 +24,7 @@ const BuilderWrapper = () => {
     return (
         <div>
             <Modal />
+            <CustomModal />
             <div className="z-20 relative">
                 <Container
                     onDrop={(dropResult) => swapSections(dropResult)}

@@ -11,6 +11,7 @@ import {
     ADD_CONTENT,
     APPEND_CONTENT,
     DUPLICATE_BLOCK,
+    SET_CUSTOM_MODAL,
 } from './constants'
 const findAnd = require('find-and')
 import { v4 as uuidv4 } from 'uuid'
@@ -27,6 +28,10 @@ import { defaultBlocks } from '@/utils/blocks'
 let initialState = {
     currentlyEditing: null,
     is_modal_visible: false,
+    custom_modal: {
+        visible: false,
+        component: null,
+    },
     blocks: [
         {
             id: 'a94a8ce9-8d7c-4559-bdf9-030ec14f7bfe',
@@ -367,6 +372,18 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 is_modal_visible: action.payload ? action.payload : false,
+            }
+        }
+        case SET_CUSTOM_MODAL: {
+            console.log(action.payload)
+            return {
+                ...state,
+                custom_modal: {
+                    component: action.payload.component
+                        ? action.payload.component
+                        : state.custom_modal.component,
+                    ...action.payload,
+                },
             }
         }
         case UPDATE_BLOCK: {
