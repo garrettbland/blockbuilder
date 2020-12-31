@@ -58,7 +58,7 @@ const ConfirmDelete = ({ currentlyEditing }) => {
             </div>
             <div className="grid grid-cols-4 gap-4 p-4">
                 <button
-                    className="col-span-2 rounded-lg text-base bg-gradient-to-b from-gray-200 to-gray-300 font-medium py-2 px-8 focus:outline-none"
+                    className="col-span-2 rounded-lg text-base text-gray-700 bg-gray-200 font-medium py-2 px-8 focus:outline-none hover:bg-gray-300"
                     onClick={() => closeModal()}
                 >
                     Cancel
