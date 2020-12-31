@@ -38,15 +38,18 @@ const BlockActionsButton = ({ block }) => {
 
     return (
         <div className="flex flex-row items-center bg-white rounded-lg shadow-xl border border-gray-200 text-base text-gray-700 cursor-pointer">
-            <Settings strokeWidth={1.3} className="w-10 h-10 hover:text-gray-900 p-2" />
+            <Settings
+                strokeWidth={1.3}
+                className="w-10 h-10 hover:text-gray-900 p-2 transform transition duration-150 ease-in-out hover:scale-110"
+            />
             <PlusCircle
                 strokeWidth={1.3}
-                className="w-10 h-10 hover:text-gray-900 p-2"
+                className="w-10 h-10 hover:text-gray-900 p-2 transform transition duration-150 ease-in-out hover:scale-110"
                 onClick={(event) => handleAdd(event, block)}
             />
             <Copy
                 strokeWidth={1.3}
-                className="w-10 h-10 hover:text-gray-900 p-2"
+                className="w-10 h-10 hover:text-gray-900 p-2 transform transition duration-150 ease-in-out hover:scale-110"
                 onClick={(event) => DuplicateBlock(event, block)}
             />
         </div>

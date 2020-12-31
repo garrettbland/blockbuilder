@@ -38,11 +38,7 @@ const Row = ({ block, children }) => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: true,
-                component: (
-                    <div>
-                        <AddRow block={block} />
-                    </div>
-                ),
+                component: <AddRow block={block} />,
             },
         })
         // const columns = window.prompt('How many columns?')

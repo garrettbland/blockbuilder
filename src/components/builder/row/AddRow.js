@@ -39,10 +39,10 @@ const AddRow = ({ block }) => {
                 {availableColumns.map((columns) => (
                     <div
                         onClick={() => handleSelect(columns)}
-                        className={`grid grid-cols-${columns} gap-4 hover:ring-4 hover:ring-blue-400 hover:ring-offset-2 cursor-pointer rounded-lg`}
+                        className={`grid grid-cols-${columns} gap-4 group cursor-pointer rounded-lg`}
                     >
                         {[...Array(columns)].map(() => (
-                            <div className="h-12 col-span-1 rounded-lg bg-gray-400"></div>
+                            <div className="h-12 col-span-1 rounded-lg bg-gray-300 group-hover:bg-blue-400"></div>
                         ))}
                     </div>
                 ))}
