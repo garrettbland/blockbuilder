@@ -46,7 +46,23 @@ const Text = ({ block }) => {
                     <BlockActionsButton block={block} />
                 </div>
             </div>
-            <p dangerouslySetInnerHTML={{ __html: block.data }}></p>
+            <div>
+                {block.data[0].children[0].text === '' && (
+                    <div className="text-lg text-transparent">Empty text...</div>
+                )}
+                {block.data.map((item, index) => {
+                    switch (item.type) {
+                        case 'paragraph': {
+                            return item.children.map((child, childIndex) => {
+                                return <p key={childIndex}>{child.text}</p>
+                            })
+                        }
+                        default: {
+                            return null
+                        }
+                    }
+                })}
+            </div>
         </div>
     )
 }
