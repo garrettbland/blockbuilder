@@ -3,6 +3,7 @@ import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
 import BlockActionsButton from '../BlockActionsButton'
+import { chdir } from 'process'
 
 const Text = ({ block }) => {
     const [showTool, setShowTool] = useState(false)
@@ -46,6 +47,11 @@ const Text = ({ block }) => {
                     <BlockActionsButton block={block} />
                 </div>
             </div>
+            <div className="text-sm w-full">
+                <pre>
+                    <code>{JSON.stringify(block.data, null, 2)}</code>
+                </pre>
+            </div>
             <div>
                 {block.data[0].children[0].text === '' && (
                     <div className="text-lg text-transparent">Empty text...</div>
@@ -53,9 +59,28 @@ const Text = ({ block }) => {
                 {block.data.map((item, index) => {
                     switch (item.type) {
                         case 'paragraph': {
-                            return item.children.map((child, childIndex) => {
-                                return <p key={childIndex}>{child.text}</p>
-                            })
+                            return (
+                                <p>
+                                    {item.children.map((child, childIndex) => {
+                                        switch (child.type) {
+                                            case 'link': {
+                                                return <a href="#">{child.children[0].text}</a>
+                                            }
+                                            default: {
+                                                return (
+                                                    <span
+                                                        style={`${child.italic ? 'italic' : ''} ${
+                                                            child.bold ? 'bold' : ''
+                                                        }`}
+                                                    >
+                                                        {child.text}
+                                                    </span>
+                                                )
+                                            }
+                                        }
+                                    })}
+                                </p>
+                            )
                         }
                         default: {
                             return null
