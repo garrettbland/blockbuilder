@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
-import { Bold, Link, Underline } from 'react-feather'
+import { Bold, Italic, Link, Underline } from 'react-feather'
 
 import isUrl from 'is-url'
 import { Slate, Editable, withReact, useSlate } from 'slate-react'
@@ -49,11 +49,20 @@ const TextContent = () => {
                     value={currentlyEditing.data}
                     onChange={(newValue) => handleTextChange(newValue)}
                 >
-                    <div>
-                        <MarkButton format="bold" icon="format_bold" />
-                        <MarkButton format="italic" icon="format_italic" />
-                        <MarkButton format="underline" icon="format_underline" />
-                        <LinkButton />
+                    <div className="flex flex-row items-center space-x-4 mb-1">
+                        <MarkButton
+                            format="bold"
+                            icon={<div className="text-xl font-medium">B</div>}
+                        />
+                        <MarkButton
+                            format="italic"
+                            icon={<div className="text-xl font-medium italic font-serif">I</div>}
+                        />
+                        <MarkButton
+                            format="underline"
+                            icon={<div className="text-xl font-medium underline">U</div>}
+                        />
+                        <LinkButton icon={<Link strokeWidth="2.7" size="20" />} />
                         {/* <BlockButton format="numbered-list" icon="format_list_numbered" />
                         <BlockButton format="bulleted-list" icon="format_list_bulleted" /> */}
                     </div>
@@ -181,7 +190,9 @@ const MarkButton = ({ format, icon }) => {
     const editor = useSlate()
     return (
         <button
-            className={isMarkActive(editor, format) ? 'text-blue-500' : ''}
+            className={
+                isMarkActive(editor, format) ? 'text-blue-500' : 'text-gray-600 hover:text-gray-900'
+            }
             // active={isMarkActive(editor, format)}
             onMouseDown={(event) => {
                 event.preventDefault()
@@ -193,11 +204,11 @@ const MarkButton = ({ format, icon }) => {
     )
 }
 
-const LinkButton = () => {
+const LinkButton = ({ icon }) => {
     const editor = useSlate()
     return (
         <button
-            className={isLinkActive(editor) ? 'text-blue-500' : ''}
+            className={isLinkActive(editor) ? 'text-blue-500' : 'text-gray-600 hover:text-gray-900'}
             // active={isLinkActive(editor)}
             onMouseDown={(event) => {
                 event.preventDefault()
@@ -206,7 +217,7 @@ const LinkButton = () => {
                 insertLink(editor, url)
             }}
         >
-            Link
+            {icon}
         </button>
     )
 }
