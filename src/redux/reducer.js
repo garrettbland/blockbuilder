@@ -64,8 +64,18 @@ let initialState = {
                                     type: 'text',
                                     tag: 'p',
                                     classList: ['text-black', 'text-base', 'mb-4'],
-                                    data:
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                                    data: {
+                                        editor: 'editorjs',
+                                        blocks: [
+                                            {
+                                                type: 'paragraph',
+                                                data: {
+                                                    text:
+                                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+                                                },
+                                            },
+                                        ],
+                                    },
                                 },
                                 {
                                     id: uuidv4(),
@@ -137,86 +147,6 @@ let initialState = {
                         src:
                             'https://images.unsplash.com/photo-1508766917616-d22f3f1eea14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
                     },
-                },
-            ],
-        },
-        {
-            id: uuidv4(),
-            type: 'section',
-            tag: 'section',
-            classList: ['py-12', 'relative', 'bg-orange-500'],
-            data: [
-                {
-                    id: uuidv4(),
-                    type: 'row',
-                    tag: 'div',
-                    classList: [
-                        'max-w-4xl',
-                        'mx-auto',
-                        'bg-blue-500',
-                        'flex',
-                        'flex-wrap',
-                        'p-4',
-                        'mt-24',
-                    ],
-                    data: [
-                        {
-                            id: uuidv4(),
-                            type: 'column',
-                            tag: 'div',
-                            classList: ['w-full', 'md:w-1/3', 'p-4'],
-                            data: [
-                                {
-                                    id: uuidv4(),
-                                    type: 'image',
-                                    tag: 'img',
-                                    classList: [],
-                                    data: {
-                                        src:
-                                            'https://images.unsplash.com/photo-1503945839639-aea48daa250f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80',
-                                    },
-                                },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            type: 'column',
-                            tag: 'div',
-                            classList: ['w-full', 'md:w-1/3', 'p-4'],
-                            data: [
-                                {
-                                    id: uuidv4(),
-                                    type: 'image',
-                                    tag: 'img',
-                                    classList: [],
-                                    data: {
-                                        alt: 'image',
-                                        src:
-                                            'https://images.unsplash.com/photo-1505739679850-7adc7776516b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80',
-                                    },
-                                },
-                            ],
-                        },
-                        {
-                            id: uuidv4(),
-                            type: 'column',
-                            tag: 'div',
-                            classList: ['w-full', 'md:w-1/3', 'p-4'],
-                            data: [
-                                {
-                                    id: uuidv4(),
-                                    type: 'image',
-                                    tag: 'img',
-                                    classList: [],
-                                    data: {
-                                        alt: 'image',
-                                        src:
-                                            'https://images.unsplash.com/photo-1508176850193-21de4476f385?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80',
-                                    },
-                                },
-                            ],
-                        },
-                    ],
                 },
             ],
         },

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
+import EditorJs from 'react-editor-js'
 // import { ReactTrixRTEInput } from 'react-trix-rte'
 //import dynamic from 'next/dynamic'
 
@@ -33,7 +34,9 @@ const TextContent = () => {
     return (
         <div>
             {/* <Trix defaultValue={currentlyEditing.data} onChange={handleTextChange} /> */}
-            <div>Editor goes here</div>
+            <div>
+                <EditorJs data={currentlyEditing.data} />
+            </div>
         </div>
     )
 }
