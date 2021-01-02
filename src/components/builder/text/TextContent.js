@@ -52,9 +52,10 @@ const TextContent = () => {
                     <div>
                         <MarkButton format="bold" icon="format_bold" />
                         <MarkButton format="italic" icon="format_italic" />
+                        <MarkButton format="underline" icon="format_underline" />
                         <LinkButton />
-                        <BlockButton format="numbered-list" icon="format_list_numbered" />
-                        <BlockButton format="bulleted-list" icon="format_list_bulleted" />
+                        {/* <BlockButton format="numbered-list" icon="format_list_numbered" />
+                        <BlockButton format="bulleted-list" icon="format_list_bulleted" /> */}
                     </div>
                     <div className="border-2 border-gray-200 p-2 rounded">
                         <Editable

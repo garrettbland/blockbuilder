@@ -47,11 +47,6 @@ const Text = ({ block }) => {
                     <BlockActionsButton block={block} />
                 </div>
             </div>
-            <div className="text-sm w-full">
-                <pre>
-                    <code>{JSON.stringify(block.data, null, 2)}</code>
-                </pre>
-            </div>
             <div>
                 {block.data[0].children[0].text === '' && (
                     <div className="text-lg text-transparent">Empty text...</div>
@@ -64,14 +59,38 @@ const Text = ({ block }) => {
                                     {item.children.map((child, childIndex) => {
                                         switch (child.type) {
                                             case 'link': {
-                                                return <a href="#">{child.children[0].text}</a>
+                                                return (
+                                                    <a>
+                                                        {child.children.map(
+                                                            (linkChild, linkChildIndex) => {
+                                                                return (
+                                                                    <span
+                                                                        className={`
+                                                            ${linkChild.italic ? 'italic' : ''}
+                                                            ${linkChild.bold ? 'font-bold' : ''}
+                                                            ${
+                                                                linkChild.underline
+                                                                    ? 'underline'
+                                                                    : ''
+                                                            }
+                                                        `}
+                                                                    >
+                                                                        {linkChild.text}
+                                                                    </span>
+                                                                )
+                                                            }
+                                                        )}
+                                                    </a>
+                                                )
                                             }
                                             default: {
                                                 return (
                                                     <span
-                                                        style={`${child.italic ? 'italic' : ''} ${
-                                                            child.bold ? 'bold' : ''
-                                                        }`}
+                                                        className={`
+                                                            ${child.italic ? 'italic' : ''}
+                                                            ${child.bold ? 'font-bold' : ''}
+                                                            ${child.underline ? 'underline' : ''}
+                                                        `}
                                                     >
                                                         {child.text}
                                                     </span>
