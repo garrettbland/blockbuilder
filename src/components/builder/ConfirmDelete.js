@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux'
 import {
-    APPEND_ROW,
     SET_CUSTOM_MODAL,
     SET_MODAL_VISIBILITY,
     REMOVE_BLOCK,

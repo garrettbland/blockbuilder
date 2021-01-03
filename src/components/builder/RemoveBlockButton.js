@@ -19,6 +19,7 @@ const RemoveBlockButton = ({ title = 'Remove Element' }) => {
             payload: {
                 visible: true,
                 component: <ConfirmDelete currentlyEditing={currentlyEditing} />,
+                maxWidth: 'max-w-xl',
             },
         })
     }

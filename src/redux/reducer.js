@@ -159,6 +159,9 @@ const rootReducer = (state = initialState, action) => {
                     component: action.payload.component
                         ? action.payload.component
                         : state.custom_modal.component,
+                    maxWidth: action.payload.maxWidth
+                        ? action.payload.maxWidth
+                        : state.custom_modal.maxWidth,
                     ...action.payload,
                 },
             }

@@ -47,6 +47,7 @@ const CustomModal = () => {
                 type: SET_CUSTOM_MODAL,
                 payload: {
                     component: null,
+                    maxWidth: null,
                 },
             })
         }, 200)
@@ -62,7 +63,9 @@ const CustomModal = () => {
         >
             <div
                 ref={modalNode}
-                className={`bg-white max-w-xl mx-auto rounded-lg overflow-hidden my-12 transition duration-150 ease-in-out transform ${
+                className={`bg-white ${
+                    custom_modal.maxWidth ? custom_modal.maxWidth : 'max-w-xl'
+                } mx-auto rounded-lg overflow-hidden my-12 transition duration-150 ease-in-out transform ${
                     custom_modal.visible ? '' : '-translate-y-2'
                 }`}
             >
