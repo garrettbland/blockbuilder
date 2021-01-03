@@ -3,7 +3,6 @@ import { returnFound } from 'find-and'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
 import BlockActionsButton from '../BlockActionsButton'
-import { chdir } from 'process'
 
 const Text = ({ block }) => {
     const [showTool, setShowTool] = useState(false)
@@ -48,10 +47,7 @@ const Text = ({ block }) => {
                 </div>
             </div>
             <div>
-                {block.data[0].children[0].text === '' && (
-                    <div className="text-lg text-transparent">Empty text...</div>
-                )}
-                {block.data.map((item, index) => {
+                {block.content.data.map((item, index) => {
                     switch (item.type) {
                         case 'paragraph': {
                             return (
@@ -84,6 +80,9 @@ const Text = ({ block }) => {
                                                 )
                                             }
                                             default: {
+                                                if (child.text === '') {
+                                                    return <br />
+                                                }
                                                 return (
                                                     <span
                                                         className={`

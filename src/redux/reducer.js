@@ -113,12 +113,17 @@ let initialState = {
                                         'leading-none',
                                         'text-blue-900',
                                     ],
-                                    data: [
-                                        {
-                                            type: 'paragraph',
-                                            children: [{ text: 'A line of text in a paragraph.' }],
-                                        },
-                                    ],
+                                    content: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    { text: 'A line of text in a paragraph.' },
+                                                ],
+                                            },
+                                        ],
+                                    },
                                 },
                             ],
                         },

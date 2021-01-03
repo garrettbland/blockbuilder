@@ -17,7 +17,7 @@ Block Builder is a React based application to visually build websites. It uses t
 -   add in min height or something for empty text
 -   add in reset to default/remove styles button for blocks
 -   Add link color customization to text editing
--   Add in break tags after hitting enter in editor or min height to paragraphs?
+-   Clean up textContent page
 
 ### Development
 

@@ -36,7 +36,10 @@ const TextContent = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                data: newValue,
+                content: {
+                    ...currentlyEditing.content,
+                    data: newValue,
+                },
             },
         })
     }
@@ -46,25 +49,37 @@ const TextContent = () => {
             <div>
                 <Slate
                     editor={editor}
-                    value={currentlyEditing.data}
+                    value={currentlyEditing.content.data}
                     onChange={(newValue) => handleTextChange(newValue)}
                 >
-                    <div className="flex flex-row items-center space-x-4 mb-1">
-                        <MarkButton
-                            format="bold"
-                            icon={<div className="text-xl font-medium">B</div>}
-                        />
-                        <MarkButton
-                            format="italic"
-                            icon={<div className="text-xl font-medium italic font-serif">I</div>}
-                        />
-                        <MarkButton
-                            format="underline"
-                            icon={<div className="text-xl font-medium underline">U</div>}
-                        />
-                        <LinkButton icon={<Link strokeWidth="2.7" size="20" />} />
-                        {/* <BlockButton format="numbered-list" icon="format_list_numbered" />
+                    <div className="mb-1 inline-block">
+                        <div className="flex flex-row cursor-pointer items-center rounded overflow-hidden bg-gray-100">
+                            <MarkButton
+                                format="bold"
+                                icon={<Bold strokeWidth="2.7" size="18" className="w-8 h-8 p-2" />}
+                            />
+                            <MarkButton
+                                format="italic"
+                                icon={
+                                    <Italic strokeWidth="2.7" size="18" className="w-8 h-8 p-2" />
+                                }
+                            />
+                            <MarkButton
+                                format="underline"
+                                icon={
+                                    <Underline
+                                        strokeWidth="2.7"
+                                        size="18"
+                                        className="w-8 h-8 p-2"
+                                    />
+                                }
+                            />
+                            <LinkButton
+                                icon={<Link strokeWidth="2.7" size="18" className="w-8 h-8 p-2" />}
+                            />
+                            {/* <BlockButton format="numbered-list" icon="format_list_numbered" />
                         <BlockButton format="bulleted-list" icon="format_list_bulleted" /> */}
+                        </div>
                     </div>
                     <div className="border-2 border-gray-200 p-2 rounded">
                         <Editable
