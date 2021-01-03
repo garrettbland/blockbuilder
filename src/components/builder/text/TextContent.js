@@ -81,12 +81,12 @@ const TextContent = () => {
                         <BlockButton format="bulleted-list" icon="format_list_bulleted" /> */}
                         </div>
                     </div>
-                    <div className="border-2 border-gray-200 p-2 rounded">
+                    <div>
                         <Editable
+                            className="p-2 rounded border-2 border-gray-200 focus:border-blue-500"
                             style={{ minHeight: '6rem' }}
                             placeholder="Enter some text…"
                             spellCheck
-                            autoFocus
                             renderElement={renderElement}
                             renderLeaf={renderLeaf}
                         />

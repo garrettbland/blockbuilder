@@ -13,6 +13,7 @@ const EmptyColumn = ({ data: block }) => {
             payload: {
                 visible: true,
                 component: <AddContent block={block} type={ADD_CONTENT} />,
+                maxWidth: 'max-w-xl',
             },
         })
     }

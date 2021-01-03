@@ -78,12 +78,10 @@ const Row = ({ block, children }) => {
         <div data-type="row" ref={rowRef} className={[...block.classList].join(' ')}>
             <div
                 className={`absolute top-0 left-0 flex flex-row w-full h-full pointer-events-none ${
-                    showTool
-                        ? 'block ring-4 ring-green-600 ring-opacity-50 rounded overflow-hidden'
-                        : 'hidden'
+                    showTool ? 'block ring-4 ring-blue-400  rounded overflow-hidden' : 'hidden'
                 }`}
             >
-                <div className="absolute top-0 left-0 flex flex-row items-center bg-green-600 bg-opacity-50 rounded-br-lg pointer-events-auto">
+                <div className="absolute top-0 left-0 flex flex-row items-center bg-blue-400  rounded-br-lg pointer-events-auto">
                     <Settings
                         onClick={() => handleSettingsClick()}
                         strokeWidth={1.3}

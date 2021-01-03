@@ -152,7 +152,6 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case SET_CUSTOM_MODAL: {
-            console.log(action.payload)
             return {
                 ...state,
                 custom_modal: {

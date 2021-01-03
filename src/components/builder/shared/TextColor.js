@@ -30,11 +30,33 @@ const TextColor = () => {
         })
     }
 
+    const handleResetStyle = () => {
+        setTextColor(null)
+        const updatedClassList = removeColors(currentlyEditing.classList, 'text-')
+        dispatch({
+            type: UPDATE_EDITING,
+            payload: {
+                ...currentlyEditing,
+                classList: [...updatedClassList],
+            },
+        })
+    }
+
     return (
         <div>
-            <Label title="Text Color" value={textColor} />
+            <div className="flex flex-row items-center space-x-2">
+                <Label title="Text Color" value={textColor} />
+                <div className="mb-2">
+                    <button
+                        onClick={() => handleResetStyle()}
+                        className="text-sm px-2 py-px bg-gray-100 rounded-full hover:bg-gray-200 focus:outline-none"
+                    >
+                        Reset Style
+                    </button>
+                </div>
+            </div>
             <ColorPicker
-                currentColor={textColor.replace('text-', '')}
+                currentColor={textColor}
                 onClick={(color) => handleTextColorUpdate(`text-${color}`)}
                 showTransparent={false}
             />

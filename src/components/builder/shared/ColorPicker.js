@@ -28,7 +28,9 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
         <div>
             <button
                 onClick={() => handleModalOpen()}
-                className={`bg-${currentColor} w-24 h-12 rounded-lg cursor-pointer hover:ring-2 hover:ring-green-500 ring-offset-1 focus:outline-none shadow`}
+                className={`${
+                    currentColor ? currentColor.replace('text-', 'bg-') : 'checkered-background'
+                } w-24 h-12 rounded-lg cursor-pointer hover:ring-2 hover:ring-green-500 ring-offset-1 focus:outline-none shadow`}
             ></button>
         </div>
     )
@@ -36,10 +38,10 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
 
 const ColorPalette = ({ currentColor, onClick }) => {
     const dispatch = useDispatch()
-    const [color, setColor] = useState(currentColor)
+    const [color, setColor] = useState(currentColor.replace('bg-', '').replace('text-', ''))
 
     useEffect(() => {
-        setColor(currentColor)
+        setColor(currentColor.replace('bg-', '').replace('text-', ''))
     }, [currentColor])
 
     const handleColorChange = (color) => {

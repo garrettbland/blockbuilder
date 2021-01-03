@@ -10,11 +10,8 @@ Block Builder is a React based application to visually build websites. It uses t
 
 -   Add Duplicate to editor window instead of hover tool thing
 -   Remove transparent color from palette all together
--   Add multiple options for shape dividers
 -   add in option for left and right padding
 -   add in option to customize gap width
--   move editor to slate
--   add in min height or something for empty text
 -   add in reset to default/remove styles button for blocks
 -   Add link color customization to text editing
 -   Clean up textContent page

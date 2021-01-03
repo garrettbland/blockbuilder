@@ -60,8 +60,9 @@ const DividerColor = ({ position }) => {
         return (
             <div>
                 <Label title="Divider Color" value={dividerColor} showClass={false} />
+
                 <ColorPicker
-                    currentColor={dividerColor.replace('text-', '')}
+                    currentColor={dividerColor}
                     onClick={(color) => handleDividerColorUpdate(`text-${color}`)}
                     showTransparent={false}
                 />
