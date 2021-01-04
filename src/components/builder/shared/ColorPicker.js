@@ -38,10 +38,10 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
 
 const ColorPalette = ({ currentColor, onClick }) => {
     const dispatch = useDispatch()
-    const [color, setColor] = useState(currentColor.replace('bg-', '').replace('text-', ''))
+    const [color, setColor] = useState(null)
 
     useEffect(() => {
-        setColor(currentColor.replace('bg-', '').replace('text-', ''))
+        setColor(currentColor ? currentColor.replace('bg-', '').replace('text-', '') : null)
     }, [currentColor])
 
     const handleColorChange = (color) => {

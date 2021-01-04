@@ -56,10 +56,37 @@ const DividerColor = ({ position }) => {
         })
     }
 
+    const handleResetStyle = () => {
+        setDividerColor(null)
+        const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
+        dispatch({
+            type: UPDATE_EDITING,
+            payload: {
+                ...currentlyEditing,
+                data: findAnd.changeProps(
+                    currentlyEditing.data,
+                    { id: currentlyEditingChild.id },
+                    {
+                        ...currentlyEditingChild,
+                        data: {
+                            ...currentlyEditingChild.data,
+                        },
+                        classList: [...updatedClassList, 'text-transparent'],
+                    }
+                ),
+            },
+        })
+    }
+
     if (currentlyEditingChild && currentlyEditingChild.data) {
         return (
             <div>
-                <Label title="Divider Color" value={dividerColor} showClass={false} />
+                <Label
+                    title="Divider Color"
+                    value={dividerColor}
+                    showClass={false}
+                    resetStyle={() => handleResetStyle()}
+                />
 
                 <ColorPicker
                     currentColor={dividerColor}

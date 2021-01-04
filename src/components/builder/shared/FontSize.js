@@ -18,20 +18,22 @@ const FontSize = () => {
     }, [currentlyEditing.id])
 
     const handleFontSizeUpdate = (index) => {
-        setFontSize(generateFontSizes()[index])
+        setFontSize(index ? generateFontSizes()[index] : null)
         const updatedClassList = removeFontSizes(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateFontSizes()[index]],
+                classList: index
+                    ? [...updatedClassList, generateFontSizes()[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Font Size" value={fontSize} />
+            <Label title="Font Size" value={fontSize} resetStyle={() => handleFontSizeUpdate()} />
             <input
                 type="range"
                 min="0"

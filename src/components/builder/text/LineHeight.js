@@ -18,21 +18,26 @@ const LineHeight = () => {
     }, [currentlyEditing.id])
 
     const handleLineHeightUpdate = (index) => {
-        const newLineHeight = generateLineHeights()[index]
-        setLineHeight(newLineHeight)
+        setLineHeight(index ? generateLineHeights()[index] : null)
         const updatedClassList = removeLineHeights(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, newLineHeight],
+                classList: index
+                    ? [...updatedClassList, generateLineHeights()[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Line Height" value={lineHeight} />
+            <Label
+                title="Line Height"
+                value={lineHeight}
+                resetStyle={() => handleLineHeightUpdate()}
+            />
             <input
                 type="range"
                 min="0"

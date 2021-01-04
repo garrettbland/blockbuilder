@@ -25,36 +25,18 @@ const BackgroundColor = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, value],
-            },
-        })
-    }
-
-    const handleResetStyle = () => {
-        setBgColor(null)
-        const updatedClassList = removeColors(currentlyEditing.classList, 'bg-')
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: [...updatedClassList],
+                classList: value ? [...updatedClassList, value] : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <div className="flex flex-row items-center space-x-2">
-                <Label title="Background Color" value={bgColor} />
-                <div className="mb-2">
-                    <button
-                        onClick={() => handleResetStyle()}
-                        className="text-sm px-2 py-px bg-gray-100 rounded-full hover:bg-gray-200 focus:outline-none"
-                    >
-                        Reset Style
-                    </button>
-                </div>
-            </div>
+            <Label
+                title="Background Color"
+                value={bgColor}
+                resetStyle={() => handleBackgroundColorUpdate()}
+            />
             <ColorPicker
                 currentColor={bgColor}
                 onClick={(color) => handleBackgroundColorUpdate(`bg-${color}`)}

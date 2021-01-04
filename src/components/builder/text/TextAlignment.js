@@ -19,20 +19,24 @@ const TextAlignment = () => {
     }, [currentlyEditing.id])
 
     const handleTextAlignmentUpdate = (value) => {
-        setTextAlignment(value)
+        setTextAlignment(value ? value : null)
         const updatedClassList = removeTextAlignments(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, value],
+                classList: value ? [...updatedClassList, value] : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Alignment" value={textAlignment} />
+            <Label
+                title="Alignment"
+                value={textAlignment}
+                resetStyle={() => handleTextAlignmentUpdate()}
+            />
             <div className="bg-gray-100 rounded-lg overflow-hidden inline-block">
                 <div className="flex flex-row items-center cursor-pointer">
                     <AlignLeft

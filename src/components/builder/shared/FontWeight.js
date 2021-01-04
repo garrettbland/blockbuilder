@@ -18,20 +18,27 @@ const FontWeight = () => {
     }, [currentlyEditing.id])
 
     const handleFontSizeUpdate = (index) => {
-        setFontWeight(generateFontWeights()[index])
+        setFontWeight(index ? generateFontWeights()[index] : null)
         const updatedClassList = removeFontWeights(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
                 classList: [...updatedClassList, generateFontWeights()[index]],
+                classList: index
+                    ? [...updatedClassList, generateFontWeights()[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Font Weight" value={fontWeight} />
+            <Label
+                title="Font Weight"
+                value={fontWeight}
+                resetStyle={() => handleFontSizeUpdate()}
+            />
             <input
                 type="range"
                 min="0"

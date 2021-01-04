@@ -28,7 +28,7 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'section-divider-top',
             tag: 'div',
-            classList: ['absolute', 'top-0', 'left-0', 'w-full', 'h-64', 'text-red-500'],
+            classList: ['absolute', 'top-0', 'left-0', 'w-full', 'h-64', 'text-gray-300'],
             data: {
                 shape: 'default',
             },
@@ -37,7 +37,7 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'section-divider-bottom',
             tag: 'div',
-            classList: ['absolute', 'bottom-0', 'left-0', 'w-full', 'h-64', 'text-red-500'],
+            classList: ['absolute', 'bottom-0', 'left-0', 'w-full', 'h-64', 'text-gray-300'],
             data: {
                 shape: 'default',
             },

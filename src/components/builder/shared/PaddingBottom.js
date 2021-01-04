@@ -21,7 +21,7 @@ const PaddingBottom = () => {
     }, [])
 
     const handlePaddingBottomUpdate = (index) => {
-        setPaddingBottom(generateSpacing('pb-')[index])
+        setPaddingBottom(index ? generateSpacing('pb-')[index] : null)
 
         /**
          * Filter out current max width classes
@@ -32,14 +32,20 @@ const PaddingBottom = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateSpacing('pb-')[index]],
+                classList: index
+                    ? [...updatedClassList, generateSpacing('pb-')[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Padding Bottom" value={paddingBottom} />
+            <Label
+                title="Padding Bottom"
+                value={paddingBottom}
+                resetStyle={() => handlePaddingBottomUpdate()}
+            />
             <input
                 type="range"
                 min="0"
