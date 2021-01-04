@@ -18,7 +18,7 @@ const MarginBottom = () => {
     }, [])
 
     const handleMarginBottomUpdate = (index) => {
-        setMarginBottom(generateSpacing('mb-')[index])
+        setMarginBottom(index ? generateSpacing('mb-')[index] : null)
 
         /**
          * Filter out current max width classes
@@ -29,14 +29,20 @@ const MarginBottom = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateSpacing('mb-')[index]],
+                classList: index
+                    ? [...updatedClassList, generateSpacing('mb-')[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Margin Bottom" value={marginBottom} />
+            <Label
+                title="Margin Bottom"
+                value={marginBottom}
+                resetStyle={() => handleMarginBottomUpdate()}
+            />
             <input
                 type="range"
                 min="0"

@@ -21,13 +21,15 @@ const BorderRadius = () => {
     }, [currentlyEditing.id])
 
     const handleBorderRadiusUpdate = (index) => {
-        setBorderRadius(generateBorderRadiuses()[index])
+        setBorderRadius(index ? generateBorderRadiuses()[index] : null)
         const updatedClassList = removeBorderRadiuses(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateBorderRadiuses()[index]],
+                classList: index
+                    ? [...updatedClassList, generateBorderRadiuses()[index]]
+                    : [...updatedClassList],
             },
         })
     }
@@ -35,7 +37,11 @@ const BorderRadius = () => {
     return (
         <div>
             <div>
-                <Label title="Border Radius" value={borderRadius} />
+                <Label
+                    title="Border Radius"
+                    value={borderRadius}
+                    resetStyle={() => handleBorderRadiusUpdate()}
+                />
                 <input
                     type="range"
                     min="0"

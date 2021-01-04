@@ -17,6 +17,7 @@ Block Builder is a React based application to visually build websites. It uses t
 -   Clean up textContent page
 -   Add link editing eventually to wysiwyg editor (https://github.com/ianstormtaylor/slate/issues/861)
 -   add versioning to website blocks eventually incase editor or structure changes
+-   Going from link background color submit, to column picker makes the column picker a wider width
 
 ### Development
 

@@ -21,7 +21,7 @@ const BackgroundOpacity = () => {
     }, [])
 
     const handleBackgroundOpacityUpdate = (index) => {
-        setBackgroundOpacity(generateOpacities('bg-')[index])
+        setBackgroundOpacity(index ? generateOpacities('bg-')[index] : null)
 
         /**
          * Filter out current max width classes
@@ -32,14 +32,20 @@ const BackgroundOpacity = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateOpacities('bg-')[index]],
+                classList: index
+                    ? [...updatedClassList, generateOpacities('bg-')[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Background Opacity" value={backgroundOpacity} />
+            <Label
+                title="Background Opacity"
+                value={backgroundOpacity}
+                resetStyle={() => handleBackgroundOpacityUpdate()}
+            />
             <input
                 type="range"
                 min="0"

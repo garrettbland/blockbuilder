@@ -18,7 +18,7 @@ const MarginTop = () => {
     }, [])
 
     const handleMarginTopUpdate = (index) => {
-        setMarginTop(generateSpacing('mt-')[index])
+        setMarginTop(index ? generateSpacing('mt-')[index] : null)
 
         /**
          * Filter out current max width classes
@@ -29,14 +29,20 @@ const MarginTop = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateSpacing('mt-')[index]],
+                classList: index
+                    ? [...updatedClassList, generateSpacing('mt-')[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Margin Top" value={marginTop} />
+            <Label
+                title="Margin Top"
+                value={marginTop}
+                resetStyle={() => handleMarginTopUpdate()}
+            />
             <input
                 type="range"
                 min="0"

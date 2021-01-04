@@ -18,13 +18,15 @@ const BoxShadow = () => {
     }, [currentlyEditing.id])
 
     const handleBoxShadowUpdate = (index) => {
-        setBoxShadow(generateBoxShadows()[index])
+        setBoxShadow(index ? generateBoxShadows()[index] : null)
         const updatedClassList = removeBoxShadows(currentlyEditing.classList)
         dispatch({
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateBoxShadows()[index]],
+                classList: index
+                    ? [...updatedClassList, generateBoxShadows()[index]]
+                    : [...updatedClassList],
             },
         })
     }
@@ -32,7 +34,11 @@ const BoxShadow = () => {
     return (
         <div>
             <div>
-                <Label title="Box Shadow" value={boxShadow} />
+                <Label
+                    title="Box Shadow"
+                    value={boxShadow}
+                    resetStyle={() => handleBoxShadowUpdate()}
+                />
                 <input
                     type="range"
                     min="0"

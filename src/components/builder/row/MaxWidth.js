@@ -18,7 +18,7 @@ const MaxWidth = () => {
     }, [])
 
     const handleMaxWidthUpdate = (index) => {
-        setMaxWidth(generateMaxWidths()[index])
+        setMaxWidth(index ? generateMaxWidths()[index] : null)
 
         /**
          * Filter out current max width classes
@@ -29,14 +29,16 @@ const MaxWidth = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                classList: [...updatedClassList, generateMaxWidths()[index]],
+                classList: index
+                    ? [...updatedClassList, generateMaxWidths()[index]]
+                    : [...updatedClassList],
             },
         })
     }
 
     return (
         <div>
-            <Label title="Max Width" value={maxWidth} />
+            <Label title="Max Width" value={maxWidth} resetStyle={() => handleMaxWidthUpdate()} />
             <input
                 type="range"
                 min="0"

@@ -230,7 +230,7 @@ const BackgroundStyle = () => {
                 </div>
                 <div>
                     <Label
-                        title="Degree"
+                        title="Gradient Degree"
                         value={currentlyEditingChild.data.degree}
                         showClass={false}
                         customValue={currentlyEditingChild.data.degree}

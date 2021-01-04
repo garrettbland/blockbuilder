@@ -68,7 +68,7 @@ const ColorPalette = ({ currentColor, onClick }) => {
                 <CloseButton onClick={() => closeModal()} />
             </div>
 
-            <div className="grid grid-cols-10 gap-2 p-2">
+            <div className="grid grid-cols-10 gap-2 px-4 pb-4">
                 <div
                     onClick={() => handleColorChange(`white`)}
                     className={`h-12 w-full col-span-5 cursor-pointer rounded-lg bg-white flex items-center justify-center hover:ring-2 hover:ring-green-500 hover:ring-offset-1 ${
