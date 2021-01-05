@@ -2,6 +2,10 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { APPEND_CONTENT } from '@/redux/constants'
 
+/**
+ * 99% sure this can be removed...
+ */
+
 const AddContentButton = ({ block }) => {
     const dispatch = useDispatch()
 

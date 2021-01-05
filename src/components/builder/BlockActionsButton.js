@@ -16,6 +16,7 @@ const BlockActionsButton = ({ block }) => {
             payload: {
                 visible: true,
                 component: <AddContent block={block} />,
+                maxWidth: null,
             },
         })
 

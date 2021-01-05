@@ -291,6 +291,18 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case DUPLICATE_BLOCK: {
+            console.log(action.payload)
+
+            const UpdateIds = (items) => {
+                return items.map((item) => {
+                    return {
+                        ...item,
+                        id: uuidv4(),
+                        data: Array.isArray(item.data) ? UpdateIds(item.data) : item.data,
+                    }
+                })
+            }
+
             return {
                 ...state,
                 blocks: findAnd.insertObjectAfter(
@@ -299,6 +311,7 @@ const rootReducer = (state = initialState, action) => {
                     {
                         ...action.payload,
                         id: uuidv4(),
+                        data: action.payload.data ? UpdateIds(action.payload.data) : null,
                     }
                 ),
             }

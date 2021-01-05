@@ -39,6 +39,7 @@ const Row = ({ block, children }) => {
             payload: {
                 visible: true,
                 component: <AddRow block={block} />,
+                maxWidth: null,
             },
         })
         // const columns = window.prompt('How many columns?')
