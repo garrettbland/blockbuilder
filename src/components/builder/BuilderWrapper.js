@@ -6,6 +6,7 @@ import Builder from './Builder'
 import NewSection from './section/NewSection'
 import Modal from './Modal'
 import CustomModal from './CustomModal'
+import ActionButton from './ActionButton'
 
 const BuilderWrapper = () => {
     const blocks = useSelector((state) => state.blocks)
@@ -35,6 +36,7 @@ const BuilderWrapper = () => {
                 </Container>
                 <NewSection />
             </div>
+            <ActionButton />
         </div>
     )
 }

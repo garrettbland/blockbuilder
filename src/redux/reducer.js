@@ -291,8 +291,6 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case DUPLICATE_BLOCK: {
-            console.log(action.payload)
-
             const UpdateIds = (items) => {
                 return items.map((item) => {
                     return {
@@ -311,7 +309,11 @@ const rootReducer = (state = initialState, action) => {
                     {
                         ...action.payload,
                         id: uuidv4(),
-                        data: action.payload.data ? UpdateIds(action.payload.data) : null,
+                        data: action.payload.data
+                            ? Array.isArray(action.payload.data)
+                                ? UpdateIds(action.payload.data)
+                                : action.payload.data
+                            : null,
                     }
                 ),
             }
