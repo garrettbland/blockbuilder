@@ -43,7 +43,7 @@ const AddContent = ({ block, type = APPEND_CONTENT }) => {
                         <div>
                             <FileText
                                 strokeWidth={1.3}
-                                className="w-14 h-14 text-black p-2 text-gray-900 group-hover:text-white"
+                                className="w-14 h-14 p-2 text-gray-900 group-hover:text-white"
                             />
                             <div className="text-gray-700 group-hover:text-white font-medium">
                                 Text
@@ -57,7 +57,7 @@ const AddContent = ({ block, type = APPEND_CONTENT }) => {
                         <div>
                             <Image
                                 strokeWidth={1.3}
-                                className="w-14 h-14 text-black p-2 text-gray-900 group-hover:text-white"
+                                className="w-14 h-14 p-2 text-gray-900 group-hover:text-white"
                             />
                             <div className="text-gray-700 group-hover:text-white font-medium">
                                 Image
@@ -71,7 +71,7 @@ const AddContent = ({ block, type = APPEND_CONTENT }) => {
                         <div>
                             <MousePointer
                                 strokeWidth={1.3}
-                                className="w-14 h-14 text-black p-2 text-gray-900 group-hover:text-white"
+                                className="w-14 h-14 p-2 text-gray-900 group-hover:text-white"
                             />
                             <div className="text-gray-700 group-hover:text-white font-medium">
                                 Button
