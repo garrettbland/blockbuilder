@@ -5,7 +5,8 @@
             "@/components/*": ["src/components/*"],
             "@/redux/*": ["src/redux/*"],
             "@/utils/*": ["src/utils/*"],
-            "@/styles/*": ["src/styles/*"]
+            "@/styles/*": ["src/styles/*"],
+            "@/src/*": ["src/*"]
         }
     }
 }

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Save, Settings } from 'react-feather'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
+import firebase from '@/src/firebase'
 
 const ActionButton = () => {
     const blocks = useSelector((state) => state.blocks)
@@ -18,14 +19,42 @@ const ActionButton = () => {
     }
 
     const handleExport = () => {
-        dispatch({
-            type: SET_CUSTOM_MODAL,
-            payload: {
-                visible: true,
-                component: <CodePreview blocks={blocks} />,
-                maxWidth: 'max-w-5xl',
-            },
+        uploadToFirebase().then((data) => {
+            console.log(data)
+            dispatch({
+                type: SET_CUSTOM_MODAL,
+                payload: {
+                    visible: true,
+                    component: <CodePreview blocks={blocks} />,
+                    maxWidth: 'max-w-5xl',
+                },
+            })
         })
+    }
+
+    const uploadToFirebase = async () => {
+        try {
+            /**
+             * Add blocks to firebase and generate UUID
+             */
+
+            await firebase
+                .firestore()
+                .collection('beta')
+                .add({
+                    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+                    blocks,
+                })
+
+            return {
+                successful: true,
+            }
+        } catch (err) {
+            return {
+                error: true,
+                message: err,
+            }
+        }
     }
 
     return (
@@ -84,7 +113,6 @@ const CodePreview = ({ blocks }) => {
                         }
                     }
                     case 'column': {
-                        console.log(block.data)
                         if (Array.isArray(block.data) && block.data.length > 0) {
                             return `
                         <div class="${block.classList.join(' ')}">
