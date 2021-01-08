@@ -1,11 +1,17 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Save, Settings } from 'react-feather'
+import { Save, Settings, Loader } from 'react-feather'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useRouter } from 'next/router'
+import { Link } from 'next/link'
 import firebase from '@/src/firebase'
+import EmailCapture from '@/components/EmailCapture'
 
 const ActionButton = () => {
     const blocks = useSelector((state) => state.blocks)
     const dispatch = useDispatch()
+    const router = useRouter()
+    const [isLoading, setLoading] = useState(false)
 
     const handleSettingsClick = () => {
         dispatch({
@@ -13,20 +19,40 @@ const ActionButton = () => {
             payload: {
                 visible: true,
                 component: <SettingsModal />,
-                maxWidth: null,
+                maxWidth: 'max-w-3xl',
             },
         })
     }
 
     const handleExport = () => {
+        setLoading(true)
+
         uploadToFirebase().then((data) => {
-            console.log(data)
+            setLoading(false)
+
+            if (data.type === 'create') {
+                router.push(
+                    {
+                        pathname: `/`,
+                        query: {
+                            page_id: data.page_id,
+                        },
+                    },
+                    `/?page_id=${data.page_id}`,
+                    { shallow: true }
+                )
+            }
             dispatch({
                 type: SET_CUSTOM_MODAL,
                 payload: {
                     visible: true,
-                    component: <CodePreview blocks={blocks} />,
-                    maxWidth: 'max-w-5xl',
+                    component: (
+                        <URLPreview
+                            pageId={data.page_id}
+                            type={data.type === 'create' ? 'created' : 'updated'}
+                        />
+                    ),
+                    maxWidth: 'max-w-3xl',
                 },
             })
         })
@@ -38,16 +64,39 @@ const ActionButton = () => {
              * Add blocks to firebase and generate UUID
              */
 
-            await firebase
-                .firestore()
-                .collection('beta')
-                .add({
-                    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
-                    blocks,
-                })
+            if (router.query.page_id) {
+                /**
+                 * Page id is defined, update firebase page instead of creating new
+                 */
 
-            return {
-                successful: true,
+                await firebase
+                    .firestore()
+                    .collection('beta')
+                    .doc(router.query.page_id)
+                    .update({
+                        updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
+                        blocks,
+                    })
+
+                return {
+                    page_id: router.query.page_id,
+                    type: 'update',
+                    successful: true,
+                }
+            } else {
+                const new_page_id = await firebase
+                    .firestore()
+                    .collection('beta')
+                    .add({
+                        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+                        blocks,
+                    })
+
+                return {
+                    page_id: new_page_id.id,
+                    type: 'create',
+                    successful: true,
+                }
             }
         } catch (err) {
             return {
@@ -70,8 +119,37 @@ const ActionButton = () => {
                     onClick={() => handleExport()}
                     className="w-16 h-16 bg-gradient-to-b from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white rounded-full shadow-xl flex items-center justify-center focus:outline-none"
                 >
-                    <Save size={32} strokeWidth={1} />
+                    {isLoading && <Loader size={32} strokeWidth={1.3} className="animate-spin" />}
+                    {!isLoading && <Save size={32} strokeWidth={1} />}
                 </button>
+            </div>
+        </div>
+    )
+}
+
+const URLPreview = ({ pageId, type }) => {
+    return (
+        <div className="p-4 flex items-center justify-center">
+            <div className="my-12">
+                <p className="font-bold text-lg tet-black text-center">Page Saved Successfully</p>
+                <p className="text-gray-800 text-center">
+                    Your page was {type} and can be shared and viewed below.
+                </p>
+                <div className="mt-6">
+                    <p className="text-gray-600 text-center font-bold">Public Page URL</p>
+                    <p className="text-center">
+                        <a
+                            className="text-blue-500 hover:underline"
+                            href={`/pages/${pageId}`}
+                            target="_blank"
+                        >
+                            https://blockbuilder.app/pages/{pageId}
+                        </a>
+                    </p>
+                </div>
+                <div className="mt-12">
+                    <EmailCapture />
+                </div>
             </div>
         </div>
     )
@@ -170,14 +248,37 @@ const CodePreview = ({ blocks }) => {
 }
 
 const SettingsModal = () => {
+    const router = useRouter()
     return (
         <div className="p-4 flex items-center justify-center">
             <div className="my-12">
                 <p className="font-bold text-lg tet-black text-center">Coming Soon</p>
-                <p className="text-gray-800 text-center">
+                <p className="text-gray-800 text-center px-12">
                     This is where editing whole page level options will go. For example, typeface,
-                    title, meta descriptions, etc.
+                    title, meta descriptions, favicons, etc.
                 </p>
+                <div className="my-6">
+                    <p className="text-gray-600 text-center font-bold">Public Page URL</p>
+                    {router.query.page_id && (
+                        <p className="text-gray-800 text-center">
+                            <a
+                                className="text-blue-500 hover:underline"
+                                href={`/pages/${router.query.page_id}`}
+                                target="_blank"
+                            >
+                                https://blockbuilder.app/pages/{router.query.page_id}
+                            </a>
+                        </p>
+                    )}
+                    {!router.query.page_id && (
+                        <p className="text-gray-800 text-center">
+                            Page not yet saved. Save your page first to show preview URL.
+                        </p>
+                    )}
+                </div>
+                <div className="mt-12">
+                    <EmailCapture />
+                </div>
             </div>
         </div>
     )
