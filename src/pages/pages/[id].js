@@ -1,7 +1,9 @@
 var admin = require('firebase-admin')
 import Head from 'next/head'
+import { SerializeToHtml } from '@/utils/serialize'
 
 const Page = ({ blocks, id, error = false }) => {
+    console.log(blocks)
     if (error) {
         return <div>Something went wrong on our end</div>
     }
@@ -12,8 +14,11 @@ const Page = ({ blocks, id, error = false }) => {
                 <title>Block Builder</title>
             </Head>
             <div>
-                <div>Fetch firebase page for {id}</div>
-                <div>{JSON.stringify(blocks, null, 4)}</div>
+                {/* <div>Fetch firebase page for {id}</div>
+                <pre>
+                    <code>{JSON.stringify(blocks, null, 4)}</code>
+                </pre> */}
+                <div dangerouslySetInnerHTML={{ __html: SerializeToHtml(blocks) }}></div>
             </div>
         </div>
     )
@@ -21,7 +26,7 @@ const Page = ({ blocks, id, error = false }) => {
 
 export const getServerSideProps = async (context) => {
     try {
-        var serviceAccount = require('@/src/firebase-admin.json')
+        const serviceAccount = require('@/src/firebase-admin.json')
         if (!admin.apps.length) {
             admin.initializeApp({
                 credential: admin.credential.cert(serviceAccount),

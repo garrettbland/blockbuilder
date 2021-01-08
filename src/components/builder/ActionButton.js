@@ -119,7 +119,7 @@ const ActionButton = () => {
                     onClick={() => handleExport()}
                     className="w-16 h-16 bg-gradient-to-b from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white rounded-full shadow-xl flex items-center justify-center focus:outline-none"
                 >
-                    {isLoading && <Loader size={32} strokeWidth={1.3} className="animate-spin" />}
+                    {isLoading && <Loader size={32} strokeWidth={2} className="animate-spin" />}
                     {!isLoading && <Save size={32} strokeWidth={1} />}
                 </button>
             </div>

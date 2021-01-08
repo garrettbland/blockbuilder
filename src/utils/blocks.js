@@ -6,7 +6,7 @@ export const defaultBlocks = (type, columns) => {
             id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['relative', 'pt-12', 'pb-12'],
+            classList: ['relative', 'pt-12', 'pb-12', 'overflow-hidden'],
             data: [],
         },
         sectionBackground: {
