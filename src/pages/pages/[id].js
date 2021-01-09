@@ -7,7 +7,6 @@ import { SerializeToHtml } from '@/utils/serialize'
 
 const Page = () => {
     const [isLoading, setIsLoading] = useState(true)
-    const [hasError, setHasError] = useState(false)
     const [blocks, setBlocks] = useState([])
     const router = useRouter()
     const { id } = router.query
@@ -33,7 +32,6 @@ const Page = () => {
                     error: true,
                 }
             } else {
-                console.log(blocks)
                 return {
                     blocks: document.data().blocks,
                 }
@@ -71,41 +69,5 @@ const Page = () => {
         </div>
     )
 }
-
-// export const getServerSideProps = async (context) => {
-//     try {
-//         const serviceAccount = require('@/src/firebase-admin.json')
-//         if (!admin.apps.length) {
-//             admin.initializeApp({
-//                 credential: admin.credential.cert(serviceAccount),
-//             })
-//         }
-
-//         /**
-//          * Get the id from the URL /pages/[id]
-//          */
-//         const document = await admin.firestore().collection('beta').doc(context.params.id).get()
-
-//         if (!document.exists) {
-//             return {
-//                 notFound: true,
-//             }
-//         } else {
-//             return {
-//                 props: {
-//                     id: context.params.id,
-//                     blocks: document.data().blocks,
-//                 },
-//             }
-//         }
-//     } catch (err) {
-//         console.log(err)
-//         return {
-//             props: {
-//                 error: true,
-//             },
-//         }
-//     }
-// }
 
 export default Page
