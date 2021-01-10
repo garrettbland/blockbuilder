@@ -5,10 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-// const mode = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
-// const isDevMode = mode !== 'production'
+const mode = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
+const isDevMode = mode !== 'production'
 
 module.exports = {
+    mode,
     entry: {
         index: path.resolve(__dirname, 'src', 'index.js'),
     },
