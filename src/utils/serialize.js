@@ -1,4 +1,3 @@
-import { Warning } from 'postcss'
 import { html } from 'common-tags'
 
 export const SerializeToHtml = (blocks) => {

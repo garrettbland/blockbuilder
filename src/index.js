@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Home from './views/Home'
+import Router from '@/src/Router'
 import '@/styles/tailwind.css'
 import { Provider } from 'react-redux'
 import store from '@/redux/store'
 
 const Main = () => (
     <Provider store={store}>
-        <Home />
+        <Router />
     </Provider>
 )
 

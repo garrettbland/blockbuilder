@@ -1,3 +1,4 @@
+import React from 'react'
 import { generateShapes } from '@/utils/shapes'
 
 const SectionDivider = ({ block }) => {

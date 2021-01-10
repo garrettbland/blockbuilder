@@ -1,3 +1,4 @@
+import React from 'react'
 import Tabs from '@/components/builder/ModalTabs'
 import BorderRadius from '../shared/BorderRadius'
 import BoxShadow from '../shared/BoxShadow'

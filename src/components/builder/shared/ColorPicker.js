@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { generateColors } from '@/utils/colors'
 import { useDispatch } from 'react-redux'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'

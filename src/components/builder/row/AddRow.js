@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { APPEND_ROW, SET_CUSTOM_MODAL } from '@/redux/constants'
 import CloseButton from '@/components/builder/CloseButton'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { DUPLICATE_BLOCK, APPEND_CONTENT, SET_CUSTOM_MODAL } from '@/redux/constants'
 import { Settings, PlusCircle, Copy } from 'react-feather'

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import BuilderWrapper from '@/components/builder/BuilderWrapper'
 
 const Home = () => {
-    return <div>Home page</div>
+    // return <div>Home page</div>
     // const router = useRouter()
 
     // useEffect(() => {

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Save, Settings, Loader } from 'react-feather'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
 // import { useRouter } from 'next/router'
+import { useParams, navigate, Link } from '@reach/router'
 // import { Link } from 'next/link'
 import firebase from '@/src/firebase'
 import EmailCapture from '@/components/EmailCapture'
@@ -10,7 +11,7 @@ import EmailCapture from '@/components/EmailCapture'
 const ActionButton = () => {
     const blocks = useSelector((state) => state.blocks)
     const dispatch = useDispatch()
-    const router = useRouter()
+    const params = useParams()
     const [isLoading, setLoading] = useState(false)
 
     const handleSettingsClick = () => {
@@ -31,16 +32,18 @@ const ActionButton = () => {
             setLoading(false)
 
             if (data.type === 'create') {
-                router.push(
-                    {
-                        pathname: `/`,
-                        query: {
-                            page_id: data.page_id,
-                        },
-                    },
-                    `/?page_id=${data.page_id}`,
-                    { shallow: true }
-                )
+                // need to update to reach
+                navigate(`/?page_id=${data.page_id}`)
+                // router.push(
+                //     {
+                //         pathname: `/`,
+                //         query: {
+                //             page_id: data.page_id,
+                //         },
+                //     },
+                //     `/?page_id=${data.page_id}`,
+                //     { shallow: true }
+                // )
             }
             dispatch({
                 type: SET_CUSTOM_MODAL,
@@ -64,7 +67,7 @@ const ActionButton = () => {
              * Add blocks to firebase and generate UUID
              */
 
-            if (router.query.page_id) {
+            if (params.pageId) {
                 /**
                  * Page id is defined, update firebase page instead of creating new
                  */
@@ -72,14 +75,14 @@ const ActionButton = () => {
                 await firebase
                     .firestore()
                     .collection('beta')
-                    .doc(router.query.page_id)
+                    .doc(params.pageId)
                     .update({
                         updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
                         blocks,
                     })
 
                 return {
-                    page_id: router.query.page_id,
+                    page_id: params.pageId,
                     type: 'update',
                     successful: true,
                 }
@@ -248,7 +251,7 @@ const CodePreview = ({ blocks }) => {
 }
 
 const SettingsModal = () => {
-    const router = useRouter()
+    const params = useParams()
     return (
         <div className="p-4 flex items-center justify-center">
             <div className="my-12">
@@ -259,18 +262,18 @@ const SettingsModal = () => {
                 </p>
                 <div className="my-6">
                     <p className="text-gray-600 text-center font-bold">Public Page URL</p>
-                    {router.query.page_id && (
+                    {params.pageId && (
                         <p className="text-gray-800 text-center">
                             <a
                                 className="text-blue-500 hover:underline"
-                                href={`/pages/${router.query.page_id}`}
+                                href={`/pages/${params.pageId}`}
                                 target="_blank"
                             >
-                                https://blockbuilder.app/pages/{router.query.page_id}
+                                https://blockbuilder.app/pages/{params.pageId}
                             </a>
                         </p>
                     )}
-                    {!router.query.page_id && (
+                    {!params.pageId && (
                         <p className="text-gray-800 text-center">
                             Page not yet saved. Save your page first to show preview URL.
                         </p>
