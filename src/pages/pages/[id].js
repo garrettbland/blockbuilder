@@ -1,6 +1,6 @@
 // var admin = require('firebase-admin')
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
+// import Head from 'next/head'
 import firebase from '@/src/firebase'
 import { useRouter } from 'next/router'
 import { SerializeToHtml } from '@/utils/serialize'
@@ -54,9 +54,6 @@ const Page = () => {
 
     return (
         <div>
-            <Head>
-                <title>Block Builder</title>
-            </Head>
             {!isLoading && (
                 <div>
                     {/* <div>Fetch firebase page for {id}</div>
