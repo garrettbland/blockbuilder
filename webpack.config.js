@@ -1,6 +1,64 @@
 // const webpack = require('webpack')
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+// const mode = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
+// const isDevMode = mode !== 'production'
+
+module.exports = {
+    entry: {
+        index: path.resolve(__dirname, 'src', 'index.js'),
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js',
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            '@/components': path.resolve(__dirname, 'src/components/'),
+            '@/redux': path.resolve(__dirname, 'src/redux/'),
+            '@/utils': path.resolve(__dirname, 'src/utils/'),
+            '@/styles': path.resolve(__dirname, 'src/styles/'),
+            '@/src': path.resolve(__dirname, 'src/'),
+            '@/views': path.resolve(__dirname, 'src/views/'),
+        },
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: [/node_modules/],
+                use: [{ loader: 'babel-loader' }],
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+            },
+        ],
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'styles-[contenthash].css',
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'index.template.html'),
+            filename: 'index.html',
+            hash: true,
+        }),
+        new CopyPlugin({
+            patterns: [{ from: './public/' }],
+        }),
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        port: 8080,
+    },
+}
 
 // const config = {
 //     entry: './src/index.js',
@@ -53,68 +111,3 @@ const CopyPlugin = require('copy-webpack-plugin')
 // }
 
 // module.exports = config
-
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-const mode = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
-const isDevMode = mode !== 'production'
-
-module.exports = {
-    mode,
-    entry: {
-        main: './src/index.js',
-    },
-    resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            '@/components': path.resolve(__dirname, 'src/components/'),
-            '@/redux': path.resolve(__dirname, 'src/redux/'),
-            '@/utils': path.resolve(__dirname, 'src/utils/'),
-            '@/styles': path.resolve(__dirname, 'src/styles/'),
-            '@/src': path.resolve(__dirname, 'src/'),
-            '@/views': path.resolve(__dirname, 'src/views/'),
-        },
-    },
-    output: {
-        publicPath: '/',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(ts|js)x?$/,
-                exclude: [/node_modules/],
-                use: [{ loader: 'babel-loader' }],
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: isDevMode,
-                        },
-                    },
-                    'postcss-loader',
-                ],
-            },
-        ],
-    },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'styles-[contenthash].css',
-        }),
-        new HtmlWebpackPlugin({
-            template: 'src/index.template.html',
-        }),
-        new CopyPlugin({
-            patterns: [{ from: './public/' }],
-        }),
-    ],
-    devServer: {
-        port: 8080,
-        publicPath: '/',
-        historyApiFallback: { index: '/' },
-    },
-}
