@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'trix/dist/trix';
-
 /* [data-type='section']:hover {
     outline: 2px solid red;
     outline-offset: -2px;

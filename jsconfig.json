@@ -6,7 +6,9 @@
             "@/redux/*": ["src/redux/*"],
             "@/utils/*": ["src/utils/*"],
             "@/styles/*": ["src/styles/*"],
-            "@/src/*": ["src/*"]
+            "@/src/*": ["src/*"],
+            "@/views/*": ["src/views/*"]
         }
-    }
+    },
+    "exclude": ["node_modules", "dist"]
 }

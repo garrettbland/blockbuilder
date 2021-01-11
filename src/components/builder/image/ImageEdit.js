@@ -1,3 +1,4 @@
+import React from 'react'
 import Tabs from '@/components/builder/ModalTabs'
 import ImageUrl from './ImageUrl'
 import ImageAlt from './ImageAlt'

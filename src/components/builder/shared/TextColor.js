@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
-import ColorPicker from '../shared/ColorPicker'
+import ColorPicker from './ColorPicker'
 import Label from '@/components/builder/Label'
 
 const TextColor = () => {

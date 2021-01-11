@@ -1,4 +1,3 @@
-import { Warning } from 'postcss'
 import { html } from 'common-tags'
 
 export const SerializeToHtml = (blocks) => {
@@ -7,7 +6,8 @@ export const SerializeToHtml = (blocks) => {
      */
 
     if (!Array.isArray(blocks)) {
-        throw new Warning(`'blocks' parameter must be an Array`)
+        console.warn(`'blocks' parameter must be an Array`)
+        return
     }
 
     return blocks

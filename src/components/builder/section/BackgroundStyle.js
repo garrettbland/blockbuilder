@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
-const findAnd = require('find-and')
 import { defaultBlocks } from '@/utils/blocks'
 import { backgroundAttachments, removeBackgroundAttachments } from '@/utils/background'
 import { extractClass } from '@/utils/tools'
 import Label from '@/components/builder/Label'
+const findAnd = require('find-and')
 
 const BackgroundStyle = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

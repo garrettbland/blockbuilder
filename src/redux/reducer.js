@@ -13,9 +13,9 @@ import {
     DUPLICATE_BLOCK,
     SET_CUSTOM_MODAL,
 } from './constants'
-const findAnd = require('find-and')
 import { v4 as uuidv4 } from 'uuid'
 import { defaultBlocks } from '@/utils/blocks'
+const findAnd = require('find-and')
 
 /**
  * Define initial state for app

@@ -1,15 +1,17 @@
 // var admin = require('firebase-admin')
-import { useEffect, useState } from 'react'
-import Head from 'next/head'
+
+import React, { useEffect, useState } from 'react'
+// import Head from 'next/head'
 import firebase from '@/src/firebase'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { SerializeToHtml } from '@/utils/serialize'
+import { useParams } from '@reach/router'
 
 const Page = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [blocks, setBlocks] = useState([])
-    const router = useRouter()
-    const { id } = router.query
+    const params = useParams()
+    const id = params.pageId
 
     useEffect(() => {
         /**
@@ -54,9 +56,6 @@ const Page = () => {
 
     return (
         <div>
-            <Head>
-                <title>Block Builder</title>
-            </Head>
             {!isLoading && (
                 <div>
                     {/* <div>Fetch firebase page for {id}</div>

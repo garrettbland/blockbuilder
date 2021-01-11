@@ -1,3 +1,4 @@
+import React from 'react'
 import Tabs from '@/components/builder/ModalTabs'
 import BackgroundColor from '../shared/BackgroundColor'
 import BackgroundStyle from './BackgroundStyle'
