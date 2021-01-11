@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/tailwind.css'
-import App from './App'
+import Router from '@/src/Router'
+import { Provider } from 'react-redux'
+import store from '@/redux/store'
 import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider store={store}>
+            <Router />
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 )

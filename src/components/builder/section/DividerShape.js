@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
-const findAnd = require('find-and')
 import { generateShapes } from '@/utils/shapes'
 import Label from '@/components/builder/Label'
+const findAnd = require('find-and')
 
 const DividerShape = ({ position }) => {
     const shapes = generateShapes()
