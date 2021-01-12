@@ -1,4 +1,5 @@
 import { html } from 'common-tags'
+import { generateShapes } from '@/utils/shapes'
 
 export const SerializeToHtml = (blocks) => {
     /**
@@ -77,7 +78,21 @@ const SectionBackground = (block) => {
 }
 
 const SectionStyle = (block) => {
-    return html`<div class="${block.classList.join(' ')}"></div>`
+    const shapes = generateShapes()
+    return html`
+        <div class="${[...block.classList, 'z-30'].join(' ')}">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 320"
+                preserveAspectRatio="none"
+                class="w-full h-full ${block.type === 'section-divider-top'
+                    ? 'transform rotate-180'
+                    : ''}"
+            >
+                <path fill="currentColor" fillOpacity="1" d="${shapes[block.data.shape]}"></path>
+            </svg>
+        </div>
+    `
 }
 
 const Row = (block) => {
