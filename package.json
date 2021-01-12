@@ -1,9 +1,9 @@
 {
-    "name": "block-builder-delete-me",
+    "name": "blockbuilder",
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "start": "craco start",
+        "dev": "craco start",
         "build": "craco build",
         "test": "craco test",
         "eject": "react-scripts eject"
