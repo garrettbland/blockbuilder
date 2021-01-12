@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Save, Settings, Loader } from 'react-feather'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
-// import { useRouter } from 'next/router'
 import { useParams, navigate, Link } from '@reach/router'
-// import { Link } from 'next/link'
 import firebase from '@/src/firebase'
 import EmailCapture from '@/components/EmailCapture'
 
@@ -31,20 +29,20 @@ const ActionButton = () => {
         uploadToFirebase().then((data) => {
             setLoading(false)
 
-            if (data.type === 'create') {
-                // need to update to reach
-                navigate(`/?page_id=${data.page_id}`)
-                // router.push(
-                //     {
-                //         pathname: `/`,
-                //         query: {
-                //             page_id: data.page_id,
-                //         },
-                //     },
-                //     `/?page_id=${data.page_id}`,
-                //     { shallow: true }
-                // )
-            }
+            //if (data.type === 'create') {
+            // need to update to reach
+            // navigate(`/?page_id=${data.page_id}`)
+            // router.push(
+            //     {
+            //         pathname: `/`,
+            //         query: {
+            //             page_id: data.page_id,
+            //         },
+            //     },
+            //     `/?page_id=${data.page_id}`,
+            //     { shallow: true }
+            // )
+            //}
             dispatch({
                 type: SET_CUSTOM_MODAL,
                 payload: {
@@ -262,22 +260,10 @@ const SettingsModal = () => {
                 </p>
                 <div className="my-6">
                     <p className="text-gray-600 text-center font-bold">Public Page URL</p>
-                    {params.pageId && (
-                        <p className="text-gray-800 text-center">
-                            <a
-                                className="text-blue-500 hover:underline"
-                                href={`/pages/${params.pageId}`}
-                                target="_blank"
-                            >
-                                https://blockbuilder.app/pages/{params.pageId}
-                            </a>
-                        </p>
-                    )}
-                    {!params.pageId && (
-                        <p className="text-gray-800 text-center">
-                            Page not yet saved. Save your page first to show preview URL.
-                        </p>
-                    )}
+                    <p className="text-gray-800 text-center">
+                        Make sure to hit the save button in the bottom right corner to preview live
+                        page
+                    </p>
                 </div>
                 <div className="mt-12">
                     <EmailCapture />

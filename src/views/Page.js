@@ -58,11 +58,10 @@ const Page = () => {
         <div>
             {!isLoading && (
                 <div>
-                    {/* <div>Fetch firebase page for {id}</div>
-                <pre>
-                    <code>{JSON.stringify(blocks, null, 4)}</code>
-                </pre> */}
                     <div dangerouslySetInnerHTML={{ __html: SerializeToHtml(blocks) }}></div>
+                    <pre>
+                        <code>{JSON.stringify(blocks, null, 4)}</code>
+                    </pre>
                 </div>
             )}
         </div>
