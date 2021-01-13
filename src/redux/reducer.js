@@ -34,30 +34,13 @@ let initialState = {
     },
     blocks: [
         {
-            id: 'a94a8ce9-8d7c-4559-bdf9-030ec14f7bfe',
+            id: uuidv4(),
             type: 'section',
             tag: 'section',
-            classList: ['relative', 'py-12', 'bg-blueGray-100'],
+            classList: ['relative', 'overflow-hidden', 'pb-72', 'pt-28'],
             data: [
                 {
-                    id: 'b322b4f7-3ed3-4032-a0a5-cf1825972df2',
-                    type: 'section-divider-bottom',
-                    tag: 'div',
-                    classList: [
-                        'absolute',
-                        'bottom-0',
-                        'left-0',
-                        'w-full',
-                        'h-64',
-                        'text-transparent',
-                        'text-white',
-                    ],
-                    data: {
-                        shape: 'basic_slant',
-                    },
-                },
-                {
-                    id: '2d14809a-503d-47f7-9b3a-58fa8ce12332',
+                    id: uuidv4(),
                     type: 'section-background',
                     tag: 'div',
                     classList: [
@@ -72,54 +55,425 @@ let initialState = {
                     data: {
                         degree: 180,
                         gradient_type: 'linear',
-                        color_start: 'rgba(255, 255, 255, 0)',
-                        color_end: 'rgba(255, 255, 255, 0)',
-                        blur: '10',
-                        src:
-                            'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80',
+                        color_start: 'rgba(255, 255, 255, 0.1)',
+                        color_end: 'rgba(0, 0, 0, 0.15)',
+                        blur: 0,
+                        src: '',
                     },
                 },
                 {
-                    id: '7c17ba2c-7d34-4af5-b75c-415375ef54c4',
+                    id: uuidv4(),
+                    type: 'section-divider-bottom',
+                    tag: 'div',
+                    classList: ['absolute', 'bottom-0', 'left-0', 'w-full', 'h-64', 'text-white'],
+                    data: {
+                        shape: 'default',
+                    },
+                },
+                {
+                    id: uuidv4(),
                     type: 'row',
                     tag: 'div',
                     classList: [
                         'mx-auto',
-                        'flex',
-                        'flex-wrap',
-                        'p-4',
+                        'grid',
+                        'grid-cols-1',
+                        'md:grid-cols-2',
+                        'gap-8',
                         'relative',
                         'z-40',
+                        'px-8',
                         'pt-8',
-                        'pb-48',
-                        'max-w-4xl',
+                        'pb-8',
+                        'max-w-6xl',
                     ],
                     data: [
                         {
-                            id: '8d0ee26b-e98b-4f17-960d-624db4a8d014',
+                            id: uuidv4(),
                             type: 'column',
                             tag: 'div',
-                            classList: ['w-full', 'md:w-full', 'p-4'],
+                            classList: ['col-span-1'],
                             data: [
                                 {
-                                    id: 'ea0d606e-d574-4732-9aaf-cac139ea4bd5',
+                                    id: uuidv4(),
                                     type: 'text',
                                     tag: 'p',
                                     classList: [
                                         'text-md',
-                                        'text-center',
+                                        'pb-5',
                                         'font-extrabold',
-                                        'text-6xl',
                                         'leading-none',
-                                        'text-blue-900',
+                                        'text-4xl',
+                                        'text-black',
                                     ],
-                                    content: {
+                                    data: {
                                         editor: 'slate',
                                         data: [
                                             {
                                                 type: 'paragraph',
                                                 children: [
-                                                    { text: 'A line of text in a paragraph.' },
+                                                    {
+                                                        text:
+                                                            'A visual website builder made to quickly design websites',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: [
+                                        'text-md',
+                                        'text-xl',
+                                        'font-normal',
+                                        'text-blueGray-800',
+                                    ],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text:
+                                                            'Block Builder is an online website builder to quick design, develop, and deploy modern websites. It offers a straight forward experience to create websites visually.',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: uuidv4(),
+                                    type: 'link',
+                                    tag: 'a',
+                                    classList: [
+                                        'px-4',
+                                        'py-2',
+                                        'text-white',
+                                        'inline-block',
+                                        'mt-5',
+                                        'bg-violet-700',
+                                        'rounded-lg',
+                                        'shadow-lg',
+                                    ],
+                                    data: {
+                                        target: '_self',
+                                        href: '#',
+                                        title: 'Try Today',
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'image',
+                                    tag: 'img',
+                                    classList: ['w-full'],
+                                    data: {
+                                        src:
+                                            'https://isometric.online/wp-content/uploads/2019/08/Business_SVG.svg',
+                                        alt: 'Highway Photo',
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: uuidv4(),
+            type: 'section',
+            tag: 'section',
+            classList: ['relative', 'pt-12', 'pb-12', 'overflow-hidden'],
+            data: [
+                {
+                    id: uuidv4(),
+                    type: 'row',
+                    tag: 'div',
+                    classList: [
+                        'mx-auto',
+                        'grid',
+                        'grid-cols-1',
+                        'md:grid-cols-1',
+                        'gap-8',
+                        'relative',
+                        'z-40',
+                        'px-8',
+                        'pt-8',
+                        'pb-8',
+                        'max-w-5xl',
+                    ],
+                    data: [
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: [
+                                        'text-black',
+                                        'text-md',
+                                        'text-center',
+                                        'font-light',
+                                        'text-5xl',
+                                        'pb-2',
+                                    ],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text: 'Content Types',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: [
+                                        'text-md',
+                                        'text-center',
+                                        'font-normal',
+                                        'text-xl',
+                                        'text-coolGray-500',
+                                    ],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text:
+                                                            'Currently there are three main content types available (with many more on the way). They are "text", "image", and "button". See the example below. Click on any to bring up the editing window and change the values. ',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    id: uuidv4(),
+                    type: 'row',
+                    tag: 'div',
+                    classList: [
+                        'max-w-4xl',
+                        'mx-auto',
+                        'grid',
+                        'grid-cols-1',
+                        'md:grid-cols-3',
+                        'gap-8',
+                        'relative',
+                        'z-40',
+                        'px-8',
+                        'pt-8',
+                        'pb-8',
+                        'rounded-md',
+                    ],
+                    data: [
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: ['text-black', 'text-md', 'text-center'],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text: 'Default text',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'image',
+                                    tag: 'img',
+                                    classList: ['w-full', 'rounded-md', 'shadow-xl'],
+                                    data: {
+                                        src:
+                                            'https://images.unsplash.com/photo-1494783367193-149034c05e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+                                        alt: 'Highway Photo',
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'link',
+                                    tag: 'a',
+                                    classList: [
+                                        'px-4',
+                                        'py-2',
+                                        'bg-green-500',
+                                        'text-white',
+                                        'rounded',
+                                        'inline-block',
+                                        'mx-auto',
+                                        'shadow-md',
+                                    ],
+                                    data: {
+                                        target: '_self',
+                                        href: '#',
+                                        title: 'Button',
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: uuidv4(),
+            type: 'section',
+            tag: 'section',
+            classList: ['relative', 'overflow-hidden', 'pt-64', 'pb-64'],
+            data: [
+                {
+                    id: uuidv4(),
+                    type: 'section-background',
+                    tag: 'div',
+                    classList: [
+                        'absolute',
+                        'top-0',
+                        'left-0',
+                        'w-full',
+                        'h-full',
+                        'bg-cover',
+                        'bg-center',
+                    ],
+                    data: {
+                        degree: 180,
+                        gradient_type: 'linear',
+                        color_start: 'rgba(0, 0, 0, 0.1)',
+                        color_end: 'rgba(0, 0, 0, 0.1)',
+                        blur: '6',
+                        src:
+                            'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1655&q=80',
+                    },
+                },
+                {
+                    id: uuidv4(),
+                    type: 'row',
+                    tag: 'div',
+                    classList: [
+                        'mx-auto',
+                        'grid',
+                        'grid-cols-1',
+                        'md:grid-cols-1',
+                        'gap-8',
+                        'relative',
+                        'z-40',
+                        'px-8',
+                        'pt-8',
+                        'pb-8',
+                        'max-w-5xl',
+                    ],
+                    data: [
+                        {
+                            id: uuidv4(),
+                            type: 'column',
+                            tag: 'div',
+                            classList: ['col-span-1'],
+                            data: [
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: [
+                                        'text-md',
+                                        'text-center',
+                                        'pb-2',
+                                        'font-black',
+                                        'text-7xl',
+                                        'text-white',
+                                    ],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text: 'Background Blur Example',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: uuidv4(),
+                                    type: 'text',
+                                    tag: 'p',
+                                    classList: [
+                                        'text-md',
+                                        'text-center',
+                                        'font-normal',
+                                        'text-2xl',
+                                        'text-white',
+                                    ],
+                                    data: {
+                                        editor: 'slate',
+                                        data: [
+                                            {
+                                                type: 'paragraph',
+                                                children: [
+                                                    {
+                                                        text:
+                                                            'This background has a blur filter applied to it combined with a linear gradient. Try clicking on the section gear icon and go into the "background" tab of the editor and change the blur value to see the effect.',
+                                                    },
                                                 ],
                                             },
                                         ],

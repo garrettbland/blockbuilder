@@ -5,6 +5,7 @@ import { SET_CUSTOM_MODAL } from '@/redux/constants'
 import { useParams, navigate, Link } from '@reach/router'
 import firebase from '@/src/firebase'
 import EmailCapture from '@/components/EmailCapture'
+import BetaMessage from '@/components/BetaMessage'
 
 const ActionButton = () => {
     const blocks = useSelector((state) => state.blocks)
@@ -17,7 +18,7 @@ const ActionButton = () => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: true,
-                component: <SettingsModal />,
+                component: <BetaMessage />,
                 maxWidth: 'max-w-3xl',
             },
         })
@@ -25,37 +26,22 @@ const ActionButton = () => {
 
     const handleExport = () => {
         setLoading(true)
-
         uploadToFirebase().then((data) => {
             setLoading(false)
 
-            //if (data.type === 'create') {
-            // need to update to reach
-            // navigate(`/?page_id=${data.page_id}`)
-            // router.push(
-            //     {
-            //         pathname: `/`,
-            //         query: {
-            //             page_id: data.page_id,
-            //         },
-            //     },
-            //     `/?page_id=${data.page_id}`,
-            //     { shallow: true }
-            // )
-            //}
-            dispatch({
-                type: SET_CUSTOM_MODAL,
-                payload: {
-                    visible: true,
-                    component: (
-                        <URLPreview
-                            pageId={data.page_id}
-                            type={data.type === 'create' ? 'created' : 'updated'}
-                        />
-                    ),
-                    maxWidth: 'max-w-3xl',
-                },
-            })
+            if (data.error) {
+                console.error(data.message)
+                alert('Uh oh. :/ Something went wrong. Forgive me, its still a work in progress.')
+            } else {
+                dispatch({
+                    type: SET_CUSTOM_MODAL,
+                    payload: {
+                        visible: true,
+                        component: <URLPreview pageId={data.page_id} />,
+                        maxWidth: 'max-w-3xl',
+                    },
+                })
+            }
         })
     }
 
@@ -65,39 +51,18 @@ const ActionButton = () => {
              * Add blocks to firebase and generate UUID
              */
 
-            if (params.pageId) {
-                /**
-                 * Page id is defined, update firebase page instead of creating new
-                 */
+            const document = await firebase
+                .firestore()
+                .collection('beta')
+                .add({
+                    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+                    blocks,
+                })
 
-                await firebase
-                    .firestore()
-                    .collection('beta')
-                    .doc(params.pageId)
-                    .update({
-                        updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
-                        blocks,
-                    })
-
-                return {
-                    page_id: params.pageId,
-                    type: 'update',
-                    successful: true,
-                }
-            } else {
-                const new_page_id = await firebase
-                    .firestore()
-                    .collection('beta')
-                    .add({
-                        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
-                        blocks,
-                    })
-
-                return {
-                    page_id: new_page_id.id,
-                    type: 'create',
-                    successful: true,
-                }
+            return {
+                page_id: document.id,
+                type: 'create',
+                successful: true,
             }
         } catch (err) {
             return {
@@ -128,13 +93,13 @@ const ActionButton = () => {
     )
 }
 
-const URLPreview = ({ pageId, type }) => {
+const URLPreview = ({ pageId }) => {
     return (
         <div className="p-4 flex items-center justify-center">
             <div className="my-12">
                 <p className="font-bold text-lg tet-black text-center">Page Saved Successfully</p>
                 <p className="text-gray-800 text-center">
-                    Your page was {type} and can be shared and viewed below.
+                    Your page was created and can be shared and viewed below.
                 </p>
                 <div className="mt-6">
                     <p className="text-gray-600 text-center font-bold">Public Page URL</p>

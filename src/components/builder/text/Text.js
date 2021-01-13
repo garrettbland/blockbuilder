@@ -47,7 +47,7 @@ const Text = ({ block }) => {
                 </div>
             </div>
             <div>
-                {block.content.data.map((item, index) => {
+                {block.data.data.map((item, index) => {
                     switch (item.type) {
                         case 'paragraph': {
                             return (

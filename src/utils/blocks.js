@@ -74,7 +74,7 @@ export const defaultBlocks = (type, columns) => {
             type: 'text',
             tag: 'p',
             classList: ['text-black', 'text-md'],
-            content: {
+            data: {
                 editor: 'slate',
                 data: [
                     {

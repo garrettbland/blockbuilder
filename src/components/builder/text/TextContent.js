@@ -36,8 +36,8 @@ const TextContent = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
-                content: {
-                    ...currentlyEditing.content,
+                data: {
+                    ...currentlyEditing.data,
                     data: newValue,
                 },
             },
@@ -49,7 +49,7 @@ const TextContent = () => {
             <div>
                 <Slate
                     editor={editor}
-                    value={currentlyEditing.content.data}
+                    value={currentlyEditing.data.data}
                     onChange={(newValue) => handleTextChange(newValue)}
                 >
                     <div className="mb-1 inline-block">

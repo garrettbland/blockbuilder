@@ -136,7 +136,7 @@ const Link = (block) => {
 }
 
 const SerializeSlate = (block) => {
-    const htmlstring = block.content.data
+    const htmlstring = block.data.data
         .map((item, index) => {
             if (item.type === 'paragraph') {
                 return html`

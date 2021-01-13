@@ -59,9 +59,6 @@ const Page = () => {
             {!isLoading && (
                 <div>
                     <div dangerouslySetInnerHTML={{ __html: SerializeToHtml(blocks) }}></div>
-                    <pre>
-                        <code>{JSON.stringify(blocks, null, 4)}</code>
-                    </pre>
                 </div>
             )}
         </div>
