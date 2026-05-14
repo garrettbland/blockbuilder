@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
 import { useSelector, useDispatch } from 'react-redux'
 import { SET_EDITING, ADD_SECTION, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
-import { Settings, Copy, Move, PlusCircle } from 'react-feather'
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
 
 const Section = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import { generateShapes } from '@/utils/shapes'
 import Label from '@/components/builder/Label'
-const findAnd = require('find-and')
+import findAnd from 'find-and'
 
 const DividerShape = ({ position }) => {
     const shapes = generateShapes()

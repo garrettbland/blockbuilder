@@ -7,7 +7,7 @@ import {
     SET_CUSTOM_MODAL,
 } from '@/redux/constants'
 import ConfirmDelete from '@/components/builder/ConfirmDelete'
-import { Trash2 } from 'react-feather'
+import { Trash2 } from 'lucide-react'
 
 const RemoveBlockButton = ({ title = 'Remove Element' }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

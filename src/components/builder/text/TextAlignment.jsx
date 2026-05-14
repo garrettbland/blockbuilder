@@ -4,7 +4,7 @@ import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { textAlignments, removeTextAlignments } from '@/utils/text'
 import Label from '@/components/builder/Label'
-import { AlignLeft, AlignCenter, AlignRight, AlignJustify } from 'react-feather'
+import { AlignLeft, AlignCenter, AlignRight, AlignJustify } from 'lucide-react'
 
 const TextAlignment = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

@@ -1,4 +1,5 @@
-const tailwind_colors = require('tailwindcss/colors')
+import colors from 'tailwindcss/colors'
+const tailwind_colors = colors
 
 export const generateColors = (prefix = '') => {
     /**

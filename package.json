@@ -1,11 +1,22 @@
 {
     "name": "blockbuilder",
     "version": "0.1.0",
-    "private": true,
+    "type": "module",
+    "main": "./dist/blockbuilder.es.js",
+    "module": "./dist/blockbuilder.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/blockbuilder.es.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "demo": "cd demo && npm run dev"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.3.0",
@@ -13,9 +24,7 @@
         "find-and": "^1.3.0",
         "firebase": "^8.2.2",
         "is-url": "^1.2.4",
-        "react": "^19.2.6",
-        "react-dom": "^19.2.6",
-        "react-feather": "^2.0.10",
+        "lucide-react": "^1.16.0",
         "react-redux": "^9.2.0",
         "redux": "^5.0.1",
         "slate": "^0.124.1",
@@ -29,17 +38,9 @@
             "react-app/jest"
         ]
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+    "peerDependencies": {
+        "react": "^19.2.6",
+        "react-dom": "^19.2.6"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^6.0.1",

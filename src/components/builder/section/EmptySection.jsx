@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { SET_CUSTOM_MODAL, ADD_ROW } from '@/redux/constants'
 import AddRow from '@/components/builder/row/AddRow'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle } from 'lucide-react'
 
 const EmptySection = ({ data: block }) => {
     const dispatch = useDispatch()

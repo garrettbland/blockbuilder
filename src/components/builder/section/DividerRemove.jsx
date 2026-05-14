@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
 import Label from '@/components/builder/Label'
-const findAnd = require('find-and')
+import findAnd from 'find-and'
 
 const DividerRemove = ({ position }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

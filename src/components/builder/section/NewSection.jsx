@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { ADD_SECTION } from '@/redux/constants'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle } from 'lucide-react'
 
 const NewSection = () => {
     const dispatch = useDispatch()

@@ -5,7 +5,7 @@ import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
 import Label from '@/components/builder/Label'
-const findAnd = require('find-and')
+import findAnd from 'find-and'
 
 const DividerColor = ({ position }) => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import CloseButton from './CloseButton'
 
@@ -88,8 +88,8 @@ const Tabs = ({ tabComponents }) => {
     )
 }
 
-Tabs.propTypes = {
-    tabComponents: PropTypes.array.isRequired,
-}
+// Tabs.propTypes = {
+//     tabComponents: PropTypes.array.isRequired,
+// }
 
 export default Tabs

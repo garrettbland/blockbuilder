@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Save, Settings, Loader } from 'react-feather'
+import { Save, Settings, Loader } from 'lucide-react'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
 // import { useParams, navigate, Link } from '@reach/router'
-import firebase from '@/firebase'
+// import firebase from '@/firebase'
 import EmailCapture from '@/components/EmailCapture'
 import BetaMessage from '@/components/BetaMessage'
 
@@ -26,6 +26,7 @@ const ActionButton = () => {
 
     const handleExport = () => {
         setLoading(true)
+        return
         uploadToFirebase().then((data) => {
             setLoading(false)
 
@@ -46,6 +47,7 @@ const ActionButton = () => {
     }
 
     const uploadToFirebase = async () => {
+        return
         try {
             /**
              * Add blocks to firebase and generate UUID

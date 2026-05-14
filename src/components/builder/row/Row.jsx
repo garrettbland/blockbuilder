@@ -8,7 +8,7 @@ import {
     SET_MODAL_VISIBILITY,
     SET_CUSTOM_MODAL,
 } from '@/redux/constants'
-import { Settings, Copy, PlusCircle } from 'react-feather'
+import { Settings, Copy, PlusCircle } from 'lucide-react'
 import AddRow from './AddRow'
 import CustomModal from '@/components/builder/CustomModal'
 

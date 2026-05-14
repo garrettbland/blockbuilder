@@ -1,5 +1,3 @@
-// var admin = require('firebase-admin')
-
 import React, { useEffect, useState } from 'react'
 // import Head from 'next/head'
 import firebase from '@/src/firebase'

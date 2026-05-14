@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { ADD_CONTENT, SET_CUSTOM_MODAL } from '@/redux/constants'
-import { PlusCircle } from 'react-feather'
+import { PlusCircle } from 'lucide-react'
 import AddContent from '@/components/builder/AddContent'
 
 const EmptyColumn = ({ data: block }) => {

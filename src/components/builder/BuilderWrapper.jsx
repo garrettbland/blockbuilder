@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, Provider } from 'react-redux'
+import store from '@/redux/store'
 // import { Container } from 'react-smooth-dnd'
 import { SWAP_BLOCKS, SET_CUSTOM_MODAL } from '@/redux/constants'
 import Builder from './Builder'
@@ -9,7 +10,7 @@ import CustomModal from './CustomModal'
 import ActionButton from './ActionButton'
 import BetaMessage from '@/components/BetaMessage'
 
-const BuilderWrapper = () => {
+const BuilderContent = () => {
     const blocks = useSelector((state) => state.blocks)
     const dispatch = useDispatch()
 
@@ -55,6 +56,14 @@ const BuilderWrapper = () => {
             </div>
             <ActionButton />
         </div>
+    )
+}
+
+const BuilderWrapper = () => {
+    return (
+        <Provider store={store}>
+            <BuilderContent />
+        </Provider>
     )
 }
 

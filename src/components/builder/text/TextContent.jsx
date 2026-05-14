@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UPDATE_EDITING } from '@/redux/constants'
-import { Bold, Italic, Link, Underline } from 'react-feather'
+import { Bold, Italic, Link, Underline } from 'lucide-react'
 
 import isUrl from 'is-url'
 import { Slate, Editable, withReact, useSlate } from 'slate-react'

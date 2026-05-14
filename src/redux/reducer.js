@@ -15,7 +15,7 @@ import {
 } from './constants'
 import { v4 as uuidv4 } from 'uuid'
 import { defaultBlocks } from '@/utils/blocks'
-const findAnd = require('find-and')
+import findAnd from 'find-and'
 
 /**
  * Define initial state for app

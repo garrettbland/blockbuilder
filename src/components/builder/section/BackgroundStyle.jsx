@@ -5,7 +5,7 @@ import { defaultBlocks } from '@/utils/blocks'
 import { backgroundAttachments, removeBackgroundAttachments } from '@/utils/background'
 import { extractClass } from '@/utils/tools'
 import Label from '@/components/builder/Label'
-const findAnd = require('find-and')
+import findAnd from 'find-and'
 
 const BackgroundStyle = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
@@ -53,6 +53,7 @@ const BackgroundStyle = () => {
             type: UPDATE_EDITING,
             payload: {
                 ...currentlyEditing,
+
                 data: findAnd.changeProps(
                     currentlyEditing.data,
                     { id: currentlyEditingChild.id },

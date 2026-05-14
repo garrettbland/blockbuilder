@@ -4,7 +4,7 @@ import { UPDATE_EDITING } from '@/redux/constants'
 import { extractClass } from '@/utils/tools'
 import { autoMargins, removeAutoMargins } from '@/utils/spacing'
 import Label from '@/components/builder/Label'
-import { AlignLeft, AlignCenter, AlignRight } from 'react-feather'
+import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
 
 const AutoMargin = () => {
     const currentlyEditing = useSelector((state) => state.currentlyEditing)
