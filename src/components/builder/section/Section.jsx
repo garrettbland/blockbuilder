@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Draggable } from 'react-smooth-dnd'
+// import { Draggable } from 'react-smooth-dnd'
 import { returnFound } from 'find-and'
 import { useSelector, useDispatch } from 'react-redux'
 import { SET_EDITING, ADD_SECTION, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
@@ -54,7 +54,8 @@ const Section = ({ block, children }) => {
     }
 
     return (
-        <Draggable>
+        <>
+            {/* <Draggable> */}
             <div data-type="section" ref={sectionRef} className={[...block.classList].join(' ')}>
                 <div
                     className={`absolute top-0 left-0 flex flex-row w-full h-full z-50 pointer-events-none ${
@@ -94,7 +95,8 @@ const Section = ({ block, children }) => {
                 )}
                 {children}
             </div>
-        </Draggable>
+            {/* </Draggable> */}
+        </>
     )
 }
 

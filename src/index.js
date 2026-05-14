@@ -1,21 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import './styles/tailwind.css'
-import Router from '@/src/Router'
-import { Provider } from 'react-redux'
 import store from '@/redux/store'
-import reportWebVitals from './reportWebVitals'
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <Router />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
-)
+// Export main components and store for library usage
+export { default as Builder } from '@/components/builder/Builder'
+export { default as store } from '@/redux/store'
+export { Provider } from 'react-redux'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+export default {
+    Builder: require('@/components/builder/Builder').default,
+    store,
+}

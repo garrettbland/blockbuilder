@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Save, Settings, Loader } from 'react-feather'
 import { SET_CUSTOM_MODAL } from '@/redux/constants'
-import { useParams, navigate, Link } from '@reach/router'
-import firebase from '@/src/firebase'
+// import { useParams, navigate, Link } from '@reach/router'
+import firebase from '@/firebase'
 import EmailCapture from '@/components/EmailCapture'
 import BetaMessage from '@/components/BetaMessage'
 
 const ActionButton = () => {
     const blocks = useSelector((state) => state.blocks)
     const dispatch = useDispatch()
-    const params = useParams()
+    // const params = useParams()
     const [isLoading, setLoading] = useState(false)
 
     const handleSettingsClick = () => {
@@ -214,7 +214,7 @@ const CodePreview = ({ blocks }) => {
 }
 
 const SettingsModal = () => {
-    const params = useParams()
+    // const params = useParams()
     return (
         <div className="p-4 flex items-center justify-center">
             <div className="my-12">

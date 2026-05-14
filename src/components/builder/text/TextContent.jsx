@@ -49,6 +49,11 @@ const TextContent = () => {
             <div>
                 <Slate
                     editor={editor}
+                    initialValue={
+                        currentlyEditing.data.data ?? [
+                            { type: 'paragraph', children: [{ text: '' }] },
+                        ]
+                    }
                     value={currentlyEditing.data.data}
                     onChange={(newValue) => handleTextChange(newValue)}
                 >

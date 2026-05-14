@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container } from 'react-smooth-dnd'
+// import { Container } from 'react-smooth-dnd'
 import { SWAP_BLOCKS, SET_CUSTOM_MODAL } from '@/redux/constants'
 import Builder from './Builder'
 import NewSection from './section/NewSection'
@@ -43,13 +43,14 @@ const BuilderWrapper = () => {
             <Modal />
             <CustomModal />
             <div className="z-20 relative">
-                <Container
+                {/* <Container
                     onDrop={(dropResult) => swapSections(dropResult)}
                     dragHandleSelector="#section-drag-handle"
                     dragClass="shadow-2xl opacity-75 overflow-hidden"
                 >
                     <Builder data={blocks} />
-                </Container>
+                </Container> */}
+                <Builder data={blocks} />
                 <NewSection />
             </div>
             <ActionButton />

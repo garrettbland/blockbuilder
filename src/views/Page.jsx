@@ -5,12 +5,13 @@ import React, { useEffect, useState } from 'react'
 import firebase from '@/src/firebase'
 // import { useRouter } from 'next/router'
 import { SerializeToHtml } from '@/utils/serialize'
-import { useParams } from '@reach/router'
+// import { useParams } from '@reach/router'
 
 const Page = () => {
+    return null
     const [isLoading, setIsLoading] = useState(true)
     const [blocks, setBlocks] = useState([])
-    const params = useParams()
+    // const params = useParams()
     const id = params.pageId
 
     useEffect(() => {
