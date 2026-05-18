@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react'
 // import { Draggable } from 'react-smooth-dnd'
 import { returnFound } from 'find-and'
-import { useSelector, useDispatch } from 'react-redux'
-import { SET_EDITING, ADD_SECTION, DUPLICATE_BLOCK, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
 
 const Section = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
     const sectionRef = useRef()
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,14 +27,119 @@ const Section = ({ block, children }) => {
     }, [])
 
     const handleSettingsClick = () => {
-        dispatch({
-            type: SET_MODAL_VISIBILITY,
-            payload: true,
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        useStore.getState().setEditing(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
         })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
         dispatch({
             type: SET_EDITING,
-            payload: returnFound(blocks, { id: block.id }),
+            payload: returnFound(blocks, { id: block.id }),))
+    }
+
+    const AddSection = () => {
+        useStore.getState().addSection(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
         })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        useStore.getState().setEditing(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        dispatch({
+            type: SET_EDITING,
+            payload: returnFound(blocks, { id: block.id }),))
     }
 
     const AddSection = () => {
@@ -42,15 +147,165 @@ const Section = ({ block, children }) => {
             type: ADD_SECTION,
             payload: {
                 id: block.id,
-            },
+            },))
+    }
+
+    const DuplicateBlock = () => {
+        useStore.getState().duplicateBlock(t { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
         })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        useStore.getState().setEditing(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        dispatch({
+            type: SET_EDITING,
+            payload: returnFound(blocks, { id: block.id }),))
+    }
+
+    const AddSection = () => {
+        useStore.getState().addSection(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        useStore.getState().setEditing(mport { Draggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, Move, PlusCircle } from 'lucide-react'
+
+const Section = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const sectionRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const section = sectionRef.current
+
+        section.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        section.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            section.removeEventListener('mouseenter', () => {})
+            section.removeEventListener('mouseleave', () => {})
+        }
+    }, [])
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(raggable } from 'react-smooth-dnd'
+import { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        dispatch({
+            type: SET_EDITING,
+            payload: returnFound(blocks, { id: block.id }),))
+    }
+
+    const AddSection = () => {
+        dispatch({
+            type: ADD_SECTION,
+            payload: {
+                id: block.id,
+            },))
     }
 
     const DuplicateBlock = () => {
         dispatch({
             type: DUPLICATE_BLOCK,
-            payload: block,
-        })
+            payload: block,))
     }
 
     return (

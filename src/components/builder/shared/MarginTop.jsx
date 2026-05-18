@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
 import Label from '@/components/builder/Label'
 
 const MarginTop = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [marginTop, setMarginTop] = useState('')
     const dispatch = useDispatch()
 
@@ -25,15 +25,9 @@ const MarginTop = () => {
          */
         const updatedClassList = removeSpacing(currentlyEditing.classList, 'mt-')
 
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateSpacing('mt-')[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { generateSpacing))
     }
 
     return (

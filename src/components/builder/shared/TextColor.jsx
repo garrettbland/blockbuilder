@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from './ColorPicker'
 import Label from '@/components/builder/Label'
 
 const TextColor = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [textColor, setTextColor] = useState('')
     const dispatch = useDispatch()
 
@@ -21,13 +21,10 @@ const TextColor = () => {
     const handleTextColorUpdate = (value) => {
         setTextColor(value)
         const updatedClassList = removeColors(currentlyEditing.classList, 'text-')
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: value ? [...updatedClassList, value] : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateColors))
     }
 
     return (

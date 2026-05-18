@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, SET_MODAL_VISIBILITY, UPDATE_BLOCK } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import RemoveBlockButton from './RemoveBlockButton'
 import SubmitButton from './SubmitButton'
 import SectionEdit from './section/SectionEdit'
@@ -10,8 +10,51 @@ import LinkEdit from './link/LinkEdit'
 import RowEdit from './row/RowEdit'
 
 const Modal = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
-    const is_modal_visible = useSelector((state) => state.is_modal_visible)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const is_modal_visible = useStore((state) => state.is_modal_visible)
+    const dispatch = useDispatch()
+    const overlayNode = useRef()
+    const modalNode = useRef()
+
+    useEffect(() => {
+        /**
+         * Event listener when mounted to listen for mousedown
+         * for overlay
+         */
+        overlayNode.current.addEventListener('mousedown', handleClick)
+
+        /**
+         * Return function to be called on component unmount
+         */
+        return () => {
+            overlayNode?.current?.removeEventListener('mousedown', handleClick)
+        }
+    }, [])
+
+    const handleClick = (event) => {
+        if (modalNode.current && modalNode.current.contains(event.target)) {
+            /**
+             * Do nothing since click is inside sidbar
+             */
+            return
+        }
+
+        /**
+         * Handle outside sideBar node click
+         */
+        useStore.getState().setModalVisibility(m '@/store/useStore'
+
+import RemoveBlockButton from './RemoveBlockButton'
+import SubmitButton from './SubmitButton'
+import SectionEdit from './section/SectionEdit'
+import TextEdit from './text/TextEdit'
+import ImageEdit from './image/ImageEdit'
+import LinkEdit from './link/LinkEdit'
+import RowEdit from './row/RowEdit'
+
+const Modal = () => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const is_modal_visible = useStore((state) => state.is_modal_visible)
     const dispatch = useDispatch()
     const overlayNode = useRef()
     const modalNode = useRef()
@@ -44,8 +87,7 @@ const Modal = () => {
          */
         dispatch({
             type: SET_MODAL_VISIBILITY,
-            payload: false,
-        })
+            payload: false,))
 
         /**
          * We set this timeout to match the transition
@@ -54,9 +96,7 @@ const Modal = () => {
          * and flahes but will fade in.
          */
         setTimeout(() => {
-            dispatch({
-                type: SET_EDITING,
-            })
+            useStore.getState().setEditing())
         }, 200)
     }
 

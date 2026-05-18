@@ -1,6 +1,14 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import EmailCapture from './EmailCapture'
+
+const BetaMessage = () => {
+    const dispatch = useDispatch()
+
+    const handleClose = () => {
+        useStore.getState().setCustomModal('
+
 import EmailCapture from './EmailCapture'
 
 const BetaMessage = () => {
@@ -11,8 +19,7 @@ const BetaMessage = () => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
     }
 
     return (

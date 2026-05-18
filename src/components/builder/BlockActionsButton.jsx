@@ -1,6 +1,19 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { DUPLICATE_BLOCK, APPEND_CONTENT, SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import { Settings, PlusCircle, Copy } from 'lucide-react'
+import AddContent from './AddContent'
+
+const BlockActionsButton = ({ block }) => {
+    const dispatch = useDispatch()
+
+    const handleAdd = (event) => {
+        // will stop any synthetic events from happening after this one
+        // example, will not fire edit block
+        event.stopPropagation()
+
+        useStore.getState().setCustomModal('
+
 import { Settings, PlusCircle, Copy } from 'lucide-react'
 import AddContent from './AddContent'
 
@@ -18,19 +31,60 @@ const BlockActionsButton = ({ block }) => {
                 visible: true,
                 component: <AddContent block={block} />,
                 maxWidth: null,
-            },
-        })
+            },))
 
         // const content_type = window.prompt('What type of content? Text or Image or Link')
         // const availableTypes = ['img', 'text', 'link']
         // if (availableTypes.includes(content_type)) {
-        //     dispatch({
-        //         type: APPEND_CONTENT,
-        //         payload: {
-        //             id: block.id,
-        //             type: content_type,
-        //         },
-        //     })
+        //     useStore.getState().appendContent(Settings))
+        // } else {
+        //     alert('content type not allowed')
+        // }
+    }
+
+    const DuplicateBlock = (event, block) => {
+        // will stop any synthetic events from happening after this one
+        // example, will not fire edit block
+        event.stopPropagation()
+
+        useStore.getState().duplicateBlock(e'
+
+import { Settings, PlusCircle, Copy } from 'lucide-react'
+import AddContent from './AddContent'
+
+const BlockActionsButton = ({ block }) => {
+    const dispatch = useDispatch()
+
+    const handleAdd = (event) => {
+        // will stop any synthetic events from happening after this one
+        // example, will not fire edit block
+        event.stopPropagation()
+
+        useStore.getState().setCustomModal('
+
+import { Settings, PlusCircle, Copy } from 'lucide-react'
+import AddContent from './AddContent'
+
+const BlockActionsButton = ({ block }) => {
+    const dispatch = useDispatch()
+
+    const handleAdd = (event) => {
+        // will stop any synthetic events from happening after this one
+        // example, will not fire edit block
+        event.stopPropagation()
+
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: true,
+                component: <AddContent block={block} />,
+                maxWidth: null,
+            },))
+
+        // const content_type = window.prompt('What type of content? Text or Image or Link')
+        // const availableTypes = ['img', 'text', 'link']
+        // if (availableTypes.includes(content_type)) {
+        //     useStore.getState().appendContent(Settings))
         // } else {
         //     alert('content type not allowed')
         // }
@@ -43,8 +97,7 @@ const BlockActionsButton = ({ block }) => {
 
         dispatch({
             type: DUPLICATE_BLOCK,
-            payload: block,
-        })
+            payload: block,))
     }
 
     return (

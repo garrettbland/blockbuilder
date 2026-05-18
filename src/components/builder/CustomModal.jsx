@@ -1,9 +1,45 @@
 import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 
 const CustomModal = () => {
-    const custom_modal = useSelector((state) => state.custom_modal)
+    const custom_modal = useStore((state) => state.custom_modal)
+    const dispatch = useDispatch()
+    const overlayNode = useRef()
+    const modalNode = useRef()
+
+    useEffect(() => {
+        /**
+         * Event listener when mounted to listen for mousedown
+         * for overlay
+         */
+        overlayNode.current.addEventListener('mousedown', handleClick)
+
+        /**
+         * Return function to be called on component unmount
+         */
+        return () => {
+            overlayNode?.current?.removeEventListener('mousedown', handleClick)
+        }
+    }, [])
+
+    const handleClick = (event) => {
+        if (modalNode.current && modalNode.current.contains(event.target)) {
+            /**
+             * Do nothing since click is inside sidbar
+             */
+            return
+        }
+
+        /**
+         * Handle outside sideBar node click
+         */
+
+        useStore.getState().setCustomModal(from '@/store/useStore'
+
+
+const CustomModal = () => {
+    const custom_modal = useStore((state) => state.custom_modal)
     const dispatch = useDispatch()
     const overlayNode = useRef()
     const modalNode = useRef()
@@ -39,8 +75,86 @@ const CustomModal = () => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
+
+        setTimeout(() => {
+            useStore.getState().setCustomModal(/store/useStore'
+
+
+const CustomModal = () => {
+    const custom_modal = useStore((state) => state.custom_modal)
+    const dispatch = useDispatch()
+    const overlayNode = useRef()
+    const modalNode = useRef()
+
+    useEffect(() => {
+        /**
+         * Event listener when mounted to listen for mousedown
+         * for overlay
+         */
+        overlayNode.current.addEventListener('mousedown', handleClick)
+
+        /**
+         * Return function to be called on component unmount
+         */
+        return () => {
+            overlayNode?.current?.removeEventListener('mousedown', handleClick)
+        }
+    }, [])
+
+    const handleClick = (event) => {
+        if (modalNode.current && modalNode.current.contains(event.target)) {
+            /**
+             * Do nothing since click is inside sidbar
+             */
+            return
+        }
+
+        /**
+         * Handle outside sideBar node click
+         */
+
+        useStore.getState().setCustomModal(from '@/store/useStore'
+
+
+const CustomModal = () => {
+    const custom_modal = useStore((state) => state.custom_modal)
+    const dispatch = useDispatch()
+    const overlayNode = useRef()
+    const modalNode = useRef()
+
+    useEffect(() => {
+        /**
+         * Event listener when mounted to listen for mousedown
+         * for overlay
+         */
+        overlayNode.current.addEventListener('mousedown', handleClick)
+
+        /**
+         * Return function to be called on component unmount
+         */
+        return () => {
+            overlayNode?.current?.removeEventListener('mousedown', handleClick)
+        }
+    }, [])
+
+    const handleClick = (event) => {
+        if (modalNode.current && modalNode.current.contains(event.target)) {
+            /**
+             * Do nothing since click is inside sidbar
+             */
+            return
+        }
+
+        /**
+         * Handle outside sideBar node click
+         */
+
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: false,
+            },))
 
         setTimeout(() => {
             dispatch({
@@ -48,8 +162,7 @@ const CustomModal = () => {
                 payload: {
                     component: null,
                     maxWidth: null,
-                },
-            })
+                },))
         }, 200)
     }
 

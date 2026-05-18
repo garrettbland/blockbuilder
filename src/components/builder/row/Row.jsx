@@ -1,13 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-    SET_EDITING,
-    APPEND_ROW,
-    DUPLICATE_BLOCK,
-    SET_MODAL_VISIBILITY,
-    SET_CUSTOM_MODAL,
-} from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { Settings, Copy, PlusCircle } from 'lucide-react'
 import AddRow from './AddRow'
 import CustomModal from '@/components/builder/CustomModal'
@@ -15,7 +9,7 @@ import CustomModal from '@/components/builder/CustomModal'
 const Row = ({ block, children }) => {
     const [showTool, setShowTool] = useState(false)
     const rowRef = useRef()
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -34,45 +28,93 @@ const Row = ({ block, children }) => {
     })
 
     const handleAddRow = () => {
-        dispatch({
-            type: SET_CUSTOM_MODAL,
-            payload: {
-                visible: true,
-                component: <AddRow block={block} />,
-                maxWidth: null,
-            },
-        })
+        useStore.getState().setCustomModal(returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
         // const columns = window.prompt('How many columns?')
         // const availableColumns = [1, 2, 3, 4, 5, 6]
         // if (availableColumns.includes(parseInt(columns))) {
-        //     dispatch({
-        //         type: APPEND_ROW,
-        //         payload: {
-        //             id: block.id,
-        //             columns: parseInt(columns),
-        //         },
-        //     })
+        //     useStore.getState().appendRow(und } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
         // } else {
         //     alert('Number not allowed')
         // }
     }
 
     const DuplicateBlock = () => {
-        dispatch({
-            type: DUPLICATE_BLOCK,
-            payload: block,
-        })
+        useStore.getState().duplicateBlock(returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
     }
 
     const handleSettingsClick = () => {
-        dispatch({
-            type: SET_MODAL_VISIBILITY,
-            payload: true,
+        useStore.getState().setModalVisibility(rnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        useStore.getState().setEditing(rt { returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings, Copy, PlusCircle } from 'lucide-react'
+import AddRow from './AddRow'
+import CustomModal from '@/components/builder/CustomModal'
+
+const Row = ({ block, children }) => {
+    const [showTool, setShowTool] = useState(false)
+    const rowRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const row = rowRef.current
+
+        row.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
         })
-        dispatch({
-            type: SET_EDITING,
-            payload: returnFound(blocks, { id: block.id }),
+        row.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
         })
+        return () => {
+            row.removeEventListener('mouseenter', () => {})
+            row.removeEventListener('mouseleave', () => {})
+        }
+    })
+
+    const handleAddRow = () => {
+        useStore.getState().setCustomModal(returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        // const columns = window.prompt('How many columns?')
+        // const availableColumns = [1, 2, 3, 4, 5, 6]
+        // if (availableColumns.includes(parseInt(columns))) {
+        //     useStore.getState().appendRow(und } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        // } else {
+        //     alert('Number not allowed')
+        // }
+    }
+
+    const DuplicateBlock = () => {
+        useStore.getState().duplicateBlock(returnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+    }
+
+    const handleSettingsClick = () => {
+        useStore.getState().setModalVisibility(rnFound } from 'find-and'
+import { useStore } from '@/store/useStore'
+
+import { Settings))
+        dispatch({
+            type: SET_EDITING))
     }
 
     return (

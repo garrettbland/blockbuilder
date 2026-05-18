@@ -1,6 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 
 const CloseButton = ({ onClick }) => {
     const dispatch = useDispatch()
@@ -9,10 +9,16 @@ const CloseButton = ({ onClick }) => {
         if (onClick) {
             onClick()
         } else {
+            useStore.getState().setModalVisibility(oseButton = ({ onClick }) => {
+    const dispatch = useDispatch()
+
+    const handleClose = () => {
+        if (onClick) {
+            onClick()
+        } else {
             dispatch({
                 type: SET_MODAL_VISIBILITY,
-                payload: false,
-            })
+                payload: false,))
 
             /**
              * We set this timeout to match the transition
@@ -21,9 +27,7 @@ const CloseButton = ({ onClick }) => {
              * and flahes but will fade in.
              */
             setTimeout(() => {
-                dispatch({
-                    type: SET_EDITING,
-                })
+                useStore.getState().setEditing())
             }, 200)
         }
     }

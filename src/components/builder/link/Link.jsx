@@ -1,13 +1,39 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import BlockActionsButton from '../BlockActionsButton'
 
 const Link = ({ block }) => {
     const [showTool, setShowTool] = useState(false)
     const linkRef = useRef()
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const link = linkRef.current
+
+        link.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        link.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+    })
+
+    return (
+        <div ref={linkRef} className="relative z-10 flex">
+            <div
+                onClick={() => {
+                    useStore.getState().setModalVisibility('
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Link = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const linkRef = useRef()
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,12 +53,65 @@ const Link = ({ block }) => {
                 onClick={() => {
                     dispatch({
                         type: SET_MODAL_VISIBILITY,
-                        payload: true,
-                    })
+                        payload: true,))
+                    useStore.getState().setEditing('find-and'
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Link = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const linkRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const link = linkRef.current
+
+        link.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        link.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+    })
+
+    return (
+        <div ref={linkRef} className="relative z-10 flex">
+            <div
+                onClick={() => {
+                    useStore.getState().setModalVisibility('
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Link = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const linkRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const link = linkRef.current
+
+        link.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        link.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+    })
+
+    return (
+        <div ref={linkRef} className="relative z-10 flex">
+            <div
+                onClick={() => {
+                    dispatch({
+                        type: SET_MODAL_VISIBILITY,
+                        payload: true,))
                     dispatch({
                         type: SET_EDITING,
-                        payload: returnFound(blocks, { id: block.id }),
-                    })
+                        payload: returnFound(blocks, { id: block.id }),))
                 }}
                 className={`absolute top-0 left-0 h-full w-full cursor-pointer ${
                     showTool ? 'block ring-4 rounded' : 'hidden'

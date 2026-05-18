@@ -1,6 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { SET_CUSTOM_MODAL, ADD_ROW } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import AddRow from '@/components/builder/row/AddRow'
+import { PlusCircle } from 'lucide-react'
+
+const EmptySection = ({ data: block }) => {
+    const dispatch = useDispatch()
+
+    const handleRowAdd = () => {
+        useStore.getState().setCustomModal('
+
 import AddRow from '@/components/builder/row/AddRow'
 import { PlusCircle } from 'lucide-react'
 
@@ -13,8 +22,7 @@ const EmptySection = ({ data: block }) => {
             payload: {
                 visible: true,
                 component: <AddRow block={block} type={ADD_ROW} />,
-            },
-        })
+            },))
     }
 
     return (

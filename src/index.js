@@ -1,5 +1,5 @@
 import './styles/tailwind.css'
-import store from '@/redux/store'
+// import store from '@/redux/store'
 
 // Export main components and store for library usage
 export { default as Builder } from '@/components/builder/Builder'

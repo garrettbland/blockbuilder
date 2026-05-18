@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { defaultBlocks } from '@/utils/blocks'
 import { backgroundAttachments, removeBackgroundAttachments } from '@/utils/background'
 import { extractClass } from '@/utils/tools'
@@ -8,7 +8,7 @@ import Label from '@/components/builder/Label'
 import findAnd from 'find-and'
 
 const BackgroundStyle = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [backgroundAttachment, setBackgroundAttachment] = useState('')
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [blurDisabled, setBlurDisabled] = useState(false)
@@ -49,68 +49,34 @@ const BackgroundStyle = () => {
             },
         })
 
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
+        useStore.getState().updateEditing(re } from '@/store/useStore'
 
-                data: findAnd.changeProps(
-                    currentlyEditing.data,
-                    { id: currentlyEditingChild.id },
-                    {
-                        ...currentlyEditingChild,
-                        data: {
-                            ...currentlyEditingChild.data,
-                            [key]: value,
-                        },
-                    }
-                ),
-            },
-        })
+import { defaultBlocks } from '@/utils/blocks'
+import { backgroundAttachments))
     }
 
     const handleBackgroundStyleAdd = () => {
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: [defaultBlocks('sectionBackground'), ...currentlyEditing.data],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { defaultBlocks } from '@/utils/blocks'
+import { backgroundAttachments))
     }
 
     const handleBackgroundStyleRemove = () => {
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: findAnd.removeObject(currentlyEditing.data, { id: currentlyEditingChild.id }),
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { defaultBlocks } from '@/utils/blocks'
+import { backgroundAttachments))
     }
 
     const handleBackgroundAttachmentUpdate = (value) => {
         setBackgroundAttachment(value)
         setBlurDisabled(value === 'bg-fixed' ? true : false)
         const updatedClassList = removeBackgroundAttachments(currentlyEditingChild.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: findAnd.changeProps(
-                    currentlyEditing.data,
-                    { id: currentlyEditingChild.id },
-                    {
-                        ...currentlyEditingChild,
-                        data: {
-                            ...currentlyEditingChild.data,
-                            blur: value === 'bg-fixed' ? 0 : currentlyEditingChild.data.blur,
-                        },
-                        classList: [...updatedClassList, value],
-                    }
-                ),
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { defaultBlocks } from '@/utils/blocks'
+import { backgroundAttachments))
     }
 
     if (currentlyEditingChild && currentlyEditingChild.data) {

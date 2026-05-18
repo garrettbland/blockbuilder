@@ -1,13 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { generateShapes } from '@/utils/shapes'
 import Label from '@/components/builder/Label'
 import findAnd from 'find-and'
 
 const DividerShape = ({ position }) => {
     const shapes = generateShapes()
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
+    const [shape, setShape] = useState('')
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const currentlyEditingChildIndex = currentlyEditing.data.findIndex(
+            (block) => block.type === `section-divider-${position}`
+        )
+        if (currentlyEditingChildIndex !== -1) {
+            const editingChild = currentlyEditing.data[currentlyEditingChildIndex]
+            setCurrentlyEditingChild(editingChild)
+
+            if (editingChild.data.shape) {
+                /**
+                 * Shape is set
+                 */
+                setShape(editingChild.data.shape)
+            }
+        } else {
+            /**
+             * No child
+             */
+            setCurrentlyEditingChild({})
+        }
+    }, [currentlyEditing])
+
+    const handleShapeDividerUpdate = (value) => {
+        setShape(value)
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { generateShapes } from '@/utils/shapes'
+import Label from '@/components/builder/Label'
+import findAnd from 'find-and'
+
+const DividerShape = ({ position }) => {
+    const shapes = generateShapes()
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [shape, setShape] = useState('')
     const dispatch = useDispatch()
@@ -50,8 +87,7 @@ const DividerShape = ({ position }) => {
                         },
                     }
                 ),
-            },
-        })
+            },))
     }
 
     if (currentlyEditingChild && currentlyEditingChild.data) {

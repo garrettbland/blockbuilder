@@ -1,6 +1,26 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { APPEND_CONTENT, SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import CloseButton from '@/components/builder/CloseButton'
+import { FileText, Image, MousePointer } from 'lucide-react'
+
+const AddContent = ({ block, type = APPEND_CONTENT }) => {
+    const dispatch = useDispatch()
+
+    const handleSelect = (content_type) => {
+        dispatch({
+            type: type,
+            payload: {
+                id: block.id,
+                type: content_type,
+            },
+        })
+        closeModal()
+    }
+
+    const closeModal = () => {
+        useStore.getState().setCustomModal('
+
 import CloseButton from '@/components/builder/CloseButton'
 import { FileText, Image, MousePointer } from 'lucide-react'
 
@@ -23,8 +43,7 @@ const AddContent = ({ block, type = APPEND_CONTENT }) => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
     }
 
     return (

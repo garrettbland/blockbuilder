@@ -1,11 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import Label from '@/components/builder/Label'
 import findAnd from 'find-and'
 
 const DividerRemove = ({ position }) => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const currentlyEditingChildIndex = currentlyEditing.data.findIndex(
+            (block) => block.type === `section-divider-${position}`
+        )
+        if (currentlyEditingChildIndex !== -1) {
+            setCurrentlyEditingChild(currentlyEditing.data[currentlyEditingChildIndex])
+        } else {
+            /**
+             * No child
+             */
+            setCurrentlyEditingChild({})
+        }
+    }, [currentlyEditing])
+
+    const handleSectionDividerRemove = () => {
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import Label from '@/components/builder/Label'
+import findAnd from 'find-and'
+
+const DividerRemove = ({ position }) => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const dispatch = useDispatch()
 
@@ -31,8 +56,7 @@ const DividerRemove = ({ position }) => {
                 data: findAnd.removeObject(currentlyEditing.data, {
                     id: currentlyEditingChild.id,
                 }),
-            },
-        })
+            },))
     }
 
     if (currentlyEditingChild && currentlyEditingChild.data) {

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useStore } from '@/store/useStore'
 import Label from '@/components/builder/Label'
 
 const ImagePreview = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     return (
         <div>
             <Label title="Image Preview" showClass={false} />

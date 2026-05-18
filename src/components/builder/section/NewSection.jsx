@@ -1,15 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { ADD_SECTION } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { PlusCircle } from 'lucide-react'
 
 const NewSection = () => {
     const dispatch = useDispatch()
 
     const AddSection = () => {
-        dispatch({
-            type: ADD_SECTION,
-        })
+        useStore.getState().addSection())
     }
 
     return (

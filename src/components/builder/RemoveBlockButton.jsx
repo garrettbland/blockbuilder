@@ -1,16 +1,21 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-    SET_EDITING,
-    REMOVE_BLOCK,
-    SET_MODAL_VISIBILITY,
-    SET_CUSTOM_MODAL,
-} from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import ConfirmDelete from '@/components/builder/ConfirmDelete'
 import { Trash2 } from 'lucide-react'
 
 const RemoveBlockButton = ({ title = 'Remove Element' }) => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+
+    const handleRemove = () => {
+        useStore.getState().setCustomModal('
+
+import ConfirmDelete from '@/components/builder/ConfirmDelete'
+import { Trash2 } from 'lucide-react'
+
+const RemoveBlockButton = ({ title = 'Remove Element' }) => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const dispatch = useDispatch()
 
     const handleRemove = () => {
@@ -20,8 +25,7 @@ const RemoveBlockButton = ({ title = 'Remove Element' }) => {
                 visible: true,
                 component: <ConfirmDelete currentlyEditing={currentlyEditing} />,
                 maxWidth: null,
-            },
-        })
+            },))
     }
 
     return (

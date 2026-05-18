@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch, Provider } from 'react-redux'
+import { useStore } from '@/store/useStore'
 import store from '@/redux/store'
 // import { Container } from 'react-smooth-dnd'
-import { SWAP_BLOCKS, SET_CUSTOM_MODAL } from '@/redux/constants'
+
 import Builder from './Builder'
 import NewSection from './section/NewSection'
 import Modal from './Modal'
@@ -11,17 +11,11 @@ import ActionButton from './ActionButton'
 import BetaMessage from '@/components/BetaMessage'
 
 const BuilderContent = () => {
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
 
     const swapSections = ({ removedIndex, addedIndex }) => {
-        dispatch({
-            type: SWAP_BLOCKS,
-            payload: {
-                removedIndex,
-                addedIndex,
-            },
-        })
+        useStore.getState().swapBlocks(Selector))
     }
 
     /**
@@ -29,14 +23,7 @@ const BuilderContent = () => {
      * Sets initial modal
      */
     useEffect(() => {
-        dispatch({
-            type: SET_CUSTOM_MODAL,
-            payload: {
-                visible: true,
-                component: <BetaMessage />,
-                maxWidth: 'max-w-3xl',
-            },
-        })
+        useStore.getState().setCustomModal(tor))
     }, [])
 
     return (

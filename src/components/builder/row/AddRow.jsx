@@ -1,6 +1,27 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { APPEND_ROW, SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const availableColumns = [1, 2, 3, 4, 5, 6]
+
+const AddRow = ({ block, type = APPEND_ROW }) => {
+    const dispatch = useDispatch()
+
+    const handleSelect = (columns) => {
+        dispatch({
+            type: type,
+            payload: {
+                id: block.id,
+                columns: parseInt(columns),
+            },
+        })
+        closeModal()
+    }
+
+    const closeModal = () => {
+        useStore.getState().setCustomModal('
+
 import CloseButton from '@/components/builder/CloseButton'
 
 const availableColumns = [1, 2, 3, 4, 5, 6]
@@ -24,8 +45,7 @@ const AddRow = ({ block, type = APPEND_ROW }) => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
     }
 
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { Bold, Italic, Link, Underline } from 'lucide-react'
 
 import isUrl from 'is-url'
@@ -16,7 +16,41 @@ import { withHistory } from 'slate-history'
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 
 const TextContent = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+    // Create a Slate editor object that won't change across renders.
+    const renderElement = useCallback((props) => <Element {...props} />, [])
+    const renderLeaf = useCallback((props) => <Leaf {...props} />, [])
+    const editor = useMemo(() => withLinks(withHistory(withReact(createEditor()))), [])
+
+    // Keep track of state for the value of the editor.
+    // const [value, setValue] = useState([
+    //     {
+    //         type: 'paragraph',
+    //         children: [{ text: 'A line of text in a paragraph.' }],
+    //     },
+    // ])
+
+    const handleTextChange = (newValue) => {
+        useStore.getState().updateEditing(react'
+import { useStore } from '@/store/useStore'
+
+import { Bold, Italic, Link, Underline } from 'lucide-react'
+
+import isUrl from 'is-url'
+import { Slate, Editable, withReact, useSlate } from 'slate-react'
+import { Node, Transforms, Editor, Range, createEditor, Element as SlateElement } from 'slate'
+import { withHistory } from 'slate-history'
+
+// import dynamic from 'next/dynamic'
+// const TrixEditor = dynamic(() => import('@/components/builder/TrixEditor'), {
+//     ssr: false,
+// })
+
+const LIST_TYPES = ['numbered-list', 'bulleted-list']
+
+const TextContent = () => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const dispatch = useDispatch()
     // Create a Slate editor object that won't change across renders.
     const renderElement = useCallback((props) => <Element {...props} />, [])
@@ -40,8 +74,7 @@ const TextContent = () => {
                     ...currentlyEditing.data,
                     data: newValue,
                 },
-            },
-        })
+            },))
     }
 
     return (

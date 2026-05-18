@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { generateSpacing, removeSpacing } from '@/utils/spacing'
 import { extractClass } from '@/utils/tools'
 import Label from '@/components/builder/Label'
 
 const PaddingTop = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [paddingTop, setPaddingTop] = useState('')
     const dispatch = useDispatch()
 
@@ -25,15 +25,9 @@ const PaddingTop = () => {
          */
         const updatedClassList = removeSpacing(currentlyEditing.classList, 'pt-')
 
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateSpacing('pt-')[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { generateSpacing))
     }
 
     return (

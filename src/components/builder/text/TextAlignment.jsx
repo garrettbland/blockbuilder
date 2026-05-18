@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { textAlignments, removeTextAlignments } from '@/utils/text'
 import Label from '@/components/builder/Label'
 import { AlignLeft, AlignCenter, AlignRight, AlignJustify } from 'lucide-react'
 
 const TextAlignment = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [textAlignment, setTextAlignment] = useState('')
     const dispatch = useDispatch()
 
@@ -21,13 +21,10 @@ const TextAlignment = () => {
     const handleTextAlignmentUpdate = (value) => {
         setTextAlignment(value ? value : null)
         const updatedClassList = removeTextAlignments(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: value ? [...updatedClassList, value] : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { textAlignments))
     }
 
     return (

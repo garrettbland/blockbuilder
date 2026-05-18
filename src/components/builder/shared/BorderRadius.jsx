@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateBorderRadiuses, removeBorderRadiuses } from '@/utils/border'
 import Label from '@/components/builder/Label'
 
 const BorderRadius = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [borderRadius, setBorderRadius] = useState('')
     const dispatch = useDispatch()
 
@@ -23,15 +23,10 @@ const BorderRadius = () => {
     const handleBorderRadiusUpdate = (index) => {
         setBorderRadius(index ? generateBorderRadiuses()[index] : null)
         const updatedClassList = removeBorderRadiuses(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateBorderRadiuses()[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateBorderRadiuses))
     }
 
     return (

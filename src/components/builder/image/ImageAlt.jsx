@@ -1,10 +1,19 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import Label from '@/components/builder/Label'
 
 const ImageAlt = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+
+    const handleTextChange = (newAlt) => {
+        useStore.getState().updateEditing(re'
+
+import Label from '@/components/builder/Label'
+
+const ImageAlt = () => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const dispatch = useDispatch()
 
     const handleTextChange = (newAlt) => {
@@ -16,8 +25,7 @@ const ImageAlt = () => {
                     ...currentlyEditing.data,
                     alt: newAlt,
                 },
-            },
-        })
+            },))
     }
 
     return (

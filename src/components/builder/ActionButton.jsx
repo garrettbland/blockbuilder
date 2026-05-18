@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useStore } from '@/store/useStore'
 import { Save, Settings, Loader } from 'lucide-react'
-import { SET_CUSTOM_MODAL } from '@/redux/constants'
+
 // import { useParams, navigate, Link } from '@reach/router'
 // import firebase from '@/firebase'
 import EmailCapture from '@/components/EmailCapture'
 import BetaMessage from '@/components/BetaMessage'
 
 const ActionButton = () => {
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+    // const params = useParams()
+    const [isLoading, setLoading] = useState(false)
+
+    const handleSettingsClick = () => {
+        useStore.getState().setCustomModal(store/useStore'
+import { Save, Settings, Loader } from 'lucide-react'
+
+// import { useParams, navigate, Link } from '@reach/router'
+// import firebase from '@/firebase'
+import EmailCapture from '@/components/EmailCapture'
+import BetaMessage from '@/components/BetaMessage'
+
+const ActionButton = () => {
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
     // const params = useParams()
     const [isLoading, setLoading] = useState(false)
@@ -20,8 +35,55 @@ const ActionButton = () => {
                 visible: true,
                 component: <BetaMessage />,
                 maxWidth: 'max-w-3xl',
-            },
-        })
+            },))
+    }
+
+    const handleExport = () => {
+        setLoading(true)
+        return
+        uploadToFirebase().then((data) => {
+            setLoading(false)
+
+            if (data.error) {
+                console.error(data.message)
+                alert('Uh oh. :/ Something went wrong. Forgive me, its still a work in progress.')
+            } else {
+                useStore.getState().setCustomModal(import { Save, Settings, Loader } from 'lucide-react'
+
+// import { useParams, navigate, Link } from '@reach/router'
+// import firebase from '@/firebase'
+import EmailCapture from '@/components/EmailCapture'
+import BetaMessage from '@/components/BetaMessage'
+
+const ActionButton = () => {
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+    // const params = useParams()
+    const [isLoading, setLoading] = useState(false)
+
+    const handleSettingsClick = () => {
+        useStore.getState().setCustomModal(store/useStore'
+import { Save, Settings, Loader } from 'lucide-react'
+
+// import { useParams, navigate, Link } from '@reach/router'
+// import firebase from '@/firebase'
+import EmailCapture from '@/components/EmailCapture'
+import BetaMessage from '@/components/BetaMessage'
+
+const ActionButton = () => {
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+    // const params = useParams()
+    const [isLoading, setLoading] = useState(false)
+
+    const handleSettingsClick = () => {
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: true,
+                component: <BetaMessage />,
+                maxWidth: 'max-w-3xl',
+            },))
     }
 
     const handleExport = () => {
@@ -40,8 +102,7 @@ const ActionButton = () => {
                         visible: true,
                         component: <URLPreview pageId={data.page_id} />,
                         maxWidth: 'max-w-3xl',
-                    },
-                })
+                    },))
             }
         })
     }

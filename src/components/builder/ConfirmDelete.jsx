@@ -1,12 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import {
-    SET_CUSTOM_MODAL,
-    SET_MODAL_VISIBILITY,
-    REMOVE_BLOCK,
-    SET_EDITING,
-} from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        useStore.getState().setModalVisibility(mport CloseButton from '@/components/builder/CloseButton'
 
 const ConfirmDelete = ({ currentlyEditing }) => {
     const dispatch = useDispatch()
@@ -14,13 +15,29 @@ const ConfirmDelete = ({ currentlyEditing }) => {
     const confirmDelete = () => {
         dispatch({
             type: SET_MODAL_VISIBILITY,
-            payload: false,
-        })
+            payload: false,))
+
+        useStore.getState().removeBlock(tore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        useStore.getState().setModalVisibility(mport CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        dispatch({
+            type: SET_MODAL_VISIBILITY,
+            payload: false,))
 
         dispatch({
             type: REMOVE_BLOCK,
-            payload: currentlyEditing,
-        })
+            payload: currentlyEditing,))
 
         closeModal()
 
@@ -31,9 +48,61 @@ const ConfirmDelete = ({ currentlyEditing }) => {
          * and flahes but will fade in.
          */
         setTimeout(() => {
-            dispatch({
-                type: SET_EDITING,
-            })
+            useStore.getState().setEditing())
+        }, 200)
+    }
+
+    const closeModal = () => {
+        useStore.getState().setCustomModal('
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        useStore.getState().setModalVisibility(mport CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        dispatch({
+            type: SET_MODAL_VISIBILITY,
+            payload: false,))
+
+        useStore.getState().removeBlock(tore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        useStore.getState().setModalVisibility(mport CloseButton from '@/components/builder/CloseButton'
+
+const ConfirmDelete = ({ currentlyEditing }) => {
+    const dispatch = useDispatch()
+
+    const confirmDelete = () => {
+        dispatch({
+            type: SET_MODAL_VISIBILITY,
+            payload: false,))
+
+        dispatch({
+            type: REMOVE_BLOCK,
+            payload: currentlyEditing,))
+
+        closeModal()
+
+        /**
+         * We set this timeout to match the transition
+         * duration in the modal. If we don't do this,
+         * then the z-index changes instantly when closing
+         * and flahes but will fade in.
+         */
+        setTimeout(() => {
+            useStore.getState().setEditing())
         }, 200)
     }
 
@@ -42,8 +111,7 @@ const ConfirmDelete = ({ currentlyEditing }) => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
     }
 
     return (

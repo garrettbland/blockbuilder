@@ -1,7 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { generateColors } from '@/utils/colors'
-import { useDispatch } from 'react-redux'
-import { SET_CUSTOM_MODAL } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
+    /**
+     * Takes on current color to show selected and a 'onClick' callback function
+     * Will return the root color. Parent component will be responsible for adding on
+     * desired prefix (aka "bg-" or "text-")
+     */
+
+    const dispatch = useDispatch()
+
+    const handleModalOpen = () => {
+        useStore.getState().setCustomModal(Colors } from '@/utils/colors'
+import { useStore } from '@/store/useStore'
+
 import CloseButton from '@/components/builder/CloseButton'
 
 const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
@@ -20,8 +35,73 @@ const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
                 visible: true,
                 component: <ColorPalette currentColor={currentColor} onClick={onClick} />,
                 maxWidth: 'max-w-3xl',
-            },
-        })
+            },))
+    }
+
+    return (
+        <div>
+            <button
+                onClick={() => handleModalOpen()}
+                className={`${
+                    currentColor ? currentColor.replace('text-', 'bg-') : 'checkered-background'
+                } w-24 h-12 rounded-lg cursor-pointer hover:ring-2 hover:ring-green-500 ring-offset-1 focus:outline-none shadow`}
+            ></button>
+        </div>
+    )
+}
+
+const ColorPalette = ({ currentColor, onClick }) => {
+    const dispatch = useDispatch()
+    const [color, setColor] = useState(null)
+
+    useEffect(() => {
+        setColor(currentColor ? currentColor.replace('bg-', '').replace('text-', '') : null)
+    }, [currentColor])
+
+    const handleColorChange = (color) => {
+        setColor(color)
+        onClick(color)
+        closeModal()
+    }
+
+    const closeModal = () => {
+        useStore.getState().setCustomModal(Colors } from '@/utils/colors'
+import { useStore } from '@/store/useStore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
+    /**
+     * Takes on current color to show selected and a 'onClick' callback function
+     * Will return the root color. Parent component will be responsible for adding on
+     * desired prefix (aka "bg-" or "text-")
+     */
+
+    const dispatch = useDispatch()
+
+    const handleModalOpen = () => {
+        useStore.getState().setCustomModal(Colors } from '@/utils/colors'
+import { useStore } from '@/store/useStore'
+
+import CloseButton from '@/components/builder/CloseButton'
+
+const ColorPicker = ({ currentColor, onClick, showTransparent = true }) => {
+    /**
+     * Takes on current color to show selected and a 'onClick' callback function
+     * Will return the root color. Parent component will be responsible for adding on
+     * desired prefix (aka "bg-" or "text-")
+     */
+
+    const dispatch = useDispatch()
+
+    const handleModalOpen = () => {
+        dispatch({
+            type: SET_CUSTOM_MODAL,
+            payload: {
+                visible: true,
+                component: <ColorPalette currentColor={currentColor} onClick={onClick} />,
+                maxWidth: 'max-w-3xl',
+            },))
     }
 
     return (
@@ -55,8 +135,7 @@ const ColorPalette = ({ currentColor, onClick }) => {
             type: SET_CUSTOM_MODAL,
             payload: {
                 visible: false,
-            },
-        })
+            },))
     }
 
     return (

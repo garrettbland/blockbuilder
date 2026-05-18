@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateLineHeights, removeLineHeights } from '@/utils/text'
 import Label from '@/components/builder/Label'
 
 const LineHeight = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [lineHeight, setLineHeight] = useState('')
     const dispatch = useDispatch()
 
@@ -20,15 +20,10 @@ const LineHeight = () => {
     const handleLineHeightUpdate = (index) => {
         setLineHeight(index ? generateLineHeights()[index] : null)
         const updatedClassList = removeLineHeights(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateLineHeights()[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateLineHeights))
     }
 
     return (

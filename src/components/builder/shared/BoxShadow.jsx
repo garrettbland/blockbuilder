@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateBoxShadows, removeBoxShadows } from '@/utils/shadow'
 import Label from '@/components/builder/Label'
 
 const BoxShadow = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [boxShadow, setBoxShadow] = useState('')
     const dispatch = useDispatch()
 
@@ -20,15 +20,10 @@ const BoxShadow = () => {
     const handleBoxShadowUpdate = (index) => {
         setBoxShadow(index ? generateBoxShadows()[index] : null)
         const updatedClassList = removeBoxShadows(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateBoxShadows()[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateBoxShadows))
     }
 
     return (

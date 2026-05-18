@@ -1,21 +1,41 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, SET_MODAL_VISIBILITY, UPDATE_BLOCK } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 
 const SubmitButton = ({ title = 'Submit' }) => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+
+    const handleSubmit = () => {
+        useStore.getState().setModalVisibility(const SubmitButton = ({ title = 'Submit' }) => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const dispatch = useDispatch()
 
     const handleSubmit = () => {
         dispatch({
             type: SET_MODAL_VISIBILITY,
-            payload: false,
-        })
+            payload: false,))
+
+        useStore.getState().updateBlock(tore'
+
+
+const SubmitButton = ({ title = 'Submit' }) => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+
+    const handleSubmit = () => {
+        useStore.getState().setModalVisibility(const SubmitButton = ({ title = 'Submit' }) => {
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
+    const dispatch = useDispatch()
+
+    const handleSubmit = () => {
+        dispatch({
+            type: SET_MODAL_VISIBILITY,
+            payload: false,))
 
         dispatch({
             type: UPDATE_BLOCK,
-            payload: currentlyEditing,
-        })
+            payload: currentlyEditing,))
 
         /**
          * We set this timeout to match the transition
@@ -24,9 +44,7 @@ const SubmitButton = ({ title = 'Submit' }) => {
          * and flahes but will fade in.
          */
         setTimeout(() => {
-            dispatch({
-                type: SET_EDITING,
-            })
+            useStore.getState().setEditing())
         }, 200)
     }
 

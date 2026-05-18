@@ -1,13 +1,43 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { returnFound } from 'find-and'
-import { useDispatch, useSelector } from 'react-redux'
-import { SET_EDITING, SET_MODAL_VISIBILITY } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import BlockActionsButton from '../BlockActionsButton'
 
 const Text = ({ block }) => {
     const [showTool, setShowTool] = useState(false)
     const textRef = useRef()
-    const blocks = useSelector((state) => state.blocks)
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const text = textRef.current
+
+        text.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        text.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            text.removeEventListener('mouseenter', () => {})
+            text.removeEventListener('mouseleave', () => {})
+        }
+    })
+
+    return (
+        <div data-type="text" ref={textRef} className={[...block.classList, 'relative'].join(' ')}>
+            <div
+                onClick={() => {
+                    useStore.getState().setModalVisibility('
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Text = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const textRef = useRef()
+    const blocks = useStore((state) => state.blocks)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -31,12 +61,73 @@ const Text = ({ block }) => {
                 onClick={() => {
                     dispatch({
                         type: SET_MODAL_VISIBILITY,
-                        payload: true,
-                    })
+                        payload: true,))
+                    useStore.getState().setEditing('find-and'
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Text = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const textRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const text = textRef.current
+
+        text.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        text.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            text.removeEventListener('mouseenter', () => {})
+            text.removeEventListener('mouseleave', () => {})
+        }
+    })
+
+    return (
+        <div data-type="text" ref={textRef} className={[...block.classList, 'relative'].join(' ')}>
+            <div
+                onClick={() => {
+                    useStore.getState().setModalVisibility('
+import { useStore } from '@/store/useStore'
+
+import BlockActionsButton from '../BlockActionsButton'
+
+const Text = ({ block }) => {
+    const [showTool, setShowTool] = useState(false)
+    const textRef = useRef()
+    const blocks = useStore((state) => state.blocks)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        const text = textRef.current
+
+        text.addEventListener('mouseenter', (event) => {
+            setShowTool(true)
+        })
+        text.addEventListener('mouseleave', (event) => {
+            setShowTool(false)
+        })
+        return () => {
+            text.removeEventListener('mouseenter', () => {})
+            text.removeEventListener('mouseleave', () => {})
+        }
+    })
+
+    return (
+        <div data-type="text" ref={textRef} className={[...block.classList, 'relative'].join(' ')}>
+            <div
+                onClick={() => {
+                    dispatch({
+                        type: SET_MODAL_VISIBILITY,
+                        payload: true,))
                     dispatch({
                         type: SET_EDITING,
-                        payload: returnFound(blocks, { id: block.id }),
-                    })
+                        payload: returnFound(blocks, { id: block.id }),))
                 }}
                 className={`absolute top-0 left-0 h-full w-full cursor-pointer ${
                     showTool ? 'block ring-4 rounded' : 'hidden'

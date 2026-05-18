@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateFontSizes, removeFontSizes } from '@/utils/text'
 import Label from '@/components/builder/Label'
 
 const FontSize = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [fontSize, setFontSize] = useState('')
     const dispatch = useDispatch()
 
@@ -20,15 +20,10 @@ const FontSize = () => {
     const handleFontSizeUpdate = (index) => {
         setFontSize(index ? generateFontSizes()[index] : null)
         const updatedClassList = removeFontSizes(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateFontSizes()[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateFontSizes))
     }
 
     return (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateColors, removeColors } from '@/utils/colors'
 import ColorPicker from '../shared/ColorPicker'
@@ -8,7 +8,7 @@ import Label from '@/components/builder/Label'
 import findAnd from 'find-and'
 
 const DividerColor = ({ position }) => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [currentlyEditingChild, setCurrentlyEditingChild] = useState({})
     const [dividerColor, setDividerColor] = useState('')
     const dispatch = useDispatch()
@@ -37,45 +37,19 @@ const DividerColor = ({ position }) => {
     const handleDividerColorUpdate = (value) => {
         setDividerColor(value)
         const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: findAnd.changeProps(
-                    currentlyEditing.data,
-                    { id: currentlyEditingChild.id },
-                    {
-                        ...currentlyEditingChild,
-                        data: {
-                            ...currentlyEditingChild.data,
-                        },
-                        classList: [...updatedClassList, value],
-                    }
-                ),
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateColors))
     }
 
     const handleResetStyle = () => {
         setDividerColor(null)
         const updatedClassList = removeColors(currentlyEditingChild.classList, 'text-')
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                data: findAnd.changeProps(
-                    currentlyEditing.data,
-                    { id: currentlyEditingChild.id },
-                    {
-                        ...currentlyEditingChild,
-                        data: {
-                            ...currentlyEditingChild.data,
-                        },
-                        classList: [...updatedClassList, 'text-transparent'],
-                    }
-                ),
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateColors))
     }
 
     if (currentlyEditingChild && currentlyEditingChild.data) {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { autoMargins, removeAutoMargins } from '@/utils/spacing'
 import Label from '@/components/builder/Label'
 import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react'
 
 const AutoMargin = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [autoMargin, setAutoMargin] = useState('')
     const dispatch = useDispatch()
 
@@ -21,13 +21,10 @@ const AutoMargin = () => {
     const handleAutoMarginUpdate = (value) => {
         setAutoMargin(value ? value : null)
         const updatedClassList = removeAutoMargins(currentlyEditing.classList)
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: value ? [...updatedClassList, value] : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { autoMargins))
     }
 
     return (

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { UPDATE_EDITING } from '@/redux/constants'
+import { useStore } from '@/store/useStore'
+
 import { extractClass } from '@/utils/tools'
 import { generateOpacities, removeOpacity } from '@/utils/opacity'
 import Label from '@/components/builder/Label'
 
 const BackgroundOpacity = () => {
-    const currentlyEditing = useSelector((state) => state.currentlyEditing)
+    const currentlyEditing = useStore((state) => state.currentlyEditing)
     const [backgroundOpacity, setBackgroundOpacity] = useState('')
     const dispatch = useDispatch()
 
@@ -28,15 +28,10 @@ const BackgroundOpacity = () => {
          */
         const updatedClassList = removeOpacity(currentlyEditing.classList, 'bg-')
 
-        dispatch({
-            type: UPDATE_EDITING,
-            payload: {
-                ...currentlyEditing,
-                classList: index
-                    ? [...updatedClassList, generateOpacities('bg-')[index]]
-                    : [...updatedClassList],
-            },
-        })
+        useStore.getState().updateEditing(re } from '@/store/useStore'
+
+import { extractClass } from '@/utils/tools'
+import { generateOpacities))
     }
 
     return (
