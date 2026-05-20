@@ -36,6 +36,7 @@ interface StoreState {
     setInitialBlocks: (blocks: BlockMap) => void
     setEditing: (blockId: string) => void
     addSection: () => void
+    updateBlock: (id: string, updates: Partial<Block>) => void
 }
 
 const initialBlocksMap: BlockMap = {}
@@ -101,17 +102,16 @@ export const useStore = create<StoreState>((set, get) => ({
                 class: ['bg-pink-900', 'p-4'],
             }
 
-            // const newBlocks = {
-            //     ...currentState.blocks,
-            //     [id]: {
-            //         id,
-            //         parentId: null,
-            //         order: sectionCount,
-            //         type: LayoutType['section'],
-            //         class: ['bg-pink-900', 'p-4'],
-            //     },
-            // }
             return { blocks: { ...currentState.blocks, [id]: newBlock } }
         })
+    },
+
+    updateBlock: (id: string, updates: Partial<Block>) => {
+        set((state) => ({
+            blocks: {
+                ...state.blocks,
+                [id]: { ...state.blocks[id], ...updates },
+            },
+        }))
     },
 }))

@@ -12,7 +12,7 @@ const demoBlocks: BlockMap = {
         //     border: '0px solid blue',
         // },
     },
-    '1': {
+    fsdanj490dsf: {
         id: 'fsdanj490dsf',
         type: 'heading',
         parentId: 'abc123',

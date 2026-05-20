@@ -3,6 +3,7 @@ import { type BlockMap, type Block } from '../types'
 import { getChildren } from './utilities'
 import { textRenderer } from './textRenderer'
 import { useStore } from '../store/useStore'
+import { HeadingEditor } from '../components/Heading'
 
 /**
  * Renders the initial root blocks (with no parentId) and orders
@@ -17,6 +18,8 @@ export const RenderRoots = ({ blocks }: { blocks: BlockMap }) => {
 
 export const RenderBlockElement = ({ block, blocks }: { block: Block; blocks: BlockMap }) => {
     const openModal = useStore((state) => state.openModal)
+    const closeModal = useStore((state) => state.closeModal)
+    const updateBlock = useStore((state) => state.updateBlock)
 
     if (block.visible === false) return null
     if (block.data) {
@@ -28,8 +31,17 @@ export const RenderBlockElement = ({ block, blocks }: { block: Block; blocks: Bl
                         style={block?.styles}
                         onClick={() => {
                             openModal({
-                                title: 'Edit Image',
-                                content: <div>h1 editor...{block.data.content}</div>,
+                                title: 'Edit Heading',
+                                content: (
+                                    <HeadingEditor
+                                        block={block}
+                                        onSave={(data) => {
+                                            console.log(data)
+                                            updateBlock(block.id, { data })
+                                            closeModal()
+                                        }}
+                                    />
+                                ),
                                 onConfirm: () => console.log('Save heading changes...'),
                             })
                         }}

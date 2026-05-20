@@ -24,7 +24,7 @@ export type BlockType = LayoutType | ContentType
 
 // --- Data interfaces ---
 
-interface HeadingData {
+export interface HeadingData {
     type: 'heading'
     level: 1 | 2 | 3 | 4 | 5 | 6
     content: string
