@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true,
+
+        /* Path aliases */
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": ["src/components/*"],
+            "@lib/*": ["src/lib/*"]
+        },
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+
+        /* Emit — vite-plugin-dts handles .d.ts, tsc just type-checks */
+        "noEmit": true,
+        "declaration": true,
+        "declarationDir": "dist",
+
+        /* React */
+        "jsx": "react-jsx",
+
+        /* Strictness */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+}

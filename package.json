@@ -1,35 +1,33 @@
 {
     "name": "blockbuilder",
+    "description": "Visual UI Website Drag and Drop",
     "version": "0.1.0",
     "type": "module",
-    "main": "./dist/blockbuilder.es.js",
-    "module": "./dist/blockbuilder.es.js",
+    "main": "./dist/index.es.js",
+    "module": "./dist/index.es.js",
     "exports": {
         ".": {
-            "import": "./dist/blockbuilder.es.js"
-        }
+            "import": "./dist/index.es.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./styles.css": "./dist/styles.css"
     },
     "files": [
         "dist"
     ],
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "demo": "cd demo && npm run dev"
+        "dev": "npm run clean && npm run build:css && concurrently --names \"css,lib,demo\" --prefix-colors \"blue,yellow,green\" \"npm run dev:css\" \"npm run dev:lib\" \"npm run dev:demo\"",
+        "dev:css": "npx @tailwindcss/cli -i ./src/index.css -o ./dist/styles.css --watch",
+        "dev:lib": "vite build --watch",
+        "dev:demo": "cd demo && npm run dev",
+        "build": "npm run clean && npm run build:lib && npm run build:css",
+        "build:css": "npx @tailwindcss/cli -i ./src/index.css -o ./dist/styles.css",
+        "build:lib": "vite build",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "clean": "rm -rf dist"
     },
     "dependencies": {
-        "@tailwindcss/vite": "^4.3.0",
-        "common-tags": "^1.8.0",
-        "find-and": "^1.3.0",
-        "firebase": "^8.2.2",
-        "is-url": "^1.2.4",
-        "lucide-react": "^1.16.0",
-        "react-redux": "^9.2.0",
-        "redux": "^5.0.1",
-        "slate": "^0.124.1",
-        "slate-history": "^0.113.1",
-        "slate-react": "^0.124.0",
+        "@editorjs/editorjs": "^2.31.6",
         "uuid": "^14.0.0",
         "zustand": "^5.0.13"
     },
@@ -40,13 +38,19 @@
         ]
     },
     "peerDependencies": {
-        "react": "^19.2.6",
-        "react-dom": "^19.2.6"
+        "react": ">=17.0.0",
+        "react-dom": ">=17.0.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-react": "^6.0.1",
-        "prettier": "^2.2.1",
+        "@tailwindcss/cli": "^4.3.0",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^6.0.2",
+        "concurrently": "^9.2.1",
+        "prettier": "^3.8.3",
         "tailwindcss": "^4.3.0",
-        "vite": "^8.0.12"
+        "typescript": "^6.0.3",
+        "vite": "^8.0.12",
+        "vite-plugin-dts": "^5.0.0"
     }
 }
