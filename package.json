@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "@editorjs/editorjs": "^2.31.6",
+        "nanoid": "^5.1.11",
         "uuid": "^14.0.0",
         "zustand": "^5.0.13"
     },

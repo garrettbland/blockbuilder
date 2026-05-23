@@ -1,19 +1,106 @@
 import { useEffect } from 'react'
-import { type BlockMap, type Block } from '../types'
-import { getChildren } from './utilities'
+import {
+    type BlockMap,
+    type Block,
+    type HeadingData,
+    type ParagraphData,
+    type ImageData,
+    type ButtonData,
+} from '../types'
+
 import { textRenderer } from './textRenderer'
 import { useStore } from '../store/useStore'
 import { HeadingEditor } from '../components/Heading'
+import { getSections } from './utilities'
+
+export const RenderBlocks = ({
+    blocks,
+    parentId = null,
+}: {
+    blocks: BlockMap
+    parentId?: string | null
+}) => {
+    return Object.entries(blocks)
+        .filter(([, b]) => b.parentId === parentId) // only renders blocks with specific parent id. For root blocks, parentId is null
+        .sort(([, a], [, b]) => (a.order ?? 0) - (b.order ?? 0)) // sorts blocks by order
+        .map(([id, block]) => {
+            if (block.visible === false) return null
+
+            switch (block.type) {
+                case 'section': {
+                    return (
+                        <section
+                            id={id}
+                            className={block.class?.join(' ') || ''}
+                            style={block?.styles}
+                        >
+                            <RenderBlocks blocks={blocks} parentId={id} />
+                        </section>
+                    )
+                }
+                case 'div': {
+                    return (
+                        <div id={id} className={block.class?.join(' ') || ''} style={block?.styles}>
+                            <RenderBlocks blocks={blocks} parentId={id} />
+                        </div>
+                    )
+                }
+                case 'heading': {
+                    const data = block.data as HeadingData
+                    return (
+                        <h1 className={block.class?.join(' ') || ''} style={block?.styles}>
+                            {data.content}
+                        </h1>
+                    )
+                }
+                case 'paragraph': {
+                    const data = block.data as ParagraphData
+                    /**
+                     * editorjs stuff
+                     */
+                    return (
+                        <p className={block.class?.join(' ') || ''} style={block?.styles}>
+                            {textRenderer(data.content.blocks)}
+                        </p>
+                    )
+                }
+                case 'image': {
+                    const data = block.data as ImageData
+                    return (
+                        <img
+                            src={data.src}
+                            alt={data.alt}
+                            className={block.class?.join(' ') || ''}
+                            style={block?.styles}
+                        />
+                    )
+                }
+
+                case 'button': {
+                    const data = block.data as ButtonData
+                    return (
+                        <a
+                            href={data.href}
+                            target={data.target}
+                            className={block.class?.join(' ') || ''}
+                            style={block?.styles}
+                        >
+                            {data.label}
+                        </a>
+                    )
+                }
+
+                default:
+                    return <div>Unsupported block type: {block.type}</div>
+            }
+        })
+}
 
 /**
  * Renders the initial root blocks (with no parentId) and orders
  */
-export const RenderRoots = ({ blocks }: { blocks: BlockMap }) => {
-    const roots = Object.values(blocks)
-        .filter((b) => b.parentId === null)
-        .sort((a, b) => a.order - b.order)
-
-    return roots.map((b) => <RenderBlockElement block={b} blocks={blocks} />)
+export const RenderSections = ({ blocks }: { blocks: BlockMap }) => {
+    return getSections(blocks).map((b) => <RenderBlockElement block={b} blocks={blocks} />)
 }
 
 export const RenderBlockElement = ({ block, blocks }: { block: Block; blocks: BlockMap }) => {

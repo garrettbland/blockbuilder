@@ -30,12 +30,12 @@ export interface HeadingData {
     content: string
 }
 
-interface ParagraphData {
+export interface ParagraphData {
     type: 'paragraph'
     content: EditorJSOutput
 }
 
-interface ImageData {
+export interface ImageData {
     type: 'image'
     src: string
     alt?: string
@@ -45,7 +45,7 @@ interface ImageData {
     objectFit?: 'cover' | 'contain' | 'fill'
 }
 
-interface ButtonData {
+export interface ButtonData {
     type: 'button'
     label: string
     href?: string

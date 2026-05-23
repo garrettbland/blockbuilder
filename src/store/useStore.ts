@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { Block, type BlockMap } from '../types'
+import { nanoid } from 'nanoid'
 
 interface ModalState {
     isOpen: boolean
@@ -89,20 +90,19 @@ export const useStore = create<StoreState>((set, get) => ({
     addSection: () => {
         console.log('Adding new section block...')
         set((currentState: StoreState) => {
-            const id = Date.now().toString()
             const sectionCount = Object.values(currentState.blocks).filter(
                 (b) => b.parentId === null
             ).length
 
             const newBlock: Block = {
-                id,
+                id: nanoid(),
                 parentId: null,
                 order: sectionCount,
                 type: 'section',
                 class: ['bg-pink-900', 'p-4'],
             }
 
-            return { blocks: { ...currentState.blocks, [id]: newBlock } }
+            return { blocks: { ...currentState.blocks, [newBlock.id]: newBlock } }
         })
     },
 
